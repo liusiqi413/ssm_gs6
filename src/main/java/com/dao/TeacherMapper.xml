@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.TeacherMapper">
+<!--<resultMap id="base" type="com.entity.Teacher">-->
+<!--    <id column="id" property="id"/>-->
+<!--    <result column="loginName" property="loginName"/>-->
+<!--    <result column="loginPwd" property="loginPwd"/>-->
+<!--    <result column="name" property="name"/>-->
+<!--    <result column="sex" property="sex"/>-->
+<!--    <result column="deptId" property="deptId"/>-->
+<!--    <result column="salt" property="salt"/>-->
+<!--</resultMap>-->
+    <!-- 根据登录账号查询老师信息 -->
+    <select id="findTeacherByLoginName" resultType="com.entity.Teacher">
+        select * from tec_info where loginName = #{loginName}
+    </select>
+
+</mapper>
