@@ -48,5 +48,12 @@ public class SystemController {
         //重定向到登录页面
         return "redirect:/admin/login.html";
     }
-
+    /*
+    去到学生管理页面
+    @return
+     */
+    @RequestMapping("toStuManager")
+public String toStuManager(){
+return "admin/stu/stuManager";
+}
 }

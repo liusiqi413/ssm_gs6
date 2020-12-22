@@ -1,8 +1,16 @@
 com\entity\Teacher.class
 com\utils\PasswordUtil.class
+com\controller\admin\MenuController.class
+com\service\MenuService.class
+com\interceptor\LoginInterceptor.class
+com\dao\MenuMapper.class
 com\service\TeacherService.class
 com\utils\SystemConstant.class
 com\controller\admin\SystemController.class
 com\service\impl\TeacherServiceImpl.class
+com\utils\TreeUtil.class
 com\dao\TeacherMapper.class
+com\entity\Menu.class
+com\utils\MenuNode.class
+com\service\impl\MenuServiceImpl.class
 com\controller\admin\TeacherController.class
