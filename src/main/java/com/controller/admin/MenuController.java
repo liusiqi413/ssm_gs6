@@ -5,7 +5,6 @@ import com.entity.Menu;
 import com.service.MenuService;
 import com.utils.MenuNode;
 import com.utils.TreeUtil;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
