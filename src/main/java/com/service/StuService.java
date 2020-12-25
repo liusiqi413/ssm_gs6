@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StuService {
     /*
-    查询部门
+    查询
      */
     List<Student> findStuList(StuVo stuVo);
 }

@@ -1,7 +1,6 @@
 package com.controller.admin;
 
 import com.entity.Student;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.StuService;
@@ -19,7 +18,7 @@ public class StuController {
 @Resource
     private StuService stuService;
 /*
-查询部门列表
+查询学生基本信息列表
  */
 @RequestMapping("/list")
 public DataGridViewResult list(StuVo stuVo){

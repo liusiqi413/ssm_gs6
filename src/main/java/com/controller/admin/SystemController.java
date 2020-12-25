@@ -56,4 +56,20 @@ public class SystemController {
 public String toStuManager(){
 return "admin/stu/stuManager";
 }
+    /*
+       去到学生生源地管理页面
+       @return
+        */
+    @RequestMapping("toStuHome")
+    public String toStuHomeManager(){
+        return "admin/stu/stuHome";
+    }
+    /*
+       去到学生就业信息管理页面
+       @return
+        */
+    @RequestMapping("toStuEmp")
+    public String toStuEmpManager(){
+        return "admin/stu/stuEmp";
+    }
 }

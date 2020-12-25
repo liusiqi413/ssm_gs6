@@ -22,7 +22,7 @@ public class TeacherController {
 
 
     /**
-     * 员工登录
+     * 教师登录
      * @param username
      * @param password
      * @param session

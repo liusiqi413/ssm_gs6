@@ -48,11 +48,11 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-icon layui-icon-username" for="username"></label>
-                        <input type="text" name="username" id="username" lay-verify="required|account" placeholder="用户名或者邮箱" autocomplete="off" class="layui-input">
+                        <input type="text" name="username" id="username" lay-verify="required|account" placeholder="用户名" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-icon layui-icon-password" for="password"></label>
-                        <input type="password" name="password" id="password" lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" >
+                        <input type="password" name="password" id="password"  lay-verify="required|password" placeholder="密码" autocomplete="off" class="layui-input" >
                     </div>
                     <div class="layui-form-item">
                         <button class="layui-btn layui-btn layui-btn-normal layui-btn-fluid" lay-submit lay-filter="login">登 入</button>

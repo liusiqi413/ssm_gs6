@@ -32,15 +32,15 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">就业城市</label>
+                            <label class="layui-form-label">学生专业</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="city" autocomplete="off" class="layui-input">
+                                <input type="text" name="major" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">就业职业</label>
+                            <label class="layui-form-label">学生学院</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="hire" autocomplete="off" class="layui-input">
+                                <input type="text" name="college" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -73,6 +73,13 @@
         <div style="display: none;padding: 5px" id="addOrUpdateWindow">
             <form class="layui-form" style="width:90%;" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
+                    <label class="layui-form-label">学生学号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
                         <%-- 隐藏域 --%>
@@ -82,16 +89,26 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生学号</label>
+                    <label class="layui-form-label">学生性别</label>
                     <div class="layui-input-block">
-                        <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                        <input type="text" name="gender" lay-verify="required" autocomplete="off" placeholder="请输入学生性别"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生班级</label>
                     <div class="layui-input-block">
-                        <textarea class="layui-textarea" name="classes" id="content"></textarea>
+                        <input type="text" name="classes" lay-verify="required" autocomplete="off" placeholder="请输入学生班级"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学生专业</label>
+                    <div class="layui-input-block">
+                        <%-- 隐藏域 --%>
+                        <input type="hidden" name="id">
+                        <input type="text" name="major" lay-verify="required" autocomplete="off"
+                               placeholder="请输入学生专业" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item layui-row layui-col-xs12">
@@ -121,18 +138,18 @@
             url: '${pageContext.request.contextPath}/admin/stu/list',
             toolbar: '#toolbarDemo',
             cols: [[
-                {type: "checkbox", width: 50},
                 {field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'stuno', width:120, title: '学生学号',sort:true,align: 'center'},
                 {field: 'stuname', width:90, title: '学生姓名'},
-                {field: 'gender', width: 80, title: '性别', sort: true},
-                {field: 'year', width: 80, title: '年级'},
-                {field: 'classes', title: '班级', minWidth: 100},
-                {field: 'major', width: 80, title: '专业'},
-                {field: 'gradu', width: 100, title: '毕业时间', sort: true},
-                {field: 'start', width: 100, title: '入学时间', sort: true},
-                {field: 'hire', width: 100, title: '职业'},
-                {field: 'city', width: 100, title: '工作城市', sort: true},
-                {field: 'company', width: 120, title: '公司名称'},
+                {field: 'gender', width: 70, title: '性别', sort: true,align: 'center'},
+                {field: 'college', title: '学院', minWidth: 90,align: 'center',sort: true},
+                {field: 'major', width: 150, title: '专业',align: 'center'},
+                {field: 'classes', width: 100, title: '班级', sort: true,align: 'center'},
+                {field: 'start', width: 100, title: '入学时间', sort: true,align: 'center'},
+                {field: 'gradu', width: 100, title: '毕业时间',sort: true,align: 'center'},
+                {field: 'diploma', width: 100, title: '文凭', sort: true,align: 'center'},
+                {field: 'train', width: 150, title: '培养方式',align: 'center'},
+                {field: 'stutel', width: 120, title: '电话',align: 'center'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
            page: true,
@@ -186,9 +203,25 @@
                 }
             });
         }
+        //监听表单提交事件
+        form.on("submit(doSubmit)",function (data) {
+            //发送ajax请求提交
+            $.post(url,data.field,function (result) {
+            if(result.success()){
+
+                //刷新数据表格
+                tableIns.reload();
+                //关闭窗口
+                layer.close(mainIndex);
+            }
+            //提示成功信息
+                layr.msg(result.message);
+            },"json");
+        //禁止页面刷新
+            return false;
+        })
     });
 
 </script>
-
 </body>
 </html>

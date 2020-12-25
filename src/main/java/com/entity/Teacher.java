@@ -1,7 +1,7 @@
 package com.entity;
 
 public class Teacher {
-    private Integer id;//员工编号
+    private Integer id;//编号
     private String loginName;//登录名称
     private String loginPwd;//登录密码
     private String name;//真实姓名

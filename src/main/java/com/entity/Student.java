@@ -1,28 +1,21 @@
 package com.entity;
 
+
 import java.util.Date;
 
 public class Student {
     private Integer id;
+    private String stuno;
     private String stuname;
     private String gender;
-    private Integer stutel;
-    private String email;
+    private String stutel;
+    private String college;
     private String major;
+    private String classes;
     private Date start;
     private Date gradu;
-    private String hire;
-    private String city;
-    private String company;
-    private String classes;
-
-    public String getClasses() {
-        return classes;
-    }
-
-    public void setClasses(String classes) {
-        this.classes = classes;
-    }
+    private String diploma;
+    private String train;
 
     public Integer getId() {
         return id;
@@ -30,6 +23,14 @@ public class Student {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getStuno() {
+        return stuno;
+    }
+
+    public void setStuno(String stuno) {
+        this.stuno = stuno;
     }
 
     public String getStuname() {
@@ -48,20 +49,20 @@ public class Student {
         this.gender = gender;
     }
 
-    public Integer getStutel() {
+    public String getStutel() {
         return stutel;
     }
 
-    public void setStutel(Integer stutel) {
+    public void setStutel(String stutel) {
         this.stutel = stutel;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCollege() {
+        return college;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCollege(String college) {
+        this.college = college;
     }
 
     public String getMajor() {
@@ -70,6 +71,14 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 
     public Date getStart() {
@@ -88,27 +97,19 @@ public class Student {
         this.gradu = gradu;
     }
 
-    public String getHire() {
-        return hire;
+    public String getDiploma() {
+        return diploma;
     }
 
-    public void setHire(String hire) {
-        this.hire = hire;
+    public void setDiploma(String diploma) {
+        this.diploma = diploma;
     }
 
-    public String getCity() {
-        return city;
+    public String getTrain() {
+        return train;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
+    public void setTrain(String train) {
+        this.train = train;
     }
 }

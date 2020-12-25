@@ -10,4 +10,5 @@ public interface StuMapper {
     查询学生列表
      */
     List<Student> findStuList(StuVo stuVo);
+
 }

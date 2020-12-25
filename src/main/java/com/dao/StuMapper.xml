@@ -10,11 +10,11 @@
         <if test="classes!=null and classes!=''">
             and classes like concat('%',#{classes},'%')
         </if>
-        <if test="city!=null and city!=''">
-            and city like concat('%',#{city},'%')
+        <if test="major!=null and major!=''">
+            and major like concat('%',#{major},'%')
         </if>
-        <if test="hire!=null and hire!=''">
-            and hire like concat('%',#{hire},'%')
+        <if test="college!=null and college!=''">
+            and college like concat('%',#{college},'%')
         </if>
     </where>
 </select>
