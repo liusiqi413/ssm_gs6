@@ -72,4 +72,11 @@ return "admin/stu/stuManager";
     public String toStuEmpManager(){
         return "admin/stu/stuEmp";
     }
+    /*
+    去到考研学生管理页面
+     */
+    @RequestMapping("toStuMaster")
+    public String toStuMasterManager(){
+        return "admin/stu/stuMaster";
+    }
 }

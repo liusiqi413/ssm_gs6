@@ -84,7 +84,7 @@
                 console.log(data);
                 //发送登录请求
                 $.post("/admin/teacher/login",data.field,function(result){
-                    if(result.success){
+                    if(result.success){ //map集合；来的
                         location.href="/admin/home.html";
                     }else{
                         layer.msg(result.message);

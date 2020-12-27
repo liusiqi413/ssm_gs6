@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.StuMasterMapper">
+<select id="findStuMasterList" resultType="com.entity.StuMaster">
+    select * from stu_master
+    <where>
+        <if test="stuname!=null and stuname!=''">
+            and stuname like concat('%',#{stuname},'%')
+        </if>
+    </where>
+</select>
+
+</mapper>
