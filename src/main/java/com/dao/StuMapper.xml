@@ -18,5 +18,8 @@
         </if>
     </where>
 </select>
-
+<!-- 添加学生信息-->
+    <insert id="addStu">
+        insert into stu_info(stuno,stuname,gender,college,major,classes,start,gradu,diploma,train)values(#{stuno},#{stuname},#{gender},#{college},#{major},#{classes},#{start},#{gradu},#{diploma},#{train})
+    </insert>
 </mapper>

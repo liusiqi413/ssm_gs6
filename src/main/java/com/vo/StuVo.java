@@ -3,6 +3,7 @@ package com.vo;
 import com.entity.Student;
 
 public class StuVo extends Student {
+    //注意：page和limit属性要与LayUI的数据表格参数一致
     //当前页码
     private Integer page;
     //每页显示数量

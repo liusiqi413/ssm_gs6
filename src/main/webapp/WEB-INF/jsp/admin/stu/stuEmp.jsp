@@ -58,7 +58,7 @@
                     form = layui.form,
                     layer=layui.layer,
                     table = layui.table;
-
+    //表格用变量接收
                 var tableIns= table.render({
                     elem: '#currentTableId',
                     url: '${pageContext.request.contextPath}/admin/stu/employ',
@@ -91,12 +91,12 @@
                 // 监听搜索操作
                 form.on('submit(data-search-btn)', function (data) {
                     tableIns.reload({
-                        where: data.field,
+                        where: data.field, //键值对，查询条件
                         page: {
-                            curr: 1
+                            curr: 1  //从第一页开始查
                         }
                     });
-                    return false;
+                    return false;  //禁止刷新
                 });
             });
 

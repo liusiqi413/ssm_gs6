@@ -1,7 +1,10 @@
 package com.utils;
 
-/**
+/*
  * layui 数据表格类
+ * 由于LayUI数据表格要求返回4个属性，分别是code、msg、count、data，为了方便代码编写，将
+ * 这4个属性封装到类中
+ * 此类封装LayUI数据表格中返回的数据格式
  */
 public class DataGridViewResult {
     private Integer code=0;//执行状态码
@@ -45,6 +48,7 @@ public class DataGridViewResult {
      * 创建数据表格对象
      * @param count     数据总数量
      * @param data      数据集合列表
+     *                  封装数据表格
      */
     public DataGridViewResult(Long count, Object data) {
         super();

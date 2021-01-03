@@ -128,11 +128,10 @@
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="${pageContext.request.contextPath}/static/layui/js/lay-config.js" charset="utf-8"></script>
 <script>
-    layui.use(['jquery', 'layer', 'miniAdmin','miniTongji'], function () {
+    layui.use(['jquery', 'layer', 'miniAdmin'], function () {
         var $ = layui.jquery,
             layer = layui.layer,
             miniAdmin = layui.miniAdmin;
-            miniTongji = layui.miniTongji;
 
         var options = {
             iniUrl: "${pageContext.request.contextPath}/admin/menu/loadMenuList",    // 初始化接口
@@ -146,17 +145,6 @@
             maxTabNum: 20,              // 最大的tab打开数量
         };
         miniAdmin.render(options);
-
-        // 百度统计代码，只统计指定域名
-        miniTongji.render({
-            specific: true,
-            domains: [
-                '99php.cn',
-                'layuimini.99php.cn',
-                'layuimini-onepage.99php.cn',
-            ],
-        });
-
 
         $('.login-out').on("click", function () {
             layer.confirm('确定要退出系统吗?', {icon: 3, title:'提示'}, function(index){

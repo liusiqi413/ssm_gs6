@@ -96,6 +96,20 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">学生学院</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="college" lay-verify="required" autocomplete="off" placeholder="请输入学生学院"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学生专业</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="major" lay-verify="required" autocomplete="off" placeholder="请输入学生专业"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">学生班级</label>
                     <div class="layui-input-block">
                         <input type="text" name="classes" lay-verify="required" autocomplete="off" placeholder="请输入学生班级"
@@ -103,12 +117,24 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">学生专业</label>
+                    <label class="layui-form-label">入学时间</label>
                     <div class="layui-input-block">
-                        <%-- 隐藏域 --%>
-                        <input type="hidden" name="id">
-                        <input type="text" name="major" lay-verify="required" autocomplete="off"
-                               placeholder="请输入学生专业" class="layui-input">
+                        <input type="text" name="start" id="start" readonly="readonly" lay-reqText="请输入入学时间" autocomplete="off"
+                               placeholder="yyyy-MM-dd" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">毕业时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="gradu" id="gradu" readonly="readonly" lay-reqText="请输入毕业时间" autocomplete="off"
+                               placeholder="yyyy-MM-dd" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">培养方式</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="diploma" lay-verify="required" autocomplete="off" placeholder="请输入学生培养方式"
+                               class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item layui-row layui-col-xs12">
@@ -126,12 +152,24 @@
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script>
-    layui.use(['form', 'table','layer'], function () {
+    layui.use(['jquery','form','table','laydate','layer'], function () {
         var $ = layui.jquery,
             form = layui.form,
-            layer=layui.layer,
-            table = layui.table;
+            table = layui.table,
+            laydate = layui.laydate,
+            layer=layui.layer;
+
+        //渲染日期组件
+        laydate.render({
+            elem:"#start",
+            type:"date"
+        });
+        laydate.render({
+            elem:"#gradu",
+            type:"date"
+        });
 
        var tableIns= table.render({
             elem: '#currentTableId',
@@ -175,7 +213,7 @@
             });
             return false;
         });
-        //监听头部操作
+        //监听表格头部工具栏事件
         //toolbar是头部工具栏事件
         //currentTableFilter是表格lay-filter过滤器的值
         table.on("toolbar(currentTableFilter)",function(obj){
@@ -183,6 +221,7 @@
                 case "add": //添加按钮
                     openAddWindow();//打开添加窗口
                     break;
+
             }
         });
         var url;//提交地址
@@ -195,11 +234,11 @@
                 title:"添加学生",  //窗口事件
                 area:["800px","400px"],//窗口宽高
                 content:$("#addOrUpdateWindow"),//引用的内容窗口
-                sucess:function () {
+                success:function () {
                     //清空表单数据
                     $("#dataFrm")[0].reset();
                     //添加提交的请求
-                    url="/admin/student/addStu";
+                    url="/admin/stu/addStu";
                 }
             });
         }
@@ -208,20 +247,22 @@
             //发送ajax请求提交
             $.post(url,data.field,function (result) {
             if(result.success()){
-
                 //刷新数据表格
                 tableIns.reload();
                 //关闭窗口
                 layer.close(mainIndex);
             }
-            //提示成功信息
-                layr.msg(result.message);
+            //提示信息
+                layer.msg(result.message);
             },"json");
         //禁止页面刷新
             return false;
         })
     });
-
 </script>
+
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -71,7 +71,7 @@
                 $ = layui.jquery;
 
             // 登录过期的时候，跳出ifram框架
-            if (top.location != self.location) top.location = self.location;
+            // if (top.location != self.location) top.location = self.location;
             // 粒子线条背景
             $(document).ready(function(){
                 $('.layui-container').particleground({
@@ -82,7 +82,7 @@
             // 进行登录操作
             form.on('submit(login)', function (data) {
                 console.log(data);
-                //发送登录请求
+                //发送Ajax登录请求
                 $.post("/admin/teacher/login",data.field,function(result){
                     if(result.success){ //map集合；来的
                         location.href="/admin/home.html";

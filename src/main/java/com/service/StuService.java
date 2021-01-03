@@ -10,4 +10,9 @@ public interface StuService {
     查询
      */
     List<Student> findStuList(StuVo stuVo);
+
+    /*
+    添加学生
+     */
+    int addStu(Student student);
 }

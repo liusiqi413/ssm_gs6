@@ -38,6 +38,7 @@
         <%-- 头部工具栏区域 --%>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
+                <!--lay-event用来配合实现监听事件-->
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>
             </div>
         </script>
@@ -59,11 +60,15 @@
                     layer=layui.layer,
                     table = layui.table;
 
-                var tableIns= table.render({
-                    elem: '#currentTableId',
-                    url: '${pageContext.request.contextPath}/admin/stu/master',
-                    toolbar: '#toolbarDemo',
-                    cols: [[
+                var tableIns= table.render({//渲染表格组件
+                    elem: '#currentTableId',//绑定表格元素，推荐使用ID选择器
+                    url: '${pageContext.request.contextPath}/admin/stu/master', //异步请求地址，数据接口。异步数据接口相关参数
+                   // 加入分页后，默认使用page(当前页码)和limit(每页显示数量)作为参数名称
+                    toolbar: '#toolbarDemo',  //绑定工具条模板
+                    cols: [[  //表头
+                        //filed属性：字段属性，该属性与实体类的属性名一致
+                        //title属性：表示文本
+                        //sort是否排序
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:120, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
@@ -73,7 +78,7 @@
                         {field: 'city', width: 100, title: '城市',sort: true,align: 'center'},
                         {title: '操作', minWidth: 130, toolbar: '#currentTableBar', align: "center"}
                     ]],
-                    page: true,
+                    page: true, //开启分页
                     done: function (res, curr, count) {
                         //判断当前页码是否是大于1并且当前页的数据量为0
                         if (curr > 1 && res.data.length == 0) {
@@ -86,15 +91,15 @@
                     }
                 });
 
-                // 监听搜索操作
+                // 监听搜索按钮提交事件
                 form.on('submit(data-search-btn)', function (data) {
                     tableIns.reload({
-                        where: data.field,
+                        where: data.field,  //查询条件
                         page: {
                             curr: 1
                         }
                     });
-                    return false;
+                    return false;  //禁止页面刷新
                 });
             });
 

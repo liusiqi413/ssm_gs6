@@ -18,4 +18,9 @@ public class StuServiceImpl implements StuService {
     public List<Student> findStuList(StuVo stuVo) {
         return stuMapper.findStuList(stuVo);
     }
+
+    @Override
+    public int addStu(Student student) {
+        return stuMapper.addStu(student);
+    }
 }
