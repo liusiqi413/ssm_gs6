@@ -10,4 +10,10 @@ public interface StuEmpService{
     查询
      */
     List<StuEmp> findStuEmpList(StuEmpVo stuEmpVo);
+
+    int addStuEmp(StuEmp stuEmp);
+
+    int updateStuEmp(StuEmp stuEmp);
+
+    int deleteStuEmpById(Integer id);
 }

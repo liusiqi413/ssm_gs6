@@ -19,4 +19,5 @@ public class StuMasterServiceImpl implements StuMasterService {
     public List<StuMaster> findStuMasterList(StuMasterVo stuMasterVo) {
         return stuMasterMapper.findStuMasterList(stuMasterVo);
     }
+
 }

@@ -20,6 +20,44 @@
 </select>
 <!-- 添加学生信息-->
     <insert id="addStu">
-        insert into stu_info(stuno,stuname,gender,college,major,classes,start,gradu,diploma,train)values(#{stuno},#{stuname},#{gender},#{college},#{major},#{classes},#{start},#{gradu},#{diploma},#{train})
+        insert into stu_info(stuno,stuname,gender,college,major,classes,start,gradu,diploma,train) values(#{stuno},#{stuname},#{gender},#{college},#{major},#{classes},#{start},#{gradu},#{diploma},#{train})
     </insert>
+
+    <!--修改学生信息-->
+    <update id="updateStu">
+        update stu_info
+        <set>
+            <if test="stuno!=null and stuno!=''">
+                stuno=#{stuno},
+            </if>
+            <if test="stuname!=null and stuname!=''">
+                stuname=#{stuname},
+            </if>
+            <if test="gender!=null and gender!=''">
+                gender=#{gender},
+            </if>
+            <if test="college!=null and college!=''">
+                college=#{college},
+            </if>
+            <if test="major!=null and major!=''">
+                major=#{major},
+            </if>
+            <if test="classes!=null and classes!=''">
+                classes=#{classes},
+            </if>
+            <if test="start!=null">
+                start=#{start},
+            </if>
+            <if test="gradu!=null">
+                gradu=#{gradu},
+            </if>
+            <if test="diploma!=null and diploma!=''">
+                diploma=#{diploma},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteById">
+        delete from stu_info where id=#{id}
+    </delete>
 </mapper>

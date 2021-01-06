@@ -14,4 +14,12 @@ public interface StuMapper {
 添加学生信息
  */
     int addStu(Student student);
+    /*
+    修改学生信息
+     */
+    int updateStu(Student student);
+/*
+删除学生信息
+ */
+    int deleteById(Integer id);
 }

@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface StuHomeService {
     List<StudentHome> findStuHomeList(StuHomeVo stuHomeVo);
+
+    int updateStuHome(StudentHome studentHome);
+
+    int deleteStuHomeById(Integer id);
 }

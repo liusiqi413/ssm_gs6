@@ -15,4 +15,12 @@ public interface StuService {
     添加学生
      */
     int addStu(Student student);
+    /*
+  修改学生信息
+   */
+    int updateStu(Student student);
+    /*
+    删除该学生信息
+     */
+    int deleteById(Integer id);
 }

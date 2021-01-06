@@ -71,10 +71,13 @@
 
         <%-- 添加和修改窗口 --%>
         <div style="display: none;padding: 5px" id="addOrUpdateWindow">
-            <form class="layui-form" style="width:90%;" id="dataFrm" lay-filter="dataFrm">
+            <form class="layui-form" style="width:90%;"method="post" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
+                    <%-- 隐藏域 --%>
+                    <input type="hidden" name="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
+
                         <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
@@ -82,8 +85,6 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <%-- 隐藏域 --%>
-                        <input type="hidden" name="id">
                         <input type="text" name="stuname" lay-verify="required" autocomplete="off"
                                placeholder="请输入学生姓名" class="layui-input">
                     </div>
@@ -151,15 +152,15 @@
         </div>
     </div>
 </div>
+
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script>
     layui.use(['jquery','form','table','laydate','layer'], function () {
-        var $ = layui.jquery,
-            form = layui.form,
-            table = layui.table,
-            laydate = layui.laydate,
-            layer=layui.layer;
+        var $ = layui.jquery;
+         var form = layui.form;
+          var table = layui.table;
+          var laydate = layui.laydate;
+           var layer=layui.layer;
 
         //渲染日期组件
         laydate.render({
@@ -176,17 +177,17 @@
             url: '${pageContext.request.contextPath}/admin/stu/list',
             toolbar: '#toolbarDemo',
             cols: [[
-                {field: 'id', width: 80, title: 'ID', sort: true},
-                {field: 'stuno', width:120, title: '学生学号',sort:true,align: 'center'},
-                {field: 'stuname', width:90, title: '学生姓名'},
-                {field: 'gender', width: 70, title: '性别', sort: true,align: 'center'},
-                {field: 'college', title: '学院', minWidth: 90,align: 'center',sort: true},
-                {field: 'major', width: 150, title: '专业',align: 'center'},
-                {field: 'classes', width: 100, title: '班级', sort: true,align: 'center'},
-                {field: 'start', width: 100, title: '入学时间', sort: true,align: 'center'},
-                {field: 'gradu', width: 100, title: '毕业时间',sort: true,align: 'center'},
-                {field: 'diploma', width: 100, title: '文凭', sort: true,align: 'center'},
-                {field: 'train', width: 150, title: '培养方式',align: 'center'},
+                {field: 'id', width: 60, title: 'ID', sort: true},
+                {field: 'stuno', width:130, title: '学生学号',sort:true},
+                {field: 'stuname', width:90, title: '学生姓名',align: 'center'},
+                {field: 'gender', width: 80, title: '性别', sort: true,align: 'center'},
+                {field: 'college', title: '学院', width: 100,align: 'center',sort: true},
+                {field: 'major', width: 130, title: '专业',align: 'center'},
+                {field: 'classes', width: 110, title: '班级', sort: true},
+                {field: 'start', width: 100, title: '入学时间', sort: true},
+                {field: 'gradu', width: 100, title: '毕业时间',sort: true},
+                {field: 'diploma', width: 90, title: '文凭', sort: true,align: 'center'},
+                {field: 'train', width: 100, title: '培养方式',align: 'center'},
                 {field: 'stutel', width: 120, title: '电话',align: 'center'},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
@@ -221,7 +222,16 @@
                 case "add": //添加按钮
                     openAddWindow();//打开添加窗口
                     break;
-
+            }
+        });
+        table.on("tool(currentTableFilter)",function(obj){
+            switch (obj.event) {
+                case "edit": //修改按钮
+                    openUpdateWindow(obj.data);//打开修改窗口
+                    break;
+                case "delete"://删除按钮
+                    deleteById(obj.data);
+                    break;
             }
         });
         var url;//提交地址
@@ -229,7 +239,7 @@
 
         //打开添加窗口
         function openAddWindow(){
-            layer.open({
+         mainIndex = layer.open({
                 type:1,//打开类型
                 title:"添加学生",  //窗口事件
                 area:["800px","400px"],//窗口宽高
@@ -242,11 +252,26 @@
                 }
             });
         }
+        //打开修改窗口
+        function openUpdateWindow(data){
+            mainIndex = layer.open({
+                type:1,//打开类型
+                title:"修改学生",  //窗口事件
+                area:["800px","400px"],//窗口宽高
+                content:$("#addOrUpdateWindow"),//引用的内容窗口
+                success:function () {
+                    //表单数据回显
+                  form.val("dataFrm",data);//参数1：lay-filter值 参数2：回显的数据
+                    //添加提交的请求
+                    url="/admin/stu/updateStu";
+                }
+            });
+        }
         //监听表单提交事件
         form.on("submit(doSubmit)",function (data) {
             //发送ajax请求提交
             $.post(url,data.field,function (result) {
-            if(result.success()){
+            if(result.success){
                 //刷新数据表格
                 tableIns.reload();
                 //关闭窗口
@@ -257,12 +282,26 @@
             },"json");
         //禁止页面刷新
             return false;
-        })
+        });
+        //删除该学生
+        function deleteById(data) {
+        //提示用户是否删除该学生
+            layer.confirm("确定要删除[<font color='red'>"+data.stuname+"</font>]吗？",{icon:3,title:"提示"},function(index){
+            //发送ajax请求
+                $.post("/admin/stu/deleteById",{"id":data.id},function (result) {
+                    if (result.success){
+                        layer.alert(result.message,{icon:1});
+                        //刷新表格数据
+                        tableIns.reload();
+                    }else{
+                        layer.alert(result.message,{icon:2});
+                    }
+                },"json");
+                //关闭提示框
+                layer.close(index);
+            });
+        }
     });
 </script>
-
-        </form>
-    </div>
-</div>
 </body>
 </html>

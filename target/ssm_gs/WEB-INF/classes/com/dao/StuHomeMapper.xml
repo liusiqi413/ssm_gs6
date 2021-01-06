@@ -2,12 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.StuHomeMapper">
 <select id="findStuHomeList" resultType="com.entity.StudentHome">
-    select * from stu_ad_info
+    select * from stu_info
     <where>
         <if test="stuname!=null and stuname!=''">
             and stuname like concat('%',#{stuname},'%')
         </if>
     </where>
 </select>
-
+    <update id="updateStuHome">
+        update stu_info
+        <set>
+            <if test="examno!=null and examno!=''">
+                examno=#{examno},
+            </if>
+            <if test="idcard!=null and idcard!=''">
+                idcard=#{idcard},
+            </if>
+            <if test="stuaddr!=null and stuaddr!=''">
+                stuaddr=#{stuaddr},
+            </if>
+            <if test="homeaddr!=null and homeaddr!=''">
+                homeaddr=#{homeaddr},
+            </if>
+            <if test="birth!=null">
+                birth=#{birth},
+            </if>
+            <if test="ethnic!=null and ethnic!=''">
+                ethnic=#{ethnic}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteStuHomeById">
+        delete from stu_info where id=#{id}
+    </delete>
 </mapper>

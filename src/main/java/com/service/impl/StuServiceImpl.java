@@ -23,4 +23,14 @@ public class StuServiceImpl implements StuService {
     public int addStu(Student student) {
         return stuMapper.addStu(student);
     }
+
+    @Override
+    public int updateStu(Student student) {
+        return stuMapper.updateStu(student);
+    }
+
+    @Override
+    public int deleteById(Integer id) {
+        return stuMapper.deleteById(id);
+    }
 }

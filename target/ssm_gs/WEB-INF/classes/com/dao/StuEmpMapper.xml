@@ -9,5 +9,43 @@
             </if>
         </where>
     </select>
+    <!-- 添加学生信息-->
+    <insert id="addStuEmp">
+        insert into stu_employ(stuno,stuname) values(#{stuno},#{stuname})
+    </insert>
 
+    <!--修改学生信息-->
+    <update id="updateStuEmp">
+        update stu_employ
+        <set>
+            <if test="stuno!=null and stuno!=''">
+                stuno=#{stuno},
+            </if>
+            <if test="stuname!=null and stuname!=''">
+                stuname=#{stuname},
+            </if>
+            <if test="employno!=null and employno!=''">
+                employno=#{employno},
+            </if>
+            <if test="company!=null and company!=''">
+                company=#{company},
+            </if>
+            <if test="category!=null and category!=''">
+                category=#{category},
+            </if>
+            <if test="employunit!=null and employunit!=''">
+                employunit=#{employunit},
+            </if>
+            <if test="country!=null and country!=''">
+                country=#{country},
+            </if>
+            <if test="city!=null and city!=''">
+                city=#{city},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteStuEmpById">
+        delete from stu_employ where id=#{id}
+    </delete>
 </mapper>

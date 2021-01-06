@@ -18,4 +18,19 @@ public class StuEmpServicImp implements StuEmpService {
     public List<StuEmp> findStuEmpList(StuEmpVo stuEmpVo){
         return stuEmpMapper.findStuEmpList(stuEmpVo);
     }
+
+    @Override
+    public int addStuEmp(StuEmp stuEmp) {
+        return stuEmpMapper.addStuEmp(stuEmp);
+    }
+
+    @Override
+    public int updateStuEmp(StuEmp stuEmp) {
+        return stuEmpMapper.updateStuEmp(stuEmp);
+    }
+
+    @Override
+    public int deleteStuEmpById(Integer id) {
+        return stuEmpMapper.deleteStuEmpById(id);
+    }
 }

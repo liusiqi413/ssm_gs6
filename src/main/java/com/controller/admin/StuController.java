@@ -52,4 +52,37 @@ public DataGridViewResult list(StuVo stuVo){
         //将map集合以JSON格式返回
         return JSON.toJSONString(map);
     }
+
+    /*
+   修改学生
+    */
+    @RequestMapping("/updateStu")
+    public String updateStu(Student student){
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用添加学生的方法
+        if(stuService.updateStu(student)>0){
+            map.put(SystemConstant.SUCCESS,true);//成功
+            map.put(SystemConstant.MESSAGE,"修改成功");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);//失败
+            map.put(SystemConstant.MESSAGE,"修改失败");
+        }
+        //将map集合以JSON格式返回
+        return JSON.toJSONString(map);
+    }
+    /*
+    删除学生
+     */
+    @RequestMapping("/deleteById")
+    public String deleteById(Integer id){
+        Map<String,Object> map=new HashMap<String, Object>();
+        if(stuService.deleteById(id)>0){
+            map.put("success",true);
+            map.put("message","删除成功");
+        }else{
+            map.put("success",false);
+            map.put("message","删除失败");
+        }
+        return JSON.toJSONString(map);
+    }
 }

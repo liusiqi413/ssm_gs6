@@ -19,4 +19,15 @@ public class StuHomeServiceImpl implements StuHomeService {
         return stuHomeMapper.findStuHomeList(stuHomeVo);
     }
 
+
+    @Override
+    public int updateStuHome(StudentHome studentHome) {
+        return stuHomeMapper.updateStuHome(studentHome);
+    }
+
+    @Override
+    public int deleteStuHomeById(Integer id) {
+        return stuHomeMapper.deleteStuHomeById(id);
+    }
+
 }
