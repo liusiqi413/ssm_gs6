@@ -23,4 +23,15 @@ public class MenuServiceImpl implements MenuService {
 
         return menuMapper.findMenuList();
     }
+
+    @Override
+    public List<Integer> findMenuIdListByRoleId(int roleId) {
+
+        return menuMapper.findMenuIdListByRoleId(roleId);
+    }
+
+    @Override
+    public List<Menu> findMenuByMenuId(List<Integer> currentRoleMenuIds) {
+        return menuMapper.findMenuByMenuId(currentRoleMenuIds);
+    }
 }

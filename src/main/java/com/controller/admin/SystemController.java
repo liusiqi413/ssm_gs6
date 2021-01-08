@@ -79,4 +79,11 @@ return "admin/stu/stuManager";
     public String toStuMasterManager(){
         return "admin/stu/stuMaster";
     }
+    /*
+    角色管理
+     */
+    @RequestMapping("toRoleManager")
+    public String toRoleManager(){
+        return "admin/role/roleManager";
+    }
 }

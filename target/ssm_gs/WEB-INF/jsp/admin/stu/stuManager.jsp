@@ -189,7 +189,7 @@
                 {field: 'diploma', width: 90, title: '文凭', sort: true,align: 'center'},
                 {field: 'train', width: 100, title: '培养方式',align: 'center'},
                 {field: 'stutel', width: 120, title: '电话',align: 'center'},
-                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
            page: true,
            done: function (res, curr, count) {

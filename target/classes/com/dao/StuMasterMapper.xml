@@ -9,5 +9,25 @@
         </if>
     </where>
 </select>
+    <!-- 添加学生信息-->
+    <insert id="addStuMaster">
+        insert into stu_master(stuno,stuname) values(#{stuno},#{stuname})
+    </insert>
 
+    <!--修改学生信息-->
+    <update id="updateStuMaster">
+        update stu_master
+        <set>
+            <if test="stuno!=null and stuno!=''">
+                stuno=#{stuno},
+            </if>
+            <if test="stuname!=null and stuname!=''">
+                stuname=#{stuname},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteStuMasterById">
+        delete from stu_master where id=#{id}
+    </delete>
 </mapper>

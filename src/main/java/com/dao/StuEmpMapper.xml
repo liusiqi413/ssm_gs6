@@ -27,21 +27,6 @@
             <if test="employno!=null and employno!=''">
                 employno=#{employno},
             </if>
-            <if test="company!=null and company!=''">
-                company=#{company},
-            </if>
-            <if test="category!=null and category!=''">
-                category=#{category},
-            </if>
-            <if test="employunit!=null and employunit!=''">
-                employunit=#{employunit},
-            </if>
-            <if test="country!=null and country!=''">
-                country=#{country},
-            </if>
-            <if test="city!=null and city!=''">
-                city=#{city},
-            </if>
         </set>
         where id=#{id}
     </update>

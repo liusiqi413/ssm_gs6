@@ -10,5 +10,9 @@ public interface MenuService {
      * @return
      */
     List<Menu> findMenuList();
-
+    List<Integer> findMenuIdListByRoleId(int roleId);
+    /*
+    根据菜单编号查询菜单信息
+     */
+    List<Menu>findMenuByMenuId(List<Integer> currentRoleMenuIds);
 }

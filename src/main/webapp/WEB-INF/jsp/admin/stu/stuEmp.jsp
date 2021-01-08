@@ -70,6 +70,13 @@
                                placeholder="请输入学生姓名" class="layui-input">
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">就业协议书</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="employno" lay-verify="required" autocomplete="off"
+                               placeholder="请输入学生姓名" class="layui-input">
+                    </div>
+                </div>
                 <div class="layui-form-item layui-row layui-col-xs12">
                     <div class="layui-input-block" style="text-align: center;">
                         <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit"><span
@@ -98,15 +105,15 @@
                     toolbar: '#toolbarDemo',
                     cols: [[
                         {field: 'id', width: 60, title: 'ID', sort: true},
-                        {field: 'stuno', width:120, title: '学生学号',sort:true,align: 'center'},
+                        {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
                         {field: 'employno', title: '就业协议书', minWidth: 80,align: 'center',sort: true},
-                        {field: 'company', width: 120, title: '公司名',align: 'center'},
+                        {field: 'company', width: 130, title: '公司名',align: 'center'},
                         {field: 'category', width: 100, title: '工作类别', sort: true,align: 'center'},
                         {field: 'employunit', width: 100, title: '就业单位性质', sort: true,align: 'center'},
                         {field: 'country', width: 100, title: '就业国家',sort: true,align: 'center'},
                         {field: 'city', width: 100, title: '就业城市',sort: true,align: 'center'},
-                        {title: '操作', minWidth: 130, toolbar: '#currentTableBar', align: "center"}
+                        {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
                     ]],
                     page: true,
                     done: function (res, curr, count) {

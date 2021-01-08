@@ -20,4 +20,19 @@ public class StuMasterServiceImpl implements StuMasterService {
         return stuMasterMapper.findStuMasterList(stuMasterVo);
     }
 
+    @Override
+    public int addStuMaster(StuMaster stuMaster) {
+        return stuMasterMapper.addStuMaster(stuMaster);
+    }
+
+    @Override
+    public int updateStuMaster(StuMaster stuMaster) {
+        return stuMasterMapper.updateStuMaster(stuMaster);
+    }
+
+    @Override
+    public int deleteStuMasterById(Integer id) {
+        return stuMasterMapper.deleteStuMasterById(id);
+    }
+
 }

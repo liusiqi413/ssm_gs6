@@ -138,7 +138,7 @@
                 {field: 'homeaddr', width: 130, title: '家庭住址', sort: true},
                 {field: 'birth', width: 130, title: '出生日期', sort: true},
                 {field: 'ethnic', width: 90, title: '民族',sort: true,align: 'center'},
-                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             page: true,
             done: function (res, curr, count) {
