@@ -7,5 +7,45 @@
     <select id="findTeacherByLoginName" resultType="com.entity.Teacher">
         select * from tec_info where loginName = #{loginName}
     </select>
-
+<select id="findTeacherList" resultType="com.entity.Teacher">
+    select * from tec_info
+    <where>
+        <if test="loginName!=null and loginName!=''">
+        and loginName like concat('%',#{loginName},'%')
+        </if>
+        <if test="name!=null and name!=''">
+            and name like concat('%',#{name},'%')
+        </if>
+        <if test="gender!=null">
+            and gender = #{gender}
+        </if>
+    </where>
+</select>
+    <insert id="addTeacher">
+        insert into tec_info(loginName,loginPwd,name,salt,gender) values (#{loginName},#{loginPwd},#{name},#{salt},#{gender})
+    </insert>
+    <update id="updateTeacher">
+    update tec_info
+        <set>
+            <if test="loginName!=null and loginName!=''">
+            loginName=#{loginName},
+            </if>
+            <if test="loginPwd!=null and loginPwd!=''">
+    loginPwd=#{loginPwd},
+            </if>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="gender!=null">
+                gender=#{gender}
+            </if>
+            <if test="salt!=null and salt!=''">
+            salt=#{salt}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteById">
+        delete from tec_info where id=#{id}
+    </delete>
 </mapper>

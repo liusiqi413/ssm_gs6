@@ -10,6 +10,7 @@ com\dao\StuEmpMapper.class
 com\service\impl\StuEmpServicImp.class
 com\dao\RoleMapper.class
 com\service\impl\StuServiceImpl.class
+com\vo\TeacherVo.class
 com\dao\StuHomeMapper.class
 com\utils\MenuNode.class
 com\entity\StudentHome.class

@@ -31,7 +31,7 @@ public class PasswordUtil {
     }
 
     public static void main(String[] args) {
-        String password = "123456";
+        String password = "oppoA79k";
         String salt = UUID.randomUUID().toString().replace("-","");
         System.out.println("加密盐值："+salt);
         System.out.println("加密后的密码："+ PasswordUtil.md5(password,salt,5));

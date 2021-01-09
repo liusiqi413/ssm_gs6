@@ -5,18 +5,16 @@ public class Teacher {
     private String loginName;//登录名称
     private String loginPwd;//登录密码
     private String name;//真实姓名
-    private Integer sex;//性别 1-男 2-女
+    private Integer gender;//性别 1-女 2-男
     private Integer deptId;//所属部门
     private String salt;//加密盐值
-    //部门名称
-    private String deptName;
 
-    public String getDeptName() {
-        return deptName;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
     public Integer getId() {
@@ -49,14 +47,6 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
     }
 
     public Integer getDeptId() {

@@ -6,6 +6,7 @@ import com.service.TeacherService;
 import com.utils.PasswordUtil;
 import com.utils.SystemConstant;
 import com.utils.PasswordUtil;
+import com.vo.TeacherVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 import java.lang.annotation.Target;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -21,7 +23,7 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
 
     @Resource
-    private TeacherMapper TeacherMapper;
+    private TeacherMapper teacherMapper;
 
     /**
      * 老师登录
@@ -32,7 +34,7 @@ public class TeacherServiceImpl implements TeacherService {
      */
     public Teacher login(String loginName, String loginPwd) {
 //        //调用根据账号查询老师信息的方法
-        Teacher teacher = TeacherMapper.findTeacherByLoginName(loginName);
+        Teacher teacher = teacherMapper.findTeacherByLoginName(loginName);
 //        //判断对象是否为空
         if(teacher!=null){
             //将密码加密处理
@@ -46,4 +48,36 @@ public class TeacherServiceImpl implements TeacherService {
 
         return null;
     }
+
+    @Override
+    public List<Teacher> findTeacherList(TeacherVo teacherVo) {
+        return teacherMapper.findTeacherList(teacherVo);
+    }
+
+    @Override
+    public int addTeacher(Teacher teacher) {
+        teacher.setSalt(UUID.randomUUID().toString().replace("-",""));//加密盐值
+        teacher.setLoginPwd(PasswordUtil.md5(SystemConstant.default_login_pwd,teacher.getSalt(),SystemConstant.PASSWORD_COUNT));
+        return teacherMapper.addTeacher(teacher);
+    }
+
+    @Override
+    public int updateTeacher(Teacher teacher) {
+       return teacherMapper.updateTeacher(teacher);
+    }
+
+    @Override
+    public int deleteById(Integer id) {
+        return teacherMapper.deleteById(id);
+    }
+
+    @Override
+    public int resetPwd(int id) {
+        Teacher teacher=new Teacher();
+        teacher.setSalt(UUID.randomUUID().toString().replace("-",""));
+        teacher.setLoginPwd(PasswordUtil.md5(SystemConstant.default_login_pwd,teacher.getSalt(),SystemConstant.PASSWORD_COUNT));
+        teacher.setId(id);
+        return teacherMapper.updateTeacher(teacher);
+    }
+
 }
