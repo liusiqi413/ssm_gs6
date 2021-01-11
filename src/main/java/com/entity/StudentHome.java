@@ -14,7 +14,7 @@ public class StudentHome {
     private String stuaddr;
     private String homeaddr;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date birth;
     private String ethnic;
 

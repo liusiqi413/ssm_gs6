@@ -2,7 +2,10 @@ package com.service;
 
 import com.entity.Student;
 import com.vo.StuVo;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface StuService {
@@ -23,4 +26,8 @@ public interface StuService {
     删除该学生信息
      */
     int deleteById(Integer id);
+    /*
+    批量导入
+     */
+    String ajaxUploadExcel(MultipartFile file, HttpServletRequest request, HttpServletResponse response);
 }

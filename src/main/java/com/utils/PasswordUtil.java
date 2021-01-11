@@ -6,7 +6,6 @@ import org.apache.shiro.crypto.hash.Sha1Hash;
 import java.util.UUID;
 
 public class PasswordUtil {
-
     /**
      * 对密码加密 md5
      * @param source  要加密的明文
@@ -17,8 +16,6 @@ public class PasswordUtil {
     public static String md5(String source, Object salt, Integer hashIterations) {
         return new Md5Hash(source, salt, hashIterations).toString();
     }
-
-
     /**
      * 对密码加密sha1
      * @param source  要加密的明文

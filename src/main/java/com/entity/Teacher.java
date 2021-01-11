@@ -6,7 +6,7 @@ public class Teacher {
     private String loginPwd;//登录密码
     private String name;//真实姓名
     private Integer gender;//性别 1-女 2-男
-    private Integer deptId;//所属部门
+    private Integer deptId;//所属院系
     private String salt;//加密盐值
 
     public Integer getGender() {

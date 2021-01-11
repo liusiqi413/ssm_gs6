@@ -10,6 +10,7 @@ com\dao\StuEmpMapper.class
 com\service\impl\StuEmpServicImp.class
 com\dao\RoleMapper.class
 com\service\impl\StuServiceImpl.class
+com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class
 com\dao\StuHomeMapper.class
 com\utils\MenuNode.class
@@ -18,6 +19,7 @@ com\service\impl\MenuServiceImpl.class
 com\vo\StuEmpVo.class
 com\controller\admin\RoleController.class
 com\entity\Teacher.class
+com\utils\ExcelUtils.class
 com\service\RoleService.class
 com\controller\admin\StuController.class
 com\controller\admin\MenuController.class
