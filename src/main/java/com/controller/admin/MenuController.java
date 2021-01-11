@@ -2,13 +2,16 @@ package com.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.entity.Menu;
+import com.entity.Teacher;
 import com.service.MenuService;
 import com.utils.MenuNode;
+import com.utils.SystemConstant;
 import com.utils.TreeUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,7 +29,7 @@ public class MenuController {
      * @return
      */
     @RequestMapping("/loadMenuList")
-    public String loadMenuList(){
+    public String loadMenuList(HttpSession session){
         //创建Map集合，保存菜单信息
         Map<String,Object> map=new LinkedHashMap<String, Object>();
         //创建Map集合，保存homeInfo信息
@@ -34,7 +37,11 @@ public class MenuController {
         //创建Map集合，保存logoInfo信息
         Map<String,Object> logoInfo=new LinkedHashMap<String, Object>();
         //调用查询所有列表的方法
-        List<Menu> menuList=menuService.findMenuList();
+       // List<Menu> menuList=menuService.findMenuList();
+       //获取当前登录的老师
+        Teacher teacher=(Teacher)session.getAttribute(SystemConstant.LOGINUSER);
+        //根据当前老师的角色动态显示菜单列表
+        List<Menu> menuList =menuService.findMenuListByTeacherId(teacher.getId());
         //创建集合，保存菜单关系
         List<MenuNode> menuNodeList=new ArrayList<MenuNode>();
         //循环遍历菜单列表，创建菜单层级关系

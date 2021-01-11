@@ -132,4 +132,15 @@ public class TeacherController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/saveTeacherRole")
+    public String saveTeacherRole(String roleIds,Integer teachId){
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用保存员工角色的方法
+        if(teacherService.saveTeacherRole(roleIds,teachId)){
+            map.put(SystemConstant.MESSAGE,"角色分配成功");
+        }else{
+            map.put(SystemConstant.MESSAGE,"角色分配失败");
+        }
+        return JSON.toJSONString(map);
+    }
     }

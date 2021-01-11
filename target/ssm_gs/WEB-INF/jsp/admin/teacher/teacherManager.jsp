@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>layui</title>
+    <title></title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -315,7 +315,7 @@
                         //将数组使用,分隔
                         var ids = idArr.join(",");//将数组拼接成字符串
                         //发送请求
-                        $.post("/admin/teacher/saveTeacherRole",{"roleIds":ids,"empId":data.id},function(result){
+                        $.post("/admin/teacher/saveTeacherRole",{"roleIds":ids,"teachId":data.id},function(result){
                             layer.msg(result.message);
                         },"json");
                         //关闭当前窗口
@@ -343,7 +343,7 @@
         function initTableData(data) {
             table.render({
                 elem: '#roleTable',
-                url: '${pageContext.request.contextPath}/admin/teacher/list',
+                url: '${pageContext.request.contextPath}/admin/role/initRoleListByTeachId?id='+data.id,
                 cols: [[
                     {type: "checkbox", width: 50},
                     {field: 'id', minWidth: 100, title: '角色编号', align: "center"},

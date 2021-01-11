@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RoleMapper {
     /*
@@ -25,5 +26,13 @@ public interface RoleMapper {
      */
     @Insert("insert into sys_role_menu(mid,rid) values(#{menuId},#{roleId})")
     void addRoleMenu(@Param("roleId") Integer roleId, @Param("menuId") String menuId);
+/*
+查询所有角色列表
+ */
+    List <Map<String,Object>>findRoleListByMap();
+    /*
+    根据老师ID查询该老师拥有的据谔谔色列表
+     */
+    List<Integer> findTeacherRoleByTeacherId(Integer teacherId);
 
 }

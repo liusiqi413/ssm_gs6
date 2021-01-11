@@ -31,4 +31,13 @@ public interface TeacherMapper {
     删除老师
      */
     int deleteById(Integer id);
+/*
+删除老师角色关系表
+ */
+    void deleteTeacherAndRole(Integer id);
+    /*
+    保存老师角色关系
+     */
+   @Insert("insert into sys_role_teacher(tid,rid) values(#{tid},#{rid})")
+    void addTeacherRole(@Param("rid") String roleId, @Param("tid") Integer teachId);
 }

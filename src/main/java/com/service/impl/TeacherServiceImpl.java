@@ -80,4 +80,19 @@ public class TeacherServiceImpl implements TeacherService {
         return teacherMapper.updateTeacher(teacher);
     }
 
-}
+    @Override
+    public boolean saveTeacherRole(String roleIds, Integer teachId) {
+        try {
+            teacherMapper.deleteTeacherAndRole(teachId);
+            //在保存老师角色关系
+            String[] idStr = roleIds.split(",");
+            for (int i = 0; i < idStr.length; i++) {
+                teacherMapper.addTeacherRole(idStr[i], teachId);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            return false;
+        }
+    }

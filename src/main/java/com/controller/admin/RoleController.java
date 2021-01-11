@@ -9,7 +9,6 @@ import com.github.pagehelper.PageInfo;
 import com.service.MenuService;
 import com.service.RoleService;
 import com.utils.DataGridViewResult;
-import com.utils.SystemConstant;
 import com.utils.TreeNode;
 import com.vo.RoleVo;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin/role")
+@RequestMapping("/admin/role")
 public class RoleController {
 @Resource
     private RoleService roleService;
@@ -31,7 +30,7 @@ private MenuService menuService;
 /*
 查询角色列表
  */
-    @RequestMapping("list")
+    @RequestMapping("/list")
     public DataGridViewResult list(RoleVo roleVo){
         //设置分页信息
         PageHelper.startPage(roleVo.getPage(),roleVo.getLimit());
@@ -94,5 +93,34 @@ private MenuService menuService;
         }
         return JSON.toJSONString(map);
     }
-
+/*
+根据老师ID查询该员工拥有的角色列表
+ */
+    @RequestMapping("/initRoleListByTeachId")
+    public DataGridViewResult initRoleListByTeachId(int id){
+        /*
+        调用查询所有角色列表的方法
+         */
+        List<Map<String,Object>> roleList=roleService.findRoleListByMap();
+        //调用根据老师Id查询该老师拥有的角色列表的方法
+        List<Integer> roleIds= roleService.findTeacherRoleByTeacherId(id);
+        //循环比较俩个集合中的角色Id值是否相等，相等则选中该角色
+        for(Map<String,Object>map:roleList){
+            //定义变量，标识是否选中
+            Boolean LAY_CHECKED=false;//默认不选中
+            //获取每一个角色Id
+            Integer rid=(Integer) map.get("id");//id是主键，以主键作为map集合中key
+            //内层循环遍历该老师拥有的角色列表
+            for (Integer roleId:roleIds){
+                //判断俩个集合中是否存在角色ID相同
+                if(rid==roleId){
+                    LAY_CHECKED = true;//选中角色
+                    break;
+                }
+            }
+            //将状态保存在map集合中
+            map.put("LAY_CHECKED",LAY_CHECKED);
+        }
+        return new DataGridViewResult(Long.valueOf(roleList.size()),roleList);
+    }
 }

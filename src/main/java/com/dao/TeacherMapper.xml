@@ -48,4 +48,7 @@
     <delete id="deleteById">
         delete from tec_info where id=#{id}
     </delete>
+    <delete id="deleteTeacherAndRole">
+        delete from sys_role_teacher where tid= #{tid}
+    </delete>
 </mapper>

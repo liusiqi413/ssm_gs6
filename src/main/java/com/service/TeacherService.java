@@ -34,4 +34,8 @@ public interface TeacherService {
 重置密码
  */
     int resetPwd(int id);
+/*
+保存老师角色关系
+ */
+    boolean saveTeacherRole(String roleIds, Integer teachId);
 }

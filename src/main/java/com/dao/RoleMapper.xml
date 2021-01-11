@@ -9,4 +9,10 @@
         </if>
     </where>
 </select>
+    <select id="findRoleListByMap" resultType="map">
+        select * from sys_role
+    </select>
+    <select id="findTeacherRoleByTeacherId" resultType="int">
+        select rid from sys_role_teacher where tid=#{teacherId}
+    </select>
 </mapper>

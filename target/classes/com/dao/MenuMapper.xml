@@ -14,4 +14,10 @@
         #{menuIds}
     </foreach>
 </select>
+    <select id="findMenuListByTeacherId" resultType="com.entity.Menu">
+        SELECT DISTINCT t1.* FROM sys_menu t1
+INNER JOIN sys_role_menu t2 ON t2.`mid` = t1.`id`
+INNER JOIN sys_role_teacher t3 ON t3.`rid`=t2.`rid`
+WHERE t3.`tid`=#{teacherId}
+    </select>
 </mapper>
