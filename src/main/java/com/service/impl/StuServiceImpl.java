@@ -5,7 +5,6 @@ import com.entity.Student;
 import com.service.StuService;
 import com.utils.ExcelUtils;
 import com.vo.StuVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,6 +32,7 @@ public class StuServiceImpl implements StuService {
     public int addStu(Student student) {
         return stuMapper.addStu(student);
     }
+
 
     @Override
     public int updateStu(Student student) {

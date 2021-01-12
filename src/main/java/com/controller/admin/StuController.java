@@ -52,7 +52,6 @@ public DataGridViewResult list(StuVo stuVo){
         //将map集合以JSON格式返回
         return JSON.toJSONString(map);
     }
-
     /*
    修改学生
     */

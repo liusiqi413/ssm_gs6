@@ -22,7 +22,6 @@
     <insert id="addStu">
         insert into stu_info(stuno,stuname,gender,college,major,classes,start,gradu,diploma,train) values(#{stuno},#{stuname},#{gender},#{college},#{major},#{classes},#{start},#{gradu},#{diploma},#{train})
     </insert>
-
     <!--修改学生信息-->
     <update id="updateStu">
         update stu_info

@@ -55,17 +55,21 @@
         </fieldset>
 
         <%-- 头部工具栏区域 --%>
+        <table class="layui-hide" id="test" lay-filter="test"></table>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
+<%--        <script type="text/html" id="toolbarDemo">--%>
+<%--            <div class="layui-btn-container">--%>
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>
                 <!--批量导入按钮-->
-                <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="mulAdd"><i class="layui-icon">批量导入</i></button>
+                <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="mulAdd"><i class="layui-icon"></i>批量导入</button>
             </div>
         </script>
         <%-- 表格区域 --%>
-        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+<%--        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>--%>
         <%-- 行工具栏区域 --%>
-        <script type="text/html" id="currentTableBar">
+<%--        <script type="text/html" id="currentTableBar">--%>
+            <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
         </script>
@@ -78,7 +82,6 @@
                     <input type="hidden" name="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
-
                         <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
@@ -158,16 +161,82 @@
                 </div>
             </form>
         </div>
+        <%--这里是弹出层表单（批量导入）--%>
+        <div class="layui-row" id="popmulAddTest" style="display:none;">
+            <div class="layui-col-md11">
+                <form class="layui-form layui-from-pane" action="" style="margin-top:20px" method="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">批量导入学生信息：</label>
+                        <div class="layui-upload-drag" id="test8" name="file">
+                            <i class="layui-icon"></i>
+                            <p>点击上传，或将文件拖拽到此处</p>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" style="margin-top:40px">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-upload layui-btn" id="test19">批量导入</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/lay/modules/form.js"></script>
-<script>
-    layui.use('upload', function(){
-        var $ = layui.jquery
-            ,upload = layui.upload;
 
+<%--     layui.use('upload', function(){--%>
+<%--         var $ = layui.jquery--%>
+<%--             ,upload = layui.upload;--%>
+
+    <%--    //选完文件后不自动上传--%>
+    <%--    upload.render({--%>
+    <%--        elem: '#test8'--%>
+    <%--        ,url: '${pageContext.request.contextPath}/excelUpload/ajaxUpload'--%>
+    <%--        ,auto: false--%>
+    <%--        ,accept: 'file' //普通文件--%>
+    <%--        //,multiple: true--%>
+    <%--        ,bindAction: '#test19'--%>
+    <%--        ,done: function(res){--%>
+    <%--            console.log(res)--%>
+    <%--            //上传完毕--%>
+    <%--            //如果上传失败--%>
+    <%--            if(res.code > 0){--%>
+    <%--                return layer.msg('导入失败');--%>
+    <%--            }--%>
+    <%--            //上传成功--%>
+    <%--            return layer.msg('导入成功');--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--});--%>
+<script>
+    layui.use(['jquery','form','table','laydate','layer','upload'], function () {
+        var $ = layui.jquery;
+         var form = layui.form;
+          var table = layui.table;
+          var laydate = layui.laydate;
+           var layer=layui.layer;
+         var upload = layui.upload;
+           // var element=layui.element;
+
+        // //监听Tab切换
+        // element.on('tab(toolbarDemo)', function (data) {
+        //     layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
+        //         tips: 1
+        //     });
+        // });
+
+        //渲染日期组件
+        laydate.render({
+            elem:"#start",
+            type:"date"
+        });
+        laydate.render({
+            elem:"#gradu",
+            type:"date"
+        });
         //选完文件后不自动上传
         upload.render({
             elem: '#test8'
@@ -187,36 +256,10 @@
                 return layer.msg('导入成功');
             }
         });
-    });
-</script>
-<script>
-    layui.use(['jquery','form','table','laydate','layer'], function () {
-        var $ = layui.jquery;
-         var form = layui.form;
-          var table = layui.table;
-          var laydate = layui.laydate;
-           var layer=layui.layer;
-           // var element=layui.element;
-
-        // //监听Tab切换
-        // element.on('tab(toolbarDemo)', function (data) {
-        //     layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
-        //         tips: 1
-        //     });
-        // });
-
-        //渲染日期组件
-        laydate.render({
-            elem:"#start",
-            type:"date"
-        });
-        laydate.render({
-            elem:"#gradu",
-            type:"date"
-        });
 
        var tableIns= table.render({
-            elem: '#currentTableId',
+            // elem: '#currentTableId',
+           elem: '#test',
             url: '${pageContext.request.contextPath}/admin/stu/list',
             toolbar: '#toolbarDemo',
             cols: [[
@@ -246,10 +289,10 @@
                }
            }
        });
-        // $('.demoTable .layui-btn').on('click', function(){
-        //     var type = $(this).data('type');
-        //     active[type] ? active[type].call(this) : '';
-        // });
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             tableIns.reload({
@@ -263,20 +306,20 @@
         //监听表格头部工具栏事件
         //toolbar是头部工具栏事件
         //currentTableFilter是表格lay-filter过滤器的值
-        table.on("toolbar(currentTableFilter)",function(obj){
+        table.on("toolbar(test)",function(obj){
             // var checkStatus = table.checkStatus(obj.config.id)
             //     , data = checkStatus.data; //获取选中的数据
             switch (obj.event) {
                 case "add": //添加按钮
                     openAddWindow();//打开添加窗口
                     break;
-                case 'mulAdd':
+                case "mulAdd":
                    inputAll();
                     break;
             }
         });
 
-        table.on("tool(currentTableFilter)",function(obj){
+        table.on("tool(test)",function(obj){
             switch (obj.event) {
                 case "edit": //修改按钮
                     openUpdateWindow(obj.data);//打开修改窗口
@@ -365,25 +408,25 @@
 
     });
 </script>
-<%--这里是弹出层表单（批量导入）--%>
-<div class="layui-row" id="popmulAddTest" style="display:none;">
-    <div class="layui-col-md11">
-        <form class="layui-form layui-from-pane" action="" style="margin-top:20px" method="">
-            <div class="layui-form-item">
-                <label class="layui-form-label">批量导入学生信息：</label>
-                <div class="layui-upload-drag" id="test8" name="file">
-                    <i class="layui-icon"></i>
-                    <p>点击上传，或将文件拖拽到此处</p>
-                </div>
-            </div>
+<%--&lt;%&ndash;这里是弹出层表单（批量导入）&ndash;%&gt;--%>
+<%--<div class="layui-row" id="popmulAddTest" style="display:none;">--%>
+<%--    <div class="layui-col-md11">--%>
+<%--        <form class="layui-form layui-from-pane" action="" style="margin-top:20px" method="">--%>
+<%--            <div class="layui-form-item">--%>
+<%--                <label class="layui-form-label">批量导入学生信息：</label>--%>
+<%--                <div class="layui-upload-drag" id="test8" name="file">--%>
+<%--                    <i class="layui-icon"></i>--%>
+<%--                    <p>点击上传，或将文件拖拽到此处</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="layui-form-item" style="margin-top:40px">
-                <div class="layui-input-block">
-                    <button type="button" class="layui-upload layui-btn" id="test19">批量导入</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+<%--            <div class="layui-form-item" style="margin-top:40px">--%>
+<%--                <div class="layui-input-block">--%>
+<%--                    <button type="button" class="layui-upload layui-btn" id="test19">批量导入</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
 </body>
 </html>
