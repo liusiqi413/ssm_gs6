@@ -71,7 +71,7 @@ public class ExcelUtils {
      * @return
      * @throws Exception
      */
-    public  Workbook getWorkbook(InputStream inStr,String fileName) throws Exception{
+    public Workbook getWorkbook(InputStream inStr,String fileName) throws Exception{
         Workbook wb = null;
         String fileType = fileName.substring(fileName.lastIndexOf("."));
         if(excel2003L.equals(fileType)){

@@ -58,17 +58,15 @@
         <table class="layui-hide" id="test" lay-filter="test"></table>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-<%--        <script type="text/html" id="toolbarDemo">--%>
-<%--            <div class="layui-btn-container">--%>
+
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>
-                <!--批量导入按钮-->
-                <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="mulAdd"><i class="layui-icon"></i>批量导入</button>
+                <button class="layui-btn layui-btn-radius layui-btn-sm" lay-event="mulAdd"><i class="layui-icon">&#xe67c;</i>批量导入</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchDelete"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
             </div>
         </script>
-        <%-- 表格区域 --%>
-<%--        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>--%>
+
         <%-- 行工具栏区域 --%>
-<%--        <script type="text/html" id="currentTableBar">--%>
+
             <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
@@ -184,33 +182,7 @@
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/lay/modules/form.js"></script>
 
-<%--     layui.use('upload', function(){--%>
-<%--         var $ = layui.jquery--%>
-<%--             ,upload = layui.upload;--%>
-
-    <%--    //选完文件后不自动上传--%>
-    <%--    upload.render({--%>
-    <%--        elem: '#test8'--%>
-    <%--        ,url: '${pageContext.request.contextPath}/excelUpload/ajaxUpload'--%>
-    <%--        ,auto: false--%>
-    <%--        ,accept: 'file' //普通文件--%>
-    <%--        //,multiple: true--%>
-    <%--        ,bindAction: '#test19'--%>
-    <%--        ,done: function(res){--%>
-    <%--            console.log(res)--%>
-    <%--            //上传完毕--%>
-    <%--            //如果上传失败--%>
-    <%--            if(res.code > 0){--%>
-    <%--                return layer.msg('导入失败');--%>
-    <%--            }--%>
-    <%--            //上传成功--%>
-    <%--            return layer.msg('导入成功');--%>
-    <%--        }--%>
-    <%--    });--%>
-    <%--});--%>
 <script>
     layui.use(['jquery','form','table','laydate','layer','upload'], function () {
         var $ = layui.jquery;
@@ -219,14 +191,7 @@
           var laydate = layui.laydate;
            var layer=layui.layer;
          var upload = layui.upload;
-           // var element=layui.element;
 
-        // //监听Tab切换
-        // element.on('tab(toolbarDemo)', function (data) {
-        //     layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
-        //         tips: 1
-        //     });
-        // });
 
         //渲染日期组件
         laydate.render({
@@ -258,11 +223,11 @@
         });
 
        var tableIns= table.render({
-            // elem: '#currentTableId',
            elem: '#test',
             url: '${pageContext.request.contextPath}/admin/stu/list',
             toolbar: '#toolbarDemo',
             cols: [[
+                {type:"checkbox",fixed:"left",width:50,align:"center"},
                 {field: 'id', width: 60, title: 'ID', sort: true},
                 {field: 'stuno', width:130, title: '学生学号',sort:true},
                 {field: 'stuname', width:90, title: '学生姓名',align: 'center'},
@@ -275,7 +240,7 @@
                 {field: 'diploma', width: 90, title: '文凭', sort: true,align: 'center'},
                 {field: 'train', width: 100, title: '培养方式',align: 'center'},
                 {field: 'stutel', width: 120, title: '电话',align: 'center'},
-                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
+                {title: '操作', width: 150, toolbar: '#barDemo', align: "center"}
             ]],
            page: true,
            done: function (res, curr, count) {
@@ -289,10 +254,6 @@
                }
            }
        });
-        $('.demoTable .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-        });
         // 监听搜索操作
         form.on('submit(data-search-btn)', function (data) {
             tableIns.reload({
@@ -305,16 +266,17 @@
         });
         //监听表格头部工具栏事件
         //toolbar是头部工具栏事件
-        //currentTableFilter是表格lay-filter过滤器的值
+        //test是表格lay-filter过滤器的值
         table.on("toolbar(test)",function(obj){
-            // var checkStatus = table.checkStatus(obj.config.id)
-            //     , data = checkStatus.data; //获取选中的数据
             switch (obj.event) {
                 case "add": //添加按钮
                     openAddWindow();//打开添加窗口
                     break;
                 case "mulAdd":
                    inputAll();
+                    break;
+                case "batchDelete":
+                    batchDelete();
                     break;
             }
         });
@@ -332,15 +294,6 @@
         var url;//提交地址
         var mainIndex;//打开窗口的索引
 
-        function inputAll() {
-        mainIndex= layer.open({
-                //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                type: 1,
-                title: "批量导入学生信息",
-                area: ['420px', '330px'],
-                content: $("#popmulAddTest")//引用的弹出层的页面层的方式加载添加界面表单
-            });
-        }
         //打开添加窗口
         function openAddWindow(){
          mainIndex = layer.open({
@@ -356,6 +309,7 @@
                 }
             });
         }
+
         //打开修改窗口
         function openUpdateWindow(data){
             mainIndex = layer.open({
@@ -387,6 +341,15 @@
         //禁止页面刷新
             return false;
         });
+        function inputAll() {
+            mainIndex= layer.open({
+                //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                type: 1,
+                title: "批量导入学生信息",
+                area: ['420px', '330px'],
+                content: $("#popmulAddTest")//引用的弹出层的页面层的方式加载添加界面表单
+            });
+        }
         //删除该学生
         function deleteById(data) {
         //提示用户是否删除该学生
@@ -405,28 +368,39 @@
                 layer.close(index);
             });
         }
-
+  function batchDelete() {
+            //获取表格对象
+var checkStatus=table.checkStatus('test');
+//判断是否选中行
+      if(checkStatus.data.length>0) {
+          //定义数组，保存选中行的ID
+          var idArr = [];
+          //循环遍历获取选中行
+          for (let i = 0; i < checkStatus.data.length; i++) {
+              //将选中的ID值添加到数组的末尾
+              idArr.push(checkStatus.data[i].id);
+          }
+          //将数组转成字符串
+          var ids = idArr.join(",");
+          //提示用户是否要删除
+          layer.confirm("确定要删除这<font color='red'>"+checkStatus.data.length+"</font>条数据嘛？",{icon:3,title:"提示"},function (index) {
+              //发送ajax请求
+              $.post("/admin/stu/batchDelete", {"ids": ids}, function (result) {
+                  if (result.success) {
+                      layer.alert(result.message, {icon: 1});
+                      //刷新表格
+                      tableIns.reload();
+                  } else {
+                      layer.alert(result.message, {icon: 2});
+                  }
+              }, "json");
+              layer.close(index);
+          });
+      }else{
+        layer.msg("请选择要删除的行");
+      }
+  }
     });
 </script>
-<%--&lt;%&ndash;这里是弹出层表单（批量导入）&ndash;%&gt;--%>
-<%--<div class="layui-row" id="popmulAddTest" style="display:none;">--%>
-<%--    <div class="layui-col-md11">--%>
-<%--        <form class="layui-form layui-from-pane" action="" style="margin-top:20px" method="">--%>
-<%--            <div class="layui-form-item">--%>
-<%--                <label class="layui-form-label">批量导入学生信息：</label>--%>
-<%--                <div class="layui-upload-drag" id="test8" name="file">--%>
-<%--                    <i class="layui-icon"></i>--%>
-<%--                    <p>点击上传，或将文件拖拽到此处</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-
-<%--            <div class="layui-form-item" style="margin-top:40px">--%>
-<%--                <div class="layui-input-block">--%>
-<%--                    <button type="button" class="layui-upload layui-btn" id="test19">批量导入</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</div>--%>
 </body>
 </html>

@@ -84,4 +84,29 @@ public DataGridViewResult list(StuVo stuVo){
         }
         return JSON.toJSONString(map);
     }
+    /**
+     * 批量删除账单
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/batchDelete")
+    public String batchDelete(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+       String[] idsStr=ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            count = stuService.deleteById(Integer.valueOf(idsStr[i]));
+            if(count>0){
+                map.put("success",true);
+                map.put("message","删除成功");
+            }
+        }
+        //判断受影响行数是否为0
+        if(count<=0){
+            map.put("success",false);
+            map.put("message","删除失败");
+        }
+        return JSON.toJSONString(map);
+    }
 }
