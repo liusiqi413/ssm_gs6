@@ -1,10 +1,3 @@
-/**
-
- @Name: æ´æ—‚æ•¤ç”¯å‚šæº€
- @Author: xuxinyu
-
- */
-
 
 /** é¥ç‚¬çˆ£ç€›æ¤¾ç¶‹ **/
 @font-face {font-family: 'layui-icon';
@@ -37,13 +30,13 @@
 
 /* æˆå‘­å§ª */
 .fly-html-store .layui-card-header{height: 50px; line-height: 50px;}
-.fly-html-store .layui-card-body{padding: 15px;}
+.fly-html-store .layui-card-body{padding: 5px;}
 .store-color-bar{display: inline-block; width: 67px; height: 20px;}
 
 /*login*/
-.login-content .login-bg{width: 100%; background: url(../images/load_bg.jpg) no-repeat; background-size: cover;}
-.login-content .login-bg .login-cont{ height: 772px; position: relative;}
-.login-content .login-bg .login-cont .form-box{width: 300px; height: 390px; border:1px solid #d9dadc; background: #fff; position: absolute; top: 196px; right: 90px; padding:0 30px;}
+.login-content .login-bg{width: 100%; background: url(../images/xt.png) no-repeat;background-size: cover;}
+.login-content .login-bg .login-cont{ height: 650px; position: relative;}
+.login-content .login-bg .login-cont .form-box{width: 390px; height: 390px; border:1px solid #d9dadc; background: #fff; position: absolute; top: 150px; right: 400px; padding:0 30px;}
 .login-content .login-bg .login-cont .form-box legend{font-size: 20px; color: #323232; text-align: center; padding:50px 0;}
 .login-content .login-bg .login-cont .layui-inline,.login-content .login-bg .login-cont .layui-input-inline{width: 100%; position: relative;}
 .login-content .login-bg .login-cont .layui-input-inline .iphone-icon{position: absolute; top: 8px; left: 10px; color: #d3d3d3; font-size: 20px;}
@@ -199,7 +192,7 @@
 .store-list-pay{border-color: #FF5722; color: #FF5722;}
 .store-list-colorbar{position: absolute; right: 15px; top: -1px;}
 
-.shop-temp.shoplist #shopList{margin-bottom: 100px;}
+.shop-temp.shoplist #shopList{margin-bottom: 80px;}
 .shop-temp.shoplist #shopList .layui-laypage{display: block; text-align: center; margin-top: 70px;}
 .shop-temp.shoplist #shopList .layui-laypage a
 ,.shop-temp.shoplist #shopList .layui-laypage span{padding: 0 12px; font-size: 14px; line-height: 30px; height: 30px; margin-right: 4px; border-radius: 3px; color: #e3e3e3;}
@@ -243,7 +236,7 @@
 
 
 /* footer */
-.site-union{margin-top: 10px; color: #999;}
+.site-union{margin-top: 5px; color: #999;}
 .site-union>*{display: inline-block; vertical-align: middle;}
 .site-union a[upyun] img{width: 80px;}
 .site-union span{position: relative; top: 3px;}

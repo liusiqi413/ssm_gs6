@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.StuUserMapper">
+    <select id="findStuUserByName" resultType="com.entity.StuUser">
+        select * from t_user where loginName = #{loginName}
+    </select>
+    <select id="findStuUserList" resultType="com.entity.StuUser">
+        select * from t_user
+        <where>
+            <if test="loginName!=null and loginName!=''">
+                and loginName like concat('%',#{loginName},'%')
+            </if>
+            <if test="realName!=null and realName!=''">
+                and realName like concat('%',#{realName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

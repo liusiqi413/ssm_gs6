@@ -1,21 +1,17 @@
 package com.service.impl;
 
 import com.dao.TeacherMapper;
+import com.entity.StuUser;
 import com.entity.Teacher;
 import com.service.TeacherService;
 import com.utils.PasswordUtil;
 import com.utils.SystemConstant;
-import com.utils.PasswordUtil;
 import com.vo.TeacherVo;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.lang.annotation.Target;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service

@@ -1,4 +1,5 @@
 com\service\StuService.class
+com\service\impl\StuUserServiceImpl.class
 com\utils\DataGridViewResult.class
 com\utils\TreeNode.class
 com\entity\Role.class
@@ -8,11 +9,13 @@ com\service\impl\TeacherServiceImpl.class
 com\service\StuHomeService.class
 com\dao\StuEmpMapper.class
 com\service\impl\StuEmpServicImp.class
+com\controller\admin\UserController.class
 com\dao\RoleMapper.class
 com\service\impl\StuServiceImpl.class
 com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class
 com\dao\StuHomeMapper.class
+com\dao\StuUserMapper.class
 com\utils\MenuNode.class
 com\entity\StudentHome.class
 com\service\impl\MenuServiceImpl.class
@@ -24,6 +27,7 @@ com\service\RoleService.class
 com\controller\admin\StuController.class
 com\controller\admin\MenuController.class
 com\controller\admin\StuEmployController.class
+com\service\StuUserService.class
 com\vo\StuHomeVo.class
 com\dao\MenuMapper.class
 com\utils\SystemConstant.class
@@ -43,6 +47,8 @@ com\service\MenuService.class
 com\controller\admin\StuMasterController.class
 com\interceptor\LoginInterceptor.class
 com\service\impl\StuMasterServiceImpl.class
+com\vo\StuUserVo.class
+com\entity\StuUser.class
 com\utils\TreeUtil.class
 com\vo\StuVo.class
 com\dao\StuMasterMapper.class

@@ -93,4 +93,11 @@ return "admin/stu/stuManager";
     public String toTeacherManager(){
         return "admin/teacher/teacherManager";
     }
+    /*
+    去到学生登录导入
+     */
+    @RequestMapping("toStuLogin")
+    public String toStuLogin(){
+        return "admin/stu/stuLogin";
+    }
 }

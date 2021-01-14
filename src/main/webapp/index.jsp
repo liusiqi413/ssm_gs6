@@ -5,9 +5,9 @@
 </head>
 <body>
 
-<script>
-    location.href="/admin/login.html";
-</script>
+<%--<script>--%>
+<%--    location.href="/login.jsp";--%>
+<%--</script>--%>
 
 </body>
 </html>
