@@ -17,6 +17,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuMaster.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuMasterController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuUserVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\UUIDUtils.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\ExceluploadController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\TeacherServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuEmpVo.java

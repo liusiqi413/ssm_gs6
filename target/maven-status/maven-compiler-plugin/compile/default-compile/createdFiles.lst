@@ -11,6 +11,7 @@ com\dao\StuEmpMapper.class
 com\service\impl\StuEmpServicImp.class
 com\controller\admin\UserController.class
 com\dao\RoleMapper.class
+com\utils\UUIDUtils.class
 com\service\impl\StuServiceImpl.class
 com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class

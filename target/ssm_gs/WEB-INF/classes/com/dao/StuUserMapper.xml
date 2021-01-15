@@ -15,4 +15,7 @@
             </if>
         </where>
     </select>
+    <insert id="addStuUser">
+        insert into t_user(loginName,passWord,realName,status,salt) values(#{loginName},#{passWord},#{realName},#{status},#{salt})
+    </insert>
 </mapper>

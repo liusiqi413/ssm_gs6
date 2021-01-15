@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>邢台学院学生登陆</title>
+    <title>后台管理-登陆</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,7 +35,7 @@
         .login-main .login-bottom {width:428px;background:#fff;border-radius:0 0 12px 12px;padding-bottom:53px;}
         .login-main .login-bottom .center {width:288px;margin:0 auto;padding-top:40px;padding-bottom:15px;position:relative;}
         .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
-        body {background:url(${pageContext.request.contextPath}/static/front/images/xt.png) 0% 0% / cover no-repeat;position:static;font-size:12px;}
+        body {background:url(${pageContext.request.contextPath}/static/layui/images/loginbg.png) 0% 0% / cover no-repeat;position:static;font-size:12px;}
         input::-webkit-input-placeholder {color:#a6aebf;}
         input::-moz-placeholder {/* Mozilla Firefox 19+ */            color:#a6aebf;}
         input:-moz-placeholder {/* Mozilla Firefox 4 to 18 */            color:#a6aebf;}
@@ -68,19 +68,18 @@
             <div class="center">
                 <div class="item">
                     <span class="icon icon-2"></span>
-                    <input type="text" name="username" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
+                    <input type="text" name="loginName" lay-verify="required"  placeholder="请输入登录账号" maxlength="24"/>
                 </div>
 
                 <div class="item">
                     <span class="icon icon-3"></span>
-                    <input type="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <input type="password" name="passWord" lay-verify="required"  placeholder="请输入密码" maxlength="20" autocomplete="off">
                     <span class="bind-password icon icon-4"></span>
                 </div>
             </div>
             <div class="tip">
                 <span class="icon-nocheck"></span>
                 <span class="login-tip">保持登录</span>
-                <a href="javascript:" class="forget-password">忘记密码？</a>
             </div>
             <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
                 <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
@@ -104,10 +103,10 @@
         $('.bind-password').on('click', function () {
             if ($(this).hasClass('icon-5')) {
                 $(this).removeClass('icon-5');
-                $("input[name='password']").attr('type', 'password');
+                $("input[name='passWord']").attr('type', 'password');
             } else {
                 $(this).addClass('icon-5');
-                $("input[name='password']").attr('type', 'text');
+                $("input[name='passWord']").attr('type', 'text');
             }
         });
 
@@ -123,11 +122,11 @@
         form.on('submit(login)', function (data) {
             console.log(data);
             //发送Ajax登录请求
-            $.post("/student/login",data.field,function(result){
+            $.post("/admin/stu/login",data.field,function(result){
                 if(result.success){ //map集合；来的
-                    location.href="www.baidu.com";
+                    location.href="/index.jsp";
                 }else{
-                    layer.msg(result.message);
+                    layer.alert(result.message,{icon:5});
                 }
             },"json");
             return false;

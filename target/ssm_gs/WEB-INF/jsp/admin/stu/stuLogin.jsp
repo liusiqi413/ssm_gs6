@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -78,6 +77,13 @@
                                class="layui-input">
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                               class="layui-input">
+                    </div>
+                </div>
                 <div class="layui-form-item layui-row layui-col-xs12">
                     <div class="layui-input-block" style="text-align: center;">
                         <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit">
@@ -142,13 +148,13 @@
                 });
                 var tableIns= table.render({
                     elem: '#test',
-                    url: '${pageContext.request.contextPath}/student/list',
+                    url: '${pageContext.request.contextPath}/admin/stu/listUser',
                     toolbar: '#toolbarDemo',
                     cols: [[
                         {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'loginName', width:130, title: '学生用户名',sort:true},
-                        {field: 'realName', width: 100, title: '学生姓名', sort: true,align: 'center'},
+                        {field: 'realName', width: 130, title: '学生姓名', sort: true,align: 'center'},
                         {title: '操作', width: 300, toolbar: '#barDemo', align: "center"}
                     ]],
                     page: true,
@@ -214,7 +220,7 @@
                             //清空表单数据
                             $("#dataFrm")[0].reset();
                             //添加提交的请求
-                            url="/admin/stu/addStu";
+                            url="/admin/stu/register";
                         }
                     });
                 }
@@ -230,7 +236,7 @@
                             //表单数据回显
                             form.val("dataFrm",data);//参数1：lay-filter值 参数2：回显的数据
                             //添加提交的请求
-                            url="/admin/stu/updateStu";
+                            url="";
                         }
                     });
                 }
@@ -239,13 +245,15 @@
                     //发送ajax请求提交
                     $.post(url,data.field,function (result) {
                         if(result.success){
+                            layer.alert(result.message,{icon:6});
                             //刷新数据表格
                             tableIns.reload();
                             //关闭窗口
                             layer.close(mainIndex);
+                        }else{
+                            layer.alert(result.message,{icon:5});
                         }
-                        //提示信息
-                        layer.msg(result.message);
+
                     },"json");
                     //禁止页面刷新
                     return false;

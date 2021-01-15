@@ -2,7 +2,6 @@ package com.dao;
 
 import com.entity.StuUser;
 import com.vo.StuUserVo;
-import com.vo.StuVo;
 
 import java.util.List;
 
@@ -15,4 +14,8 @@ public interface StuUserMapper {
    查询学生列表
     */
     List<StuUser> findStuUserList(StuUserVo stuVo);
+    /*
+    添加用户
+     */
+    int addStuUser(StuUser stuUser);
 }
