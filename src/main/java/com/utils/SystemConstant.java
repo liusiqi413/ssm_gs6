@@ -25,4 +25,8 @@ public interface SystemConstant {
     默认密码
      */
     String default_login_pwd = "oppoA79k";
+    /**
+     * 前台用户登录时保存key
+     */
+    String FRONT_LOGIN_USER = "currentUser";
 }

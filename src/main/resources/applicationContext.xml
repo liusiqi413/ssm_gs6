@@ -63,11 +63,13 @@
         <!-- 配置MyBatis的核心配置文件所在位置 -->
         <property name="configLocation"
                   value="classpath:mybatis-config.xml" />
+        <!-- 加载SQL映射文件 -->
+        <property name="mapperLocations" value="classpath:com/dao/*.xml"/>
     </bean>
     <!-- 接口开发,扫描 com.dao包 ，写在此包下的接口即可被扫描到 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.dao" />
     </bean>
     <!-- 配置扫描@Service注解 -->
-    <context:component-scan base-package="com.service"/>
+    <context:component-scan base-package="com.dao,com.service"/>
 </beans>

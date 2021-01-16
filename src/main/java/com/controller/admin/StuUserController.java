@@ -19,28 +19,9 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/admin/stu")
-public class UserController {
+public class StuUserController {
     @Resource
     private StuUserService stuUserService;
-    /*
-    学生登录
-     */
-    @RequestMapping("/login")
-    public String login(String loginName, String passWord, HttpSession session){
-        Map<String,Object> map = new HashMap<String,Object>();
-        //调用学生登录的方法
-        StuUser loginStuUser = stuUserService.login(loginName, passWord);
-        //判断对象是否为空，不为空表示登录成功
-        if(loginStuUser!=null){
-            map.put(SystemConstant.SUCCESS,true);//成功
-            loginStuUser.setPassWord(null);
-            session.setAttribute(SystemConstant.LOGINUSER,loginStuUser);
-        }else{
-            map.put(SystemConstant.SUCCESS,false);//失败
-            map.put(SystemConstant.MESSAGE,"账号密码错误，登录失败");
-        }
-        return JSON.toJSONString(map);
-    }
     /*
 查询学生基本信息列表
  */

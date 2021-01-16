@@ -20,11 +20,11 @@ public class StuUserServiceImpl implements StuUserService {
 private StuUserMapper stuUserMapper;
     @Override
     public StuUser login(String loginName, String passWord) {
-        StuUser loginStuUser=stuUserMapper.findStuUserByName(loginName);
-        if(loginStuUser!=null) {
-            String newPassword = PasswordUtil.md5(passWord, loginStuUser.getSalt(), SystemConstant.PASSWORD_COUNT);
-            if (loginStuUser.getPassWord().equals(newPassword)) {
-                return loginStuUser;//登录成功
+        StuUser stuUser=stuUserMapper.findStuUserByName(loginName);
+        if(stuUser!=null) {
+            String newPassword = PasswordUtil.md5(passWord, stuUser.getSalt(), SystemConstant.PASSWORD_COUNT);
+            if (stuUser.getPassWord().equals(newPassword)) {
+                return stuUser;//登录成功
             }
         }
         return null;

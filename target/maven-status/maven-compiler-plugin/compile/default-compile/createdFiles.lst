@@ -1,3 +1,4 @@
+com\dao\UserMapper.class
 com\service\StuService.class
 com\service\impl\StuUserServiceImpl.class
 com\utils\DataGridViewResult.class
@@ -8,15 +9,17 @@ com\dao\StuMapper.class
 com\service\impl\TeacherServiceImpl.class
 com\service\StuHomeService.class
 com\dao\StuEmpMapper.class
+com\service\UserService.class
 com\service\impl\StuEmpServicImp.class
-com\controller\admin\UserController.class
 com\dao\RoleMapper.class
+com\controller\admin\StuUserController.class
 com\utils\UUIDUtils.class
 com\service\impl\StuServiceImpl.class
 com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class
 com\dao\StuHomeMapper.class
 com\dao\StuUserMapper.class
+com\service\impl\UserServiceImpl.class
 com\utils\MenuNode.class
 com\entity\StudentHome.class
 com\service\impl\MenuServiceImpl.class
@@ -34,6 +37,7 @@ com\dao\MenuMapper.class
 com\utils\SystemConstant.class
 com\vo\RoleVo.class
 com\controller\admin\SystemController.class
+com\controller\UserController.class
 com\service\StuEmpService.class
 com\dao\TeacherMapper.class
 com\entity\Menu.class

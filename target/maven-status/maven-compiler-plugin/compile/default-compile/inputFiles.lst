@@ -3,16 +3,18 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\MenuMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Student.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuEmployController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\UserService.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\UserServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuEmpMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuMasterService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMasterMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\RoleVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuUser.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\UserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\interceptor\LoginInterceptor.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\PasswordUtil.java
-E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\UserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuMaster.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuMasterController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuUserVo.java
@@ -22,6 +24,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\ExceluploadController.j
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\TeacherServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuEmpVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuMasterVo.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuHomeServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\MenuService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\SystemConstant.java
@@ -37,6 +40,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\TeacherMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\RoleServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\SystemController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\RoleMapper.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\UserMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\RoleController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\MenuNode.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\RoleService.java
