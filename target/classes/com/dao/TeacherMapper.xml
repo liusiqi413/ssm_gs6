@@ -37,10 +37,10 @@
                 name=#{name},
             </if>
             <if test="gender!=null">
-                gender=#{gender}
+                gender=#{gender},
             </if>
             <if test="salt!=null and salt!=''">
-            salt=#{salt}
+            salt=#{salt},
             </if>
         </set>
         where id=#{id}

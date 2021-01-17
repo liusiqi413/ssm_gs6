@@ -85,7 +85,7 @@ public DataGridViewResult list(StuVo stuVo){
         return JSON.toJSONString(map);
     }
     /**
-     * 批量删除账单
+     * 批量删除学生
      * @param ids
      * @return
      */

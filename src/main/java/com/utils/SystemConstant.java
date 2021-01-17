@@ -29,4 +29,5 @@ public interface SystemConstant {
      * 前台用户登录时保存key
      */
     String FRONT_LOGIN_USER = "currentUser";
+    String EXIST = "exist";
 }

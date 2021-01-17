@@ -56,7 +56,6 @@
             <script type="text/html" id="barDemo">
                 <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-close"></i>删除</a>
-                <button class="layui-btn layui-btn-xs layui-btn-warm" lay-event="resetPwd"><i class="layui-icon layui-icon-refresh"></i>重置密码 </button>
             </script>
         <%-- 添加和修改窗口 --%>
         <div style="display: none;padding: 5px" id="addOrUpdateWindow">
@@ -66,7 +65,7 @@
                     <input type="hidden" name="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="loginName" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                        <input type="text" name="loginName" id="mNickname" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
                 </div>
@@ -130,7 +129,7 @@
                 //选完文件后不自动上传
                 upload.render({
                     elem: '#test8'
-                    ,url: '${pageContext.request.contextPath}/excelUpload/ajaxUpload'
+                    ,url: '${pageContext.request.contextPath}/stuExcelUpload/ajaxUpload'
                     ,auto: false
                     ,accept: 'file' //普通文件
                     //,multiple: true
@@ -153,7 +152,7 @@
                     cols: [[
                         {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
-                        {field: 'loginName', width:130, title: '学生用户名',sort:true},
+                        {field: 'loginName', width:130, title: '学生学号',sort:true},
                         {field: 'realName', width: 130, title: '学生姓名', sort: true,align: 'center'},
                         {title: '操作', width: 300, toolbar: '#barDemo', align: "center"}
                     ]],
@@ -202,7 +201,7 @@
                             openUpdateWindow(obj.data);//打开修改窗口
                             break;
                         case "delete"://删除按钮
-                            deleteById(obj.data);
+                            deleteStuUserById(obj.data);
                             break;
                     }
                 });
@@ -213,7 +212,7 @@
                 function openAddWindow(){
                     mainIndex = layer.open({
                         type:1,//打开类型
-                        title:"添加学生",  //窗口事件
+                        title:"添加学生账户",  //窗口事件
                         area:["800px","400px"],//窗口宽高
                         content:$("#addOrUpdateWindow"),//引用的内容窗口
                         success:function () {
@@ -229,32 +228,57 @@
                 function openUpdateWindow(data){
                     mainIndex = layer.open({
                         type:1,//打开类型
-                        title:"修改学生",  //窗口事件
+                        title:"修改学生账户",  //窗口事件
                         area:["800px","400px"],//窗口宽高
                         content:$("#addOrUpdateWindow"),//引用的内容窗口
                         success:function () {
                             //表单数据回显
                             form.val("dataFrm",data);//参数1：lay-filter值 参数2：回显的数据
                             //添加提交的请求
-                            url="";
+                            url="/admin/stu/updateStuUser";
                         }
                     });
                 }
+                var flag = false;//定义变量，标识是否存在
+
+                //当用户名输入框失去焦点事件触发验证
+                $("#mNickname").blur(function () {
+                    //获取用户名
+                    var loginName = $("#mNickname").val().trim();
+                    //判断用户名是否为空，不为空则发送请求验证
+                    if(loginName.length>0){
+                        $.get("/admin/stu/checkName",{"loginName":loginName},function(result){
+                            if(result.exist){
+                                layer.alert(result.message,{icon:5});
+                                //修改状态为true，表示已存在
+                                flag = true;
+                            }else{
+                                flag = false;//不存在
+                            }
+                        },"json");
+                    }
+                });
                 //监听表单提交事件
                 form.on("submit(doSubmit)",function (data) {
-                    //发送ajax请求提交
-                    $.post(url,data.field,function (result) {
-                        if(result.success){
-                            layer.alert(result.message,{icon:6});
-                            //刷新数据表格
-                            tableIns.reload();
-                            //关闭窗口
-                            layer.close(mainIndex);
-                        }else{
-                            layer.alert(result.message,{icon:5});
-                        }
+                    //判断是否存在
+                    if(flag){
+                        layer.alert("用户名已被使用，请重新输入！",{icon:5})
+                    }else {
+                        //发送ajax请求提交
+                        $.post(url, data.field, function (result) {
+                            if (result.success) {
 
-                    },"json");
+                                layer.alert(result.message, {icon: 6});
+                                //刷新数据表格
+                                tableIns.reload();
+                                //关闭窗口
+                                layer.close(mainIndex);
+                            } else {
+                                layer.alert(result.message, {icon: 5});
+                            }
+
+                        }, "json");
+                    }
                     //禁止页面刷新
                     return false;
                 });
@@ -268,11 +292,11 @@
                     });
                 }
                 //删除该学生
-                function deleteById(data) {
+                function deleteStuUserById(data) {
                     //提示用户是否删除该学生
-                    layer.confirm("确定要删除[<font color='red'>"+data.stuname+"</font>]吗？",{icon:3,title:"提示"},function(index){
+                    layer.confirm("确定要删除[<font color='red'>"+data.realName+"</font>]吗？",{icon:3,title:"提示"},function(index){
                         //发送ajax请求
-                        $.post("/admin/stu/deleteById",{"id":data.id},function (result) {
+                        $.post("/admin/stu/deleteStuUserById",{"id":data.id},function (result) {
                             if (result.success){
                                 layer.alert(result.message,{icon:1});
                                 //刷新表格数据

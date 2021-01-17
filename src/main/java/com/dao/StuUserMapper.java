@@ -18,4 +18,12 @@ public interface StuUserMapper {
     添加用户
      */
     int addStuUser(StuUser stuUser);
+    /*
+    修改学生账户
+     */
+    int updateStuUser(StuUser stuUser);
+    /*
+    删除学生
+     */
+    int deleteStuUserById(Integer id);
 }

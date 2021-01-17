@@ -28,7 +28,7 @@
                 birth=#{birth},
             </if>
             <if test="ethnic!=null and ethnic!=''">
-                ethnic=#{ethnic}
+                ethnic=#{ethnic},
             </if>
         </set>
         where id=#{id}

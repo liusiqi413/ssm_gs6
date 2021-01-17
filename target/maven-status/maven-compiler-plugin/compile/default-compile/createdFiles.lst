@@ -5,6 +5,7 @@ com\utils\DataGridViewResult.class
 com\utils\TreeNode.class
 com\entity\Role.class
 com\service\TeacherService.class
+com\controller\admin\StuUserExcelController.class
 com\dao\StuMapper.class
 com\service\impl\TeacherServiceImpl.class
 com\service\StuHomeService.class

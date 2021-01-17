@@ -23,7 +23,7 @@ public interface TeacherService {
     */
     int addTeacher(Teacher teacher);
     /*
-    删除老师
+    修改老师
      */
     int updateTeacher(Teacher teacher);
     /*
