@@ -65,7 +65,7 @@
                     <input type="hidden" name="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="loginName" id="mNickname" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                        <input type="text" name="loginName" id="loginName" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
                 </div>
@@ -242,9 +242,9 @@
                 var flag = false;//定义变量，标识是否存在
 
                 //当用户名输入框失去焦点事件触发验证
-                $("#mNickname").blur(function () {
+                $("#loginName").blur(function () {
                     //获取用户名
-                    var loginName = $("#mNickname").val().trim();
+                    var loginName = $("#loginName").val().trim();
                     //判断用户名是否为空，不为空则发送请求验证
                     if(loginName.length>0){
                         $.get("/admin/stu/checkName",{"loginName":loginName},function(result){
@@ -262,12 +262,11 @@
                 form.on("submit(doSubmit)",function (data) {
                     //判断是否存在
                     if(flag){
-                        layer.alert("用户名已被使用，请重新输入！",{icon:5})
+                        layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
                     }else {
                         //发送ajax请求提交
                         $.post(url, data.field, function (result) {
                             if (result.success) {
-
                                 layer.alert(result.message, {icon: 6});
                                 //刷新数据表格
                                 tableIns.reload();
@@ -286,7 +285,7 @@
                     mainIndex= layer.open({
                         //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                         type: 1,
-                        title: "批量导入学生信息",
+                        title: "批量导入学生账户",
                         area: ['420px', '330px'],
                         content: $("#popmulAddTest")//引用的弹出层的页面层的方式加载添加界面表单
                     });
@@ -326,7 +325,7 @@
                         //提示用户是否要删除
                         layer.confirm("确定要删除这<font color='red'>"+checkStatus.data.length+"</font>条数据嘛？",{icon:3,title:"提示"},function (index) {
                             //发送ajax请求
-                            $.post("/admin/stu/batchDelete", {"ids": ids}, function (result) {
+                            $.post("/admin/stu/batchDeleteStu", {"ids": ids}, function (result) {
                                 if (result.success) {
                                     layer.alert(result.message, {icon: 1});
                                     //刷新表格
@@ -338,7 +337,7 @@
                             layer.close(index);
                         });
                     }else{
-                        layer.msg("请选择要删除的行");
+                        layer.msg("请选择要删除的学生");
                     }
                 }
             });

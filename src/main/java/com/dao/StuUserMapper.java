@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StuUserMapper {
     /*
-    根据用户名查询用户信息
+    根据学生登录名查询用户信息
      */
     StuUser findStuUserByName(String loginName);
     /*

@@ -88,9 +88,32 @@ public class StuUserController {
         //调用注册的方法
         if(stuUserService.findStuUserByName(loginName)!=null){
             map.put(SystemConstant.EXIST,true);
-            map.put(SystemConstant.MESSAGE,"用户名已被占用，请重新输入！");
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
         }else{
             map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
+    /*
+
+     */
+    @RequestMapping("/batchDeleteStu")
+    public String batchDeleteStu(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr=ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            count = stuUserService.deleteStuUserById(Integer.valueOf(idsStr[i]));
+            if(count>0){
+                map.put("success",true);
+                map.put("message","删除成功");
+            }
+        }
+        //判断受影响行数是否为0
+        if(count<=0){
+            map.put("success",false);
+            map.put("message","删除失败");
         }
         return JSON.toJSONString(map);
     }

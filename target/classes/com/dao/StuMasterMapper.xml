@@ -30,4 +30,7 @@
     <delete id="deleteStuMasterById">
         delete from stu_master where id=#{id}
     </delete>
+    <select id="findStuMasterNoByName" resultType="com.entity.StuMaster">
+        select * from stu_master where stuno=#{stuno};
+    </select>
 </mapper>

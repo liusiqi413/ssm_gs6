@@ -60,7 +60,7 @@
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
 
-                        <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                        <input type="text" name="stuno" id="stuNo" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
                 </div>
@@ -105,7 +105,9 @@
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
-                        {field: 'success', title: '录取', width: 80,align: 'center',sort: true},
+                        {field: 'success', title: '录取', width: 80,align: 'center',sort: true,templet:function (d) {
+                            return d.success==1?"是":"否";
+                            }},
                         {field: 'university', width: 130, title: '院校',align: 'center'},
                         {field: 'area', width: 90, title: '国家', sort: true,align: 'center'},
                         {field: 'city', width: 90, title: '城市',sort: true,align: 'center'},
@@ -187,19 +189,39 @@
                         }
                     });
                 }
+                var flag = false;//定义变量，标识是否存在
+                $("#stuNo").blur(function () {
+                    var stuno=$("#stuNo").val().trim();
+                    if(stuno.length>0){
+                        $.get("/admin/stu/checkStuMaster",{"stuno":stuno},function(result){
+                            if(result.exist){
+                                layer.alert(result.message,{icon:5});
+                                //修改状态为true，表示已存在
+                                flag = true;
+                            }else{
+                                flag = false;//不存在
+                            }
+                        },"json");
+                    }
+                });
                 //监听表单提交事件
                 form.on("submit(doSubmit)",function (data) {
-                    //发送ajax请求提交
-                    $.post(url,data.field,function (result) {
-                        if(result.success){
-                            //刷新数据表格
-                            tableIns.reload();
-                            //关闭窗口
-                            layer.close(mainIndex);
-                        }
-                        //提示信息
-                        layer.msg(result.message);
-                    },"json");
+                    if(flag){
+                        layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+                    }else {
+                        //发送ajax请求提交
+                        $.post(url, data.field, function (result) {
+                            if (result.success) {
+                                layer.alert(result.message, {icon: 6});
+                                //刷新数据表格
+                                tableIns.reload();
+                                //关闭窗口
+                                layer.close(mainIndex);
+                            }
+                            //提示信息
+                            layer.msg(result.message);
+                        }, "json");
+                    }
                     //禁止页面刷新
                     return false;
                 });

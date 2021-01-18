@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -110,23 +109,32 @@ private StuUserMapper stuUserMapper;
 
             if(lo.size() == 3){    //无ID这一列
                 //     System.out.println("无ID");
+                if(stuUserMapper.findStuUserByName(String.valueOf(lo.get(0)))!=null){
+
+                }else{
                 vo.setLoginName(String.valueOf(lo.get(0)));
                 vo.setPassWord(String.valueOf(lo.get(1)));
                 vo.setSalt(UUIDUtils.randomUUID());
                 //密码加密
                 vo.setPassWord(PasswordUtil.md5(vo.getPassWord(),vo.getSalt(),SystemConstant.PASSWORD_COUNT));
                 vo.setRealName(String.valueOf(lo.get(2)));
-            }else if(lo.size() == 4){   //有ID这一列
-                //      System.out.println("有ID");
-                vo.setLoginName(String.valueOf(lo.get(1)));
-                vo.setPassWord(String.valueOf(lo.get(2)));
-                vo.setSalt(UUIDUtils.randomUUID());
-                //密码加密
-                vo.setPassWord(PasswordUtil.md5(vo.getPassWord(),vo.getSalt(),SystemConstant.PASSWORD_COUNT));
-                vo.setRealName(String.valueOf(lo.get(3)));
+                    stuUserMapper.addStuUser(vo);
             }
+            }else if(lo.size() == 4) {   //有ID这一列
+                //      System.out.println("有ID");
+                if (stuUserMapper.findStuUserByName(String.valueOf(lo.get(1))) != null) {
 
-            stuUserMapper.addStuUser(vo);
+                } else {
+                    vo.setLoginName(String.valueOf(lo.get(1)));
+                    vo.setPassWord(String.valueOf(lo.get(2)));
+                    vo.setSalt(UUIDUtils.randomUUID());
+                    //密码加密
+                    vo.setPassWord(PasswordUtil.md5(vo.getPassWord(), vo.getSalt(), SystemConstant.PASSWORD_COUNT));
+                    vo.setRealName(String.valueOf(lo.get(3)));
+                    stuUserMapper.addStuUser(vo);
+                        }
+            }
+//            stuUserMapper.addStuUser(vo);
         }
         return "success";
     }

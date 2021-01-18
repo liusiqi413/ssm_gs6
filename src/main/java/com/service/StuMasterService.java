@@ -13,4 +13,6 @@ public interface StuMasterService {
     int updateStuMaster(StuMaster stuMaster);
 
     int deleteStuMasterById(Integer id);
+
+    StuMaster findStuMasterNoByName(String stuno);
 }

@@ -35,4 +35,9 @@ public class StuMasterServiceImpl implements StuMasterService {
         return stuMasterMapper.deleteStuMasterById(id);
     }
 
+    @Override
+    public StuMaster findStuMasterNoByName(String stuno) {
+        return stuMasterMapper.findStuMasterNoByName(stuno);
+    }
+
 }

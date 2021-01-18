@@ -87,4 +87,17 @@ public class StuMasterController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/checkStuMaster")
+    public String checkStuMaster(String stuno){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用注册的方法
+        if(stuMasterService.findStuMasterNoByName(stuno)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
 }
