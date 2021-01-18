@@ -33,4 +33,7 @@
     <delete id="deleteStuEmpById">
         delete from stu_employ where id=#{id}
     </delete>
+    <select id="findStuEmpNoByName" resultType="com.entity.StuEmp">
+        select * from stu_employ where stuno=#{stuno};
+    </select>
 </mapper>

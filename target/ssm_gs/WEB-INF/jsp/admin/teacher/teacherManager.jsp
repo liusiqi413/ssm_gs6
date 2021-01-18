@@ -230,19 +230,41 @@
                 }
             });
         }
+        var flag = false;//定义变量，标识是否存在
 
+        //当用户名输入框失去焦点事件触发验证
+        $("#loginname").blur(function () {
+            //获取用户名
+            var loginName = $("#loginname").val().trim();
+            //判断用户名是否为空，不为空则发送请求验证
+            if(loginName.length>0){
+                $.get("/admin/teacher/checkTeacherName",{"loginName":loginName},function(result){
+                    if(result.exist){
+                        layer.alert(result.message,{icon:5});
+                        //修改状态为true，表示已存在
+                        flag = true;
+                    }else{
+                        flag = false;//不存在
+                    }
+                },"json");
+            }
+        });
         //监听表单提交事件
         form.on("submit(doSubmit)",function (data) {
-            $.post(url,data.field,function(result){
-                if(result.success){
-                    //刷新数据表格
-                    tableIns.reload();
-                    //关闭窗口
-                    layer.close(mainIndex);
-                }
-                //提示信息
-                layer.msg(result.message);
-            },"json");
+            if(flag){
+                layer.alert("已有相同老师登录名，请重新输入！",{icon:5})
+            }else {
+                $.post(url, data.field, function (result) {
+                    if (result.success) {
+                        //刷新数据表格
+                        tableIns.reload();
+                        //关闭窗口
+                        layer.close(mainIndex);
+                    }
+                    //提示信息
+                    layer.msg(result.message);
+                }, "json");
+            }
             //禁止页面刷新
             return false;
         });

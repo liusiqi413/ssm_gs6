@@ -109,4 +109,17 @@ public DataGridViewResult list(StuVo stuVo){
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/checkStuName")
+    public String checkStuName(String stuno){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用注册的方法
+        if(stuService.findStuByName(stuno)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
 }

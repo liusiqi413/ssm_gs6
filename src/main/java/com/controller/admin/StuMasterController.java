@@ -2,7 +2,6 @@ package com.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.entity.StuMaster;
-import com.entity.Student;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.StuMasterService;
@@ -97,6 +96,26 @@ public class StuMasterController {
             map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
         }else{
             map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
+    @RequestMapping("/batchDeleteMaster")
+    public String batchDeleteMaster(String ids) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            count = stuMasterService.deleteStuMasterById(Integer.valueOf(idsStr[i]));
+            if (count > 0) {
+                map.put("success", true);
+                map.put("message", "删除成功");
+            }
+        }
+        //判断受影响行数是否为0
+        if (count <= 0) {
+            map.put("success", false);
+            map.put("message", "删除失败");
         }
         return JSON.toJSONString(map);
     }

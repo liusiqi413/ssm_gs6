@@ -38,4 +38,6 @@ public interface TeacherService {
 保存老师角色关系
  */
     boolean saveTeacherRole(String roleIds, Integer teachId);
+
+    Teacher findTeacherByLoginName(String loginName);
 }

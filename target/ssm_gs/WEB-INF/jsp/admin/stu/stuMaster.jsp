@@ -40,6 +40,7 @@
             <div class="layui-btn-container">
                 <!--lay-event用来配合实现监听事件-->
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchDelete"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
             </div>
         </script>
 
@@ -102,11 +103,12 @@
                         //filed属性：字段属性，该属性与实体类的属性名一致
                         //title属性：表示文本
                         //sort是否排序
+                        {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
                         {field: 'success', title: '录取', width: 80,align: 'center',sort: true,templet:function (d) {
-                            return d.success==1?"成功":"失败";
+                            return d.success==1?"是":"否";
                             }},
                         {field: 'university', width: 130, title: '院校',align: 'center'},
                         {field: 'area', width: 90, title: '国家', sort: true,align: 'center'},
@@ -143,6 +145,9 @@
                     switch (obj.event) {
                         case "add": //添加按钮
                             openAddWindow();//打开添加窗口
+                            break;
+                        case "batchDelete":   //打开批量删除
+                            batchDeleteMaster();
                             break;
                     }
                 });
@@ -242,6 +247,38 @@
                         //关闭提示框
                         layer.close(index);
                     });
+                }
+                function batchDeleteMaster() {
+                    //获取表格对象
+                    var checkStatus=table.checkStatus('currentTableId');
+                    //判断是否选中行
+                    if(checkStatus.data.length>0) {
+                        //定义数组，保存选中行的ID
+                        var idArr = [];
+                        //循环遍历获取选中行
+                        for (let i = 0; i < checkStatus.data.length; i++) {
+                            //将选中的ID值添加到数组的末尾
+                            idArr.push(checkStatus.data[i].id);
+                        }
+                        //将数组转成字符串
+                        var ids = idArr.join(",");
+                        //提示用户是否要删除
+                        layer.confirm("确定要删除这<font color='red'>"+checkStatus.data.length+"</font>条数据嘛？",{icon:3,title:"提示"},function (index) {
+                            //发送ajax请求
+                            $.post("/admin/stu/batchDeleteMaster", {"ids": ids}, function (result) {
+                                if (result.success) {
+                                    layer.alert(result.message, {icon: 1});
+                                    //刷新表格
+                                    tableIns.reload();
+                                } else {
+                                    layer.alert(result.message, {icon: 2});
+                                }
+                            }, "json");
+                            layer.close(index);
+                        });
+                    }else{
+                        layer.msg("请选择要删除的学生");
+                    }
                 }
             });
 

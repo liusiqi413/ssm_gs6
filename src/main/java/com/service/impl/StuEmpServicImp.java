@@ -33,4 +33,9 @@ public class StuEmpServicImp implements StuEmpService {
     public int deleteStuEmpById(Integer id) {
         return stuEmpMapper.deleteStuEmpById(id);
     }
+
+    @Override
+    public StuEmp findStuEmpNoByName(String stuno) {
+        return stuEmpMapper.findStuEmpNoByName(stuno);
+    }
 }

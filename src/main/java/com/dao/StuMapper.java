@@ -22,4 +22,8 @@ public interface StuMapper {
 删除学生信息
  */
     int deleteById(Integer id);
+    /*
+    根据学生号查询该学生信息
+     */
+    Student findStuByName(String stuno);
 }

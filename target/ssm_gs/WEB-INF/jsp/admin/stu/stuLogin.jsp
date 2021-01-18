@@ -186,11 +186,11 @@
                         case "add": //添加按钮
                             openAddWindow();//打开添加窗口
                             break;
-                        case "mulAdd":
+                        case "mulAdd":   //打开批量导入
                             inputAll();
                             break;
-                        case "batchDelete":
-                            batchDelete();
+                        case "batchDelete":   //打开批量删除
+                           batchDelete();
                             break;
                     }
                 });

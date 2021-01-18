@@ -143,4 +143,17 @@ public class TeacherController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/checkTeacherName")
+    public String checkTeacherName(String loginName){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用注册的方法
+        if(teacherService.findTeacherByLoginName(loginName)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同老师登录名，请重新输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
     }

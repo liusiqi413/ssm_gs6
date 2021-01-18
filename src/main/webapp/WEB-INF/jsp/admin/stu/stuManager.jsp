@@ -80,7 +80,7 @@
                     <input type="hidden" name="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="stuno" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                        <input type="text" name="stuno" id="stuNo" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
                 </div>
@@ -325,21 +325,44 @@
                 }
             });
         }
+        var flag = false;//定义变量，标识是否存在
+
+        //当用户名输入框失去焦点事件触发验证
+        $("#stuNo").blur(function () {
+            //获取用户名
+            var stuno = $("#stuNo").val().trim();
+            //判断用户名是否为空，不为空则发送请求验证
+            if(stuno.length>0){
+                $.get("/admin/stu/checkStuName",{"stuno":stuno},function(result){
+                    if(result.exist){
+                        layer.alert(result.message,{icon:5});
+                        //修改状态为true，表示已存在
+                        flag = true;
+                    }else{
+                        flag = false;//不存在
+                    }
+                },"json");
+            }
+        });
         //监听表单提交事件
         form.on("submit(doSubmit)",function (data) {
-            //发送ajax请求提交
-            $.post(url,data.field,function (result) {
-            if(result.success){
-                //刷新数据表格
-                tableIns.reload();
-                //关闭窗口
-                layer.close(mainIndex);
+            if(flag){
+                layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+            }else {
+                //发送ajax请求提交
+                $.post(url, data.field, function (result) {
+                    if (result.success) {
+                        //刷新数据表格
+                        tableIns.reload();
+                        //关闭窗口
+                        layer.close(mainIndex);
+                    }
+                    //提示信息
+                    layer.msg(result.message);
+                }, "json");
+                //禁止页面刷新
+                return false;
             }
-            //提示信息
-                layer.msg(result.message);
-            },"json");
-        //禁止页面刷新
-            return false;
         });
         function inputAll() {
             mainIndex= layer.open({

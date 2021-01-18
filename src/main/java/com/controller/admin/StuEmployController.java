@@ -85,5 +85,37 @@ public class StuEmployController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/checkStuEmp")
+    public String checkStuEmp(String stuno){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用注册的方法
+        if(stuEmpService.findStuEmpNoByName(stuno)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
+    @RequestMapping("/batchDeleteEmp")
+    public String batchDeleteEmp(String ids) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        for (int i = 0; i < idsStr.length; i++) {
+            count = stuEmpService.deleteStuEmpById(Integer.valueOf(idsStr[i]));
+            if (count > 0) {
+                map.put("success", true);
+                map.put("message", "删除成功");
+            }
+        }
+        //判断受影响行数是否为0
+        if (count <= 0) {
+            map.put("success", false);
+            map.put("message", "删除失败");
+        }
+        return JSON.toJSONString(map);
+    }
 }
-

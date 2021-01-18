@@ -22,4 +22,8 @@ public interface StuEmpMapper {
     删除学生就业信息
      */
     int deleteStuEmpById(Integer id);
+     /*
+    根据学生学号查询学生信息
+     */
+    StuEmp findStuEmpNoByName(String stuno);
 }

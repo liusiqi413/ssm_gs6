@@ -88,36 +88,48 @@ public class StuServiceImpl implements StuService {
 
                 if(lo.size() == 10){    //无ID这一列
                     //     System.out.println("无ID");
-                    vo.setStuno(String.valueOf(lo.get(0)));
-                    vo.setStuname(String.valueOf(lo.get(1)));
-                    vo.setGender(String.valueOf(lo.get(2)));
-                    vo.setCollege(String.valueOf(lo.get(3)));
-                    vo.setMajor(String.valueOf(lo.get(4)));
-                    vo.setClasses(String.valueOf(lo.get(5)));
-                    vo.setStart(Date.valueOf(String.valueOf(lo.get(6))));
-                    vo.setGradu(Date.valueOf(String.valueOf(lo.get(7))));
-                    vo.setDiploma(String.valueOf(lo.get(8)));
-                    vo.setTrain(String.valueOf(lo.get(9)));
+                    if(stuMapper.findStuByName(String.valueOf(lo.get(0)))!=null) {
+                    }else{
+                        vo.setStuno(String.valueOf(lo.get(0)));
+                        vo.setStuname(String.valueOf(lo.get(1)));
+                        vo.setGender(String.valueOf(lo.get(2)));
+                        vo.setCollege(String.valueOf(lo.get(3)));
+                        vo.setMajor(String.valueOf(lo.get(4)));
+                        vo.setClasses(String.valueOf(lo.get(5)));
+                        vo.setStart(Date.valueOf(String.valueOf(lo.get(6))));
+                        vo.setGradu(Date.valueOf(String.valueOf(lo.get(7))));
+                        vo.setDiploma(String.valueOf(lo.get(8)));
+                        vo.setTrain(String.valueOf(lo.get(9)));
+                        stuMapper.addStu(vo);
+                    }
                 }else if(lo.size() == 11){   //有ID这一列
                     //      System.out.println("有ID");
-                    vo.setStuno(String.valueOf(lo.get(1)));
-                    vo.setStuname(String.valueOf(lo.get(2)));
-                    vo.setGender(String.valueOf(lo.get(3)));
-                    vo.setCollege(String.valueOf(lo.get(4)));
-                    vo.setMajor(String.valueOf(lo.get(5)));
-                    vo.setClasses(String.valueOf(lo.get(6)));
-                    vo.setStart(Date.valueOf(String.valueOf(lo.get(7))));
-                    vo.setGradu(Date.valueOf(String.valueOf(lo.get(8))));
-                    vo.setDiploma(String.valueOf(lo.get(9)));
-                    vo.setTrain(String.valueOf(lo.get(10)));
-
+                    if(stuMapper.findStuByName(String.valueOf(lo.get(1)))!=null) {
+                    }else{
+                        vo.setStuno(String.valueOf(lo.get(1)));
+                        vo.setStuname(String.valueOf(lo.get(2)));
+                        vo.setGender(String.valueOf(lo.get(3)));
+                        vo.setCollege(String.valueOf(lo.get(4)));
+                        vo.setMajor(String.valueOf(lo.get(5)));
+                        vo.setClasses(String.valueOf(lo.get(6)));
+                        vo.setStart(Date.valueOf(String.valueOf(lo.get(7))));
+                        vo.setGradu(Date.valueOf(String.valueOf(lo.get(8))));
+                        vo.setDiploma(String.valueOf(lo.get(9)));
+                        vo.setTrain(String.valueOf(lo.get(10)));
+                        stuMapper.addStu(vo);
+                    }
                 }
 
-               stuMapper.addStu(vo);
+//               stuMapper.addStu(vo);
 
             }
             return "success";
         }
 
+    @Override
+    public Student findStuByName(String stuno) {
+        return stuMapper.findStuByName(stuno);
     }
+
+}
 

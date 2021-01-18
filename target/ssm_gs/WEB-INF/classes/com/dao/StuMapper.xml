@@ -59,4 +59,7 @@
     <delete id="deleteById">
         delete from stu_info where id=#{id}
     </delete>
+    <select id="findStuByName" resultType="com.entity.Student">
+        select * from stu_info where stuno=#{stuno};
+    </select>
 </mapper>

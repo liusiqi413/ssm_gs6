@@ -91,4 +91,9 @@ public class TeacherServiceImpl implements TeacherService {
         }
             return false;
         }
+
+    @Override
+    public Teacher findTeacherByLoginName(String loginName) {
+        return teacherMapper.findTeacherByLoginName(loginName);
     }
+}

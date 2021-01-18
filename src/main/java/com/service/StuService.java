@@ -30,4 +30,8 @@ public interface StuService {
     批量导入
      */
     String ajaxUploadExcel(MultipartFile file, HttpServletRequest request, HttpServletResponse response);
+    /*
+    根据学生号查询学生信息
+     */
+    Student findStuByName(String stuno);
 }
