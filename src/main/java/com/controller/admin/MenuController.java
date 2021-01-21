@@ -61,7 +61,7 @@ public class MenuController {
         }
             //保存HomeInfo信息
             homeInfo.put("title","首页");
-            homeInfo.put("href","/admin/login");
+            homeInfo.put("href","/admin/index.html");
 
             //保存logoInfo信息
             logoInfo.put("title","就业管理系统");  //logo标题

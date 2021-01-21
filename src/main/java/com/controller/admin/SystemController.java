@@ -24,7 +24,10 @@ public class SystemController {
         return "admin/login";
     }
 
-
+@RequestMapping("/index")
+public String index(){
+        return "admin/index";
+}
     /**
      * 去到后台首页
      * @return
@@ -47,6 +50,10 @@ public class SystemController {
         //session.invalidate();
         //重定向到登录页面
         return "redirect:/admin/login.html";
+    }
+    @RequestMapping("/reset")
+    public String reset(){
+        return "admin/reset";
     }
     /*
     去到学生管理页面

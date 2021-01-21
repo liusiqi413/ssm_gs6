@@ -2,7 +2,6 @@ package com.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.entity.StuUser;
-import com.entity.Teacher;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.StuUserService;
