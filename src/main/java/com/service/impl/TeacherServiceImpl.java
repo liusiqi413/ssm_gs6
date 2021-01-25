@@ -6,6 +6,7 @@ import com.entity.Teacher;
 import com.service.TeacherService;
 import com.utils.PasswordUtil;
 import com.utils.SystemConstant;
+import com.utils.UUIDUtils;
 import com.vo.TeacherVo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -95,5 +96,27 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Teacher findTeacherByLoginName(String loginName) {
         return teacherMapper.findTeacherByLoginName(loginName);
+    }
+
+    @Override
+    public Teacher findLoginPwdByLoginName(String loginName,String loginPwd) {
+
+        Teacher oldTeacher = teacherMapper.findLoginPwdByLoginName(loginName);
+        if(oldTeacher !=null) {
+            String newPassword = PasswordUtil.md5(loginPwd, oldTeacher.getSalt(), SystemConstant.PASSWORD_COUNT);
+            if (oldTeacher.getLoginPwd().equals(newPassword)) {
+                return oldTeacher;//登录成功
+            }
+        }
+        return null;
+    }
+
+
+    public Teacher updateTeacherPassword(String loginName,String loginPwd) {
+        Teacher newTeacher=teacherMapper.updateTeacherPassword(loginName,loginPwd);
+        newTeacher.setSalt(UUIDUtils.randomUUID());
+        //密码加密
+        newTeacher.setLoginPwd(PasswordUtil.md5(newTeacher.getLoginPwd(),newTeacher.getSalt(),SystemConstant.PASSWORD_COUNT));
+        return teacherMapper.updateTeacherPassword(loginName,loginPwd);
     }
 }

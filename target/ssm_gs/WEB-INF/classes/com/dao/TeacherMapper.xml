@@ -21,6 +21,9 @@
         </if>
     </where>
 </select>
+    <select id="findLoginPwdByLoginName" resultType="com.entity.Teacher">
+        SELECT * FROM tec_info WHERE loginName = #{loginName}
+    </select>
     <insert id="addTeacher">
         insert into tec_info(loginName,loginPwd,name,salt,gender) values (#{loginName},#{loginPwd},#{name},#{salt},#{gender})
     </insert>
@@ -51,4 +54,17 @@
     <delete id="deleteTeacherAndRole">
         delete from sys_role_teacher where tid= #{tid}
     </delete>
+    <update id="updateTeacherPassword">
+    update tec_info
+    <set>
+        <if test="loginPwd!=null and loginPwd!=''">
+            loginPwd=#{loginPwd},
+        </if>
+        <if test="salt!=null and salt!=''">
+            salt=#{salt},
+        </if>
+    </set>
+        where loginName=#{loginName}
+    </update>
+
 </mapper>

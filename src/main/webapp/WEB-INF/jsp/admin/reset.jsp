@@ -22,7 +22,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">原密码：</label>
                 <div class="layui-input-inline">
-                    <input type="password" name="loginPwd" id="oldPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input name="loginPwd" type="password"  id="oldPwd" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -47,40 +47,68 @@
                 </div>
             </div>
         </form>
-
+</div>
+</div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
-    layui.use(['form'], function () {
-        var form = layui.form
-            , layer = layui.layer;
+    layui.use(['form','jquery','layer'], function () {
+         var $ = layui.jquery,
+            form = layui.form,
+             layer = layui.layer;
 
         //自定义验证规则
         form.verify({
-            title: function (value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
-                }
-            }
-            , pass: [
+            pass: [
                 /^[\S]{6,12}$/
                 , '密码必须6到12位，且不能出现空格'
             ]
         });
-
-        var loginName =(${sessionScope.loginUser.name}).val().trim();
-        layer.alert(loginName);
+        var flag = false;//定义变量，标识是否存在
+        var loginName='${sessionScope.loginUser.loginName}';
+        var newPwd=$("#newPwd").val().trim();
+        //当用户名输入框失去焦点事件触发验证
+        $("#oldPwd").blur(function () {
+            //获取密码
+            var loginPwd=$("#oldPwd").val().trim();
+            //判断密码是否为空，不为空则发送请求验证
+            if(loginPwd.length>0){
+                $.get("/admin/teacher/reset",{"loginName":loginName,"loginPwd":loginPwd},function(result){
+                    if(result.exist){
+                        //修改状态为true，表示已存在
+                        flag = true;
+                    }else{
+                        flag = false;//不存在
+                        layer.alert(result.message,{icon:5});
+                    }
+                },"json");
+            }else{
+                layer.msg("旧密码不能为空！");
+            }
+        });
+        $("#conformPwd").blur(function () {
+            var confirm=$("#conformPwd").val().trim();
+            var newPas=$("#newPwd").val().trim();
+            if(confirm!=newPas){
+                layer.alert("俩次密码不一致",{icon:5});
+                flag=false;
+            }
+        });
         //监听提交
         form.on('submit(demo1)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            if(flag){
+                $.post("/admin/teacher/updateTeacherPassword", {"loginName":loginName,"loginPwd":newPwd},function (result) {
+                    if (result.success)
+                    //提示信息
+                    layer.msg(result.message);
+                }, "json");
+            }else{
+                layer.alert("原密码或新密码和确认密码不一致，请重新输入！",{icon:5})
+            }
             return false;
         });
 
-
     });
 </script>
-
 </body>
 </html>

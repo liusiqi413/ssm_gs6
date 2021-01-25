@@ -31,6 +31,8 @@ public interface TeacherMapper {
     删除老师
      */
     int deleteById(Integer id);
+
+    Teacher findLoginPwdByLoginName(String loginName);
 /*
 删除老师角色关系表
  */
@@ -40,4 +42,8 @@ public interface TeacherMapper {
      */
    @Insert("insert into sys_role_teacher(tid,rid) values(#{tid},#{rid})")
     void addTeacherRole(@Param("rid") String roleId, @Param("tid") Integer teachId);
+   /*
+   修改密码
+    */
+    Teacher updateTeacherPassword(String loginName,String loginPwd);
 }

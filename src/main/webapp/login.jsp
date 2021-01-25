@@ -74,14 +74,7 @@
                 <div class="item">
                     <span class="icon icon-3"></span>
                     <input type="password" name="passWord" lay-verify="required"  placeholder="请输入密码" maxlength="20">
-                    <span class="bind-password icon icon-4"></span>
                 </div>
-
-            </div>
-            <div class="tip">
-                <span class="icon-nocheck"></span>
-                <span class="login-tip">保持登录</span>
-                <a href="javascript:" class="forget-password">忘记密码？</a>
             </div>
             <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
                 <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>

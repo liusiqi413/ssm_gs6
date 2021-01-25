@@ -40,4 +40,10 @@ public interface TeacherService {
     boolean saveTeacherRole(String roleIds, Integer teachId);
 
     Teacher findTeacherByLoginName(String loginName);
+
+    Teacher findLoginPwdByLoginName(String loginName,String loginPwd);
+    /*
+  修改密码
+   */
+    Teacher updateTeacherPassword(String loginName,String loginPwd);
 }
