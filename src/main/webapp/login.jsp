@@ -74,7 +74,9 @@
                 <div class="item">
                     <span class="icon icon-3"></span>
                     <input type="password" name="passWord" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <span class="bind-password icon icon-4"></span>
                 </div>
+
             </div>
             <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
                 <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
@@ -91,10 +93,8 @@
         var $ = layui.jquery,
             form = layui.form,
             layer = layui.layer;
-
         // 登录过期的时候，跳出ifram框架
         if (top.location != self.location) top.location = self.location;
-
         $('.bind-password').on('click', function () {
             if ($(this).hasClass('icon-5')) {
                 $(this).removeClass('icon-5');
@@ -104,7 +104,6 @@
                 $("input[name='passWord']").attr('type', 'text');
             }
         });
-
         $('.icon-nocheck').on('click', function () {
             if ($(this).hasClass('icon-check')) {
                 $(this).removeClass('icon-check');
@@ -112,7 +111,6 @@
                 $(this).addClass('icon-check');
             }
         });
-
         // 进行登录操作
         form.on("submit(login)",function (data) {
             $.post("/user/login",data.field,function(result){

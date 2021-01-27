@@ -57,8 +57,8 @@
                 <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-close"></i>删除</a>
             </script>
-        <%-- 添加和修改窗口 --%>
-        <div style="display: none;padding: 5px" id="addOrUpdateWindow">
+        <%-- 添加窗口 --%>
+        <div style="display: none;padding: 5px" id="addWindow">
             <form class="layui-form" style="width:90%;"method="post" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
                     <%-- 隐藏域 --%>
@@ -86,6 +86,44 @@
                 <div class="layui-form-item layui-row layui-col-xs12">
                     <div class="layui-input-block" style="text-align: center;">
                         <button type="button" class="layui-btn" lay-submit lay-filter="doSubmit">
+                            <span class="layui-icon layui-icon-add-1"></span>提交
+                        </button>
+                        <button type="reset" class="layui-btn layui-btn-warm">
+                            <span class="layui-icon layui-icon-refresh-1"></span>重置
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <%-- 修改窗口 --%>
+        <div style="display: none;padding: 5px" id="UpdateWindow">
+            <form class="layui-form" style="width:90%;"method="post" id="dataFarm" lay-filter="dataFrm">
+                <div class="layui-form-item">
+                    <%-- 隐藏域 --%>
+                    <input type="hidden" name="id">
+                    <label class="layui-form-label">学生学号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="loginName" id="login" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">学生姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="realName" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-row layui-col-xs12">
+                    <div class="layui-input-block" style="text-align: center;">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="updatedoSubmit">
                             <span class="layui-icon layui-icon-add-1"></span>提交
                         </button>
                         <button type="reset" class="layui-btn layui-btn-warm">
@@ -214,7 +252,7 @@
                         type:1,//打开类型
                         title:"添加学生账户",  //窗口事件
                         area:["800px","400px"],//窗口宽高
-                        content:$("#addOrUpdateWindow"),//引用的内容窗口
+                        content:$("#addWindow"),//引用的内容窗口
                         success:function () {
                             //清空表单数据
                             $("#dataFrm")[0].reset();
@@ -230,7 +268,7 @@
                         type:1,//打开类型
                         title:"修改学生账户",  //窗口事件
                         area:["800px","400px"],//窗口宽高
-                        content:$("#addOrUpdateWindow"),//引用的内容窗口
+                        content:$("#UpdateWindow"),//引用的内容窗口
                         success:function () {
                             //表单数据回显
                             form.val("dataFrm",data);//参数1：lay-filter值 参数2：回显的数据
@@ -278,6 +316,24 @@
 
                         }, "json");
                     }
+                    //禁止页面刷新
+                    return false;
+                });
+                //监听表单提交事件
+                form.on("submit(updatedoSubmit)",function (data) {
+                        //发送ajax请求提交
+                        $.post(url, data.field, function (result) {
+                            if (result.success) {
+                                layer.alert(result.message, {icon: 6});
+                                //刷新数据表格
+                                tableIns.reload();
+                                //关闭窗口
+                                layer.close(mainIndex);
+                            } else {
+                                layer.alert(result.message, {icon: 5});
+                            }
+
+                        }, "json");
                     //禁止页面刷新
                     return false;
                 });
