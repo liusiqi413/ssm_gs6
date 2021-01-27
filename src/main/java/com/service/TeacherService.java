@@ -45,5 +45,5 @@ public interface TeacherService {
     /*
   修改密码
    */
-    Teacher updateTeacherPassword(String loginName,String loginPwd);
+    int updateTeacherPassword(Teacher teacher);
 }

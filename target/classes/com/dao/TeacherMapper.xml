@@ -57,11 +57,20 @@
     <update id="updateTeacherPassword">
     update tec_info
     <set>
+        <if test="loginName!=null and loginName!=''">
+            loginName=#{loginName},
+        </if>
         <if test="loginPwd!=null and loginPwd!=''">
             loginPwd=#{loginPwd},
         </if>
+        <if test="name!=null and name!=''">
+            name=#{name},
+        </if>
+        <if test="gender!=null">
+            gender=#{gender},
+        </if>
         <if test="salt!=null and salt!=''">
-            salt=#{salt},
+        salt=#{salt},
         </if>
     </set>
         where loginName=#{loginName}

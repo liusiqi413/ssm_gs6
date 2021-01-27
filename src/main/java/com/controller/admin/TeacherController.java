@@ -41,9 +41,11 @@ public class TeacherController {
         Teacher teacher = teacherService.login(username, password);
         //判断对象是否为空，不为空表示登录成功
         if (teacher != null) {
+            map.put(SystemConstant.SUCCESS, true);//成功
+            teacher.setLoginPwd(null);
             //保存当前登录用户
             session.setAttribute(SystemConstant.LOGINUSER, teacher);
-            map.put(SystemConstant.SUCCESS, true);//成功
+
         } else {
             map.put(SystemConstant.SUCCESS, false);//失败
             map.put(SystemConstant.MESSAGE, "账号密码错误，登录失败");
@@ -179,10 +181,9 @@ public class TeacherController {
         return JSON.toJSONString(map);
     }
     @RequestMapping("/updateTeacherPassword")
-    public String updateTeacherPassword(String loginName,String loginPwd){
+    public String updateTeacherPassword(Teacher teacher){
         Map<String,Object> map=new HashMap<String, Object>();
-        Teacher newTeacher=teacherService.updateTeacherPassword(loginName,loginPwd);
-        if(newTeacher!=null){
+        if(teacherService.updateTeacherPassword(teacher)>0){
             map.put(SystemConstant.SUCCESS,true);//成功
             map.put(SystemConstant.MESSAGE,"修改成功");
         }else{

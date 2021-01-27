@@ -105,18 +105,19 @@ public class TeacherServiceImpl implements TeacherService {
         if(oldTeacher !=null) {
             String newPassword = PasswordUtil.md5(loginPwd, oldTeacher.getSalt(), SystemConstant.PASSWORD_COUNT);
             if (oldTeacher.getLoginPwd().equals(newPassword)) {
-                return oldTeacher;//登录成功
+                return oldTeacher;
             }
         }
         return null;
     }
 
 
-    public Teacher updateTeacherPassword(String loginName,String loginPwd) {
-        Teacher newTeacher=teacherMapper.updateTeacherPassword(loginName,loginPwd);
-        newTeacher.setSalt(UUIDUtils.randomUUID());
+    public int updateTeacherPassword(Teacher teacher) {
+        //自动生成盐值
+        teacher.setSalt(UUIDUtils.randomUUID());
         //密码加密
-        newTeacher.setLoginPwd(PasswordUtil.md5(newTeacher.getLoginPwd(),newTeacher.getSalt(),SystemConstant.PASSWORD_COUNT));
-        return teacherMapper.updateTeacherPassword(loginName,loginPwd);
+        teacher.setLoginPwd(PasswordUtil.md5(teacher.getLoginPwd(),teacher.getSalt(),SystemConstant.PASSWORD_COUNT));
+
+         return teacherMapper.updateTeacherPassword(teacher);
     }
 }

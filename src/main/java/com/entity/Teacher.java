@@ -9,6 +9,7 @@ public class Teacher {
     private Integer deptId;//所属院系
     private String salt;//加密盐值
 
+
     public Integer getGender() {
         return gender;
     }

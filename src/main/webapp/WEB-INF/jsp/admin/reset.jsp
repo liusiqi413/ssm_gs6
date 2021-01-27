@@ -66,7 +66,6 @@
         });
         var flag = false;//定义变量，标识是否存在
         var loginName='${sessionScope.loginUser.loginName}';
-        var newPwd=$("#newPwd").val().trim();
         //当用户名输入框失去焦点事件触发验证
         $("#oldPwd").blur(function () {
             //获取密码
@@ -86,24 +85,45 @@
                 layer.msg("旧密码不能为空！");
             }
         });
+        /*
+        比较新旧密码是否一致
+         */
         $("#conformPwd").blur(function () {
-            var confirm=$("#conformPwd").val().trim();
+            var loginPas=$("#oldPwd").val().trim();
             var newPas=$("#newPwd").val().trim();
+            var confirm=$("#conformPwd").val().trim();
             if(confirm!=newPas){
                 layer.alert("俩次密码不一致",{icon:5});
                 flag=false;
+            }else if(loginPas==newPas){
+                layer.alert("新密码不能为以前的旧密码",{icon:5});
+                flag=false;
+            }
+            else{
+
             }
         });
+
         //监听提交
-        form.on('submit(demo1)', function (data) {
+        form.on('submit(demo1)', function(data){
             if(flag){
-                $.post("/admin/teacher/updateTeacherPassword", {"loginName":loginName,"loginPwd":newPwd},function (result) {
-                    if (result.success)
+                var newloginPwd=$("#newPwd").val().trim();
+                $.post("/admin/teacher/updateTeacherPassword",{"loginName":loginName,"loginPwd":newloginPwd},function (result) {
+                    if (result.success){
                     //提示信息
-                    layer.msg(result.message);
+                    layer.msg(result.message);}
                 }, "json");
-            }else{
-                layer.alert("原密码或新密码和确认密码不一致，请重新输入！",{icon:5})
+            }else {
+                var oldLogin=$("#oldPwd").val().trim();
+                var newLogin=$("#newPwd").val().trim();
+                var newconfirm=$("#conformPwd").val().trim();
+                if(newconfirm!=newLogin){
+                    layer.alert("新密码和确认密码不一致，请重新输入！",{icon:5})
+                }else if(oldLogin==newLogin){
+                    layer.alert("新密码不能为旧密码，请重新输入！",{icon:5})
+                }else{
+                    layer.alert("旧密码错误！",{icon:5});
+                }
             }
             return false;
         });
