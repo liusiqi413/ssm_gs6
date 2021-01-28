@@ -143,5 +143,8 @@ private StuUserMapper stuUserMapper;
     public StuUser findStuUserByName(String loginName) {
         return stuUserMapper.findStuUserByName(loginName);
     }
-
+    @Override
+    public StuUser findStuUserUpdateByName(StuUser stuUser) {
+        return stuUserMapper.findStuUserUpdateByName(stuUser);
+    }
 }

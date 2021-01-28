@@ -34,4 +34,8 @@ public interface StuUserService{
     根据用户名查询用户信息
      */
     StuUser findStuUserByName(String loginName);
+    /*
+   查询学号
+    */
+    StuUser findStuUserUpdateByName(StuUser stuUser);
 }

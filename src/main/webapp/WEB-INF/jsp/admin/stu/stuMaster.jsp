@@ -52,8 +52,8 @@
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
         </script>
-        <%-- 添加和修改窗口 --%>
-        <div style="display: none;padding: 5px" id="addOrUpdateWindow">
+        <%-- 添加窗口 --%>
+        <div style="display: none;padding: 5px" id="addWindow">
             <form class="layui-form" style="width:90%;"method="post" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
                     <%-- 隐藏域 --%>
@@ -85,6 +85,40 @@
             </form>
         </div>
     </div>
+</div>
+<%-- 修改窗口 --%>
+<div style="display: none;padding: 5px" id="UpdateWindow">
+    <form class="layui-form" style="width:90%;"method="post" id="dataFrme" lay-filter="dataFrm">
+        <div class="layui-form-item">
+            <%-- 隐藏域 --%>
+            <input type="hidden" name="id" id="id">
+            <label class="layui-form-label">学生学号</label>
+            <div class="layui-input-block">
+
+                <input type="text" name="stuno" id="stu" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学生姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="stuname" lay-verify="required" autocomplete="off"
+                       placeholder="请输入学生姓名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-row layui-col-xs12">
+            <div class="layui-input-block" style="text-align: center;">
+                <button type="button" class="layui-btn" lay-submit lay-filter="updateDoSubmit"><span
+                        class="layui-icon layui-icon-add-1"></span>提交
+                </button>
+                <button type="reset" class="layui-btn layui-btn-warm"><span
+                        class="layui-icon layui-icon-refresh-1"></span>重置
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
 </div>
         <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
         <script>
@@ -170,7 +204,7 @@
                         type:1,//打开类型
                         title:"添加学生考研信息",  //窗口事件
                         area:["800px","400px"],//窗口宽高
-                        content:$("#addOrUpdateWindow"),//引用的内容窗口
+                        content:$("#addWindow"),//引用的内容窗口
                         success:function () {
                             //清空表单数据
                             $("#dataFrm")[0].reset();
@@ -185,7 +219,7 @@
                         type:1,//打开类型
                         title:"修改学生考研信息",  //窗口事件
                         area:["800px","400px"],//窗口宽高
-                        content:$("#addOrUpdateWindow"),//引用的内容窗口
+                        content:$("#UpdateWindow"),//引用的内容窗口
                         success:function () {
                             //表单数据回显
                             form.val("dataFrm",data);//参数1：lay-filter值 参数2：回显的数据
@@ -211,6 +245,45 @@
                 });
                 //监听表单提交事件
                 form.on("submit(doSubmit)",function (data) {
+                    if(flag){
+                        layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+                    }else {
+                        //发送ajax请求提交
+                        $.post(url, data.field, function (result) {
+                            if (result.success) {
+                                layer.alert(result.message, {icon: 6});
+                                //刷新数据表格
+                                tableIns.reload();
+                                //关闭窗口
+                                layer.close(mainIndex);
+                            }
+                            //提示信息
+                            layer.msg(result.message);
+                        }, "json");
+                    }
+                    //禁止页面刷新
+                    return false;
+                });
+                //当用户名输入框失去焦点事件触发验证
+                $("#stu").blur(function () {
+                    //获取用户名
+                    var id=$("#id").val().trim();
+                    var stu = $("#stu").val().trim();
+                    //判断用户名是否为空，不为空则发送请求验证
+                    if(stu.length>0){
+                        $.get("/admin/stu/checkUpdateStuMasterName",{"stuno":stu,"id":id},function(result){
+                            if(result.exist){
+                                layer.alert(result.message,{icon:5});
+                                //修改状态为true，表示已存在
+                                flag = true;
+                            }else{
+                                flag = false;//不存在
+                            }
+                        },"json");
+                    }
+                });
+                //监听表单提交事件
+                form.on("submit(updateDoSubmit)",function (data) {
                     if(flag){
                         layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
                     }else {

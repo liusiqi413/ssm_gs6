@@ -60,6 +60,12 @@
         delete from stu_info where id=#{id}
     </delete>
     <select id="findStuByName" resultType="com.entity.Student">
-        select * from stu_info where stuno=#{stuno};
+        select * from stu_info where stuno=#{stuno}
+    </select>
+    <select id="checkUpdateStuName" resultType="com.entity.Student">
+        SELECT stuno FROM stu_info
+WHERE id NOT IN
+(SELECT id FROM stu_info
+WHERE id=#{id}) and stuno=#{stuno}
     </select>
 </mapper>

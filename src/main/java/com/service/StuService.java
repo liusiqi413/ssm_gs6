@@ -34,4 +34,9 @@ public interface StuService {
     根据学生号查询学生信息
      */
     Student findStuByName(String stuno);
+    /*
+    查询修改学生数据是否重复
+     */
+    Student checkUpdateStuName(Student student);
+
 }

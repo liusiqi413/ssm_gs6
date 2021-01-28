@@ -107,4 +107,11 @@ return "admin/stu/stuManager";
     public String toStuLogin(){
         return "admin/stu/stuLogin";
     }
+    /*
+    去到招聘页面
+     */
+    @RequestMapping("toHireManager")
+    public String toHireManagern(){
+        return "admin/hire/hireEmploy";
+    }
 }

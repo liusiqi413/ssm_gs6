@@ -15,4 +15,8 @@ public interface StuMasterService {
     int deleteStuMasterById(Integer id);
 
     StuMaster findStuMasterNoByName(String stuno);
+    /*
+ 查询修改学生数据是否重复
+  */
+    StuMaster checkUpdateStuMasterName(StuMaster stuMaster);
 }

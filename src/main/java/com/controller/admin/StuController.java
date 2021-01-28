@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 import com.alibaba.fastjson.JSON;
+import com.entity.StuUser;
 import com.entity.Student;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -115,6 +116,19 @@ public DataGridViewResult list(StuVo stuVo){
         Map<String,Object> map=new HashMap<String, Object>();
         //调用注册的方法
         if(stuService.findStuByName(stuno)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
+    @RequestMapping("/checkUpdateStuName")
+    public String checkUpdateStuName(Student student){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用查询的方法
+        if(stuService.checkUpdateStuName(student)!=null){
             map.put(SystemConstant.EXIST,true);
             map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
         }else{

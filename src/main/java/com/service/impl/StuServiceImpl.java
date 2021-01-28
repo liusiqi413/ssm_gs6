@@ -131,5 +131,10 @@ public class StuServiceImpl implements StuService {
         return stuMapper.findStuByName(stuno);
     }
 
+    @Override
+    public Student checkUpdateStuName(Student student) {
+        return stuMapper.checkUpdateStuName(student);
+    }
+
 }
 

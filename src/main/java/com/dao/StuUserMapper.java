@@ -26,4 +26,8 @@ public interface StuUserMapper {
     删除学生
      */
     int deleteStuUserById(Integer id);
+    /*
+    查询学号
+     */
+    StuUser findStuUserUpdateByName(StuUser stuUser);
 }

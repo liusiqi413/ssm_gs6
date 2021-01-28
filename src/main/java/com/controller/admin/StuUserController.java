@@ -84,7 +84,7 @@ public class StuUserController {
     public String checkName(String loginName){
         //创建map集合保存结果信息
         Map<String,Object> map=new HashMap<String, Object>();
-        //调用注册的方法
+        //调用查询的方法
         if(stuUserService.findStuUserByName(loginName)!=null){
             map.put(SystemConstant.EXIST,true);
             map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
@@ -93,8 +93,21 @@ public class StuUserController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/checkUpdateName")
+    public String checkUpdateName(StuUser stuUser){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用查询的方法
+        if(stuUserService.findStuUserUpdateByName(stuUser)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
     /*
-
+    批量删除
      */
     @RequestMapping("/batchDeleteStu")
     public String batchDeleteStu(String ids){

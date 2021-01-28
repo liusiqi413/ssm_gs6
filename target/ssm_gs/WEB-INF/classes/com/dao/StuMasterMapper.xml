@@ -33,4 +33,10 @@
     <select id="findStuMasterNoByName" resultType="com.entity.StuMaster">
         select * from stu_master where stuno=#{stuno};
     </select>
+    <select id="checkUpdateStuMasterName" resultType="com.entity.StuMaster">
+          SELECT stuno FROM stu_master
+WHERE id NOT IN
+(SELECT id FROM stu_master
+WHERE id=#{id}) and stuno=#{stuno}
+    </select>
 </mapper>

@@ -39,4 +39,10 @@
     <delete id="deleteStuUserById">
         delete from t_user where id=#{id}
     </delete>
+    <select id="findStuUserUpdateByName" resultType="com.entity.StuUser">
+        SELECT loginName FROM t_user
+WHERE id NOT IN
+(SELECT id FROM t_user
+WHERE id=#{id}) and loginName=#{loginName}
+    </select>
 </mapper>

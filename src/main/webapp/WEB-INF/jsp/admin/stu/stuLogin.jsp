@@ -100,7 +100,7 @@
             <form class="layui-form" style="width:90%;"method="post" id="dataFarm" lay-filter="dataFrm">
                 <div class="layui-form-item">
                     <%-- 隐藏域 --%>
-                    <input type="hidden" name="id">
+                    <input type="hidden" name="id" id="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
                         <input type="text" name="loginName" id="login" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
@@ -320,9 +320,30 @@
                     return false;
                 });
 
+                //当用户名输入框失去焦点事件触发验证
+                $("#login").blur(function () {
+                    //获取用户名
+                    var login = $("#login").val().trim();
+                    var id=$("#id").val().trim();
+                    //判断用户名是否为空，不为空则发送请求验证
+                    if(login.length>0){
+                        $.get("/admin/stu/checkUpdateName",{"loginName":login,"id":id},function(result){
+                            if(result.exist){
+                                layer.alert(result.message,{icon:5});
+                                //修改状态为true，表示已存在
+                                flag = true;
+                            }else{
+                                flag = false;//不存在
+                            }
+                        },"json");
+                    }
+                });
                 //监听表单提交事件
                 form.on("submit(updatedoSubmit)",function (data) {
-
+                    //判断是否存在
+                    if(flag){
+                        layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+                    }else {
                         //发送ajax请求提交
                         $.post(url, data.field, function (result) {
                             if (result.success) {
@@ -336,6 +357,7 @@
                             }
 
                         }, "json");
+                    }
                     //禁止页面刷新
                     return false;
                 });

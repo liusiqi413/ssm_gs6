@@ -40,4 +40,9 @@ public class StuMasterServiceImpl implements StuMasterService {
         return stuMasterMapper.findStuMasterNoByName(stuno);
     }
 
+    @Override
+    public StuMaster checkUpdateStuMasterName(StuMaster stuMaster) {
+        return stuMasterMapper.checkUpdateStuMasterName(stuMaster);
+    }
+
 }

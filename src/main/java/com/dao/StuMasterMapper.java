@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.StuMaster;
+import com.entity.Student;
 import com.vo.StuMasterVo;
 
 import java.util.List;
@@ -26,4 +27,8 @@ public interface StuMasterMapper {
     根据学生学号查询学生信息
      */
     StuMaster findStuMasterNoByName(String stuno);
+    /*
+查询修改学生数据是否重复
+ */
+    StuMaster checkUpdateStuMasterName(StuMaster stuMaster);
 }
