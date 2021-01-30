@@ -27,9 +27,9 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">房型名称</label>
+                            <label class="layui-form-label">公司名称</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="typename" autocomplete="off" class="layui-input">
+                                <input type="text" name="companyName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -74,61 +74,64 @@
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md9 layui-col-xs7">
                             <div class="layui-form-item magt3" style="margin-top: 8px;">
-                                <label class="layui-form-label">房型名称</label>
+                                <label class="layui-form-label">公司名称</label>
                                 <div class="layui-input-block">
-                                    <input type="text" class="layui-input" name="typename" lay-verify="required"  placeholder="请输入房型名称">
+                                    <input type="text" class="layui-input" name="companyName" lay-verify="required"  placeholder="请输入公司名称">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">房型状态</label>
+                                <label class="layui-form-label">招聘岗位</label>
                                 <div class="layui-input-block">
-                                    <select name="status" id="status" lay-verify="required">
-                                        <option value="">请选择房型状态</option>
-                                        <option value="1">可预订</option>
-                                        <option value="2">房型已满</option>
-                                    </select>
+                                    <input type="text" class="layui-input" name="hireType" lay-verify="required"  placeholder="请输入招聘岗位"></textarea>
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">房型备注</label>
+                                <label class="layui-form-label">需求专业</label>
                                 <div class="layui-input-block">
-                                    <textarea class="layui-textarea" name="remark" id="remark"></textarea>
+                                    <input type="text" class="layui-input" name="hireRequest" lay-verify="required"  placeholder="请输入需求专业"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">招聘人数</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="number" lay-verify="required"  placeholder="请输入招聘人数"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">薪资</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="salary" lay-verify="required"  placeholder="请输入薪资"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">工作地点</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="place" lay-verify="required"  placeholder="请输入工作地点"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">详情</label>
+                                <div class="layui-input-block">
+                                    <textarea class="layui-textarea" name="desc" id="desc"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">联系方式</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="tel" lay-verify="required" placeholder="请输入工作地点"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">发布时间</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="time" lay-verify="required" placeholder="请输入工作地点"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-col-md3 layui-col-xs5">
                             <div class="layui-upload-list thumbBox mag0 magt3">
-                                <input type="hidden" name="photo" id="photo" value="images/defaultimg.jpg">
-                                <img class="layui-upload-img thumbImg" src="/hotel/show/images/defaultimg.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-form-item magb0">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">参考价格</label>
-                            <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="price" lay-verify="required|number"
-                                       placeholder="请输入参考价格">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">可住人数</label>
-                            <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="livenum" lay-verify="required|number"
-                                       placeholder="请输入可住人数">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">床位数</label>
-                            <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="bednum" lay-verify="required|number" placeholder="请输入床位数">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">房间数</label>
-                            <div class="layui-input-inline">
-                                <input type="text" class="layui-input" name="roomnum" lay-verify="required|number"
-                                       placeholder="请输入房间数">
+                                <input type="hidden" name="photo" id="photo" value="${pageContext.request.contextPath}/static/images/defaultimg.jpg">
+                                <img class="layui-upload-img thumbImg" src="${pageContext.request.contextPath}/static/images/defaultimg.jpg">
                             </div>
                         </div>
                     </div>
@@ -142,7 +145,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                    </div>
             </form>
         </div>
 
@@ -161,23 +164,20 @@
         //渲染表格组件
         var tableIns = table.render({
             elem: '#currentTableId',
-            url: '${pageContext.request.contextPath}/admin/roomType/list',
+            url: '${pageContext.request.contextPath}/admin/hire/list',
             toolbar: '#toolbarDemo',
             cols: [[
                 {field: 'id', width: 60, title: '编号', align: "center"},
-                {field: 'typename', minWidth: 150, title: '名称', align: "center"},
-                {field: 'price', minWidth: 100, title: '价格', align: "center"},
-                {field: 'livenum', minWidth: 100, title: '可住人数', align: "center"},
-                {field: 'bednum', minWidth: 100, title: '床位数', align: "center"},
-                {field: 'roomnum', minWidth: 100, title: '房间数', align: "center"},
-                {field: 'avilablenum', minWidth: 100, title: '可用房间数', align: "center"},
-                {field: 'reservednum', minWidth: 100, title: '已预订数', align: "center"},
-                {field: 'livednum', minWidth: 100, title: '已入住数', align: "center"},
-                {field: 'status', minWidth: 100, title: '状态', align: "center",templet:function (d) {
-                        return d.status == 1 ? "可预订" : "<font color='red'>房型已满</font>"
-                    }},
-                {field: 'remark', minWidth: 100, title: '备注', align: "center"},
-                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+                {field: 'companyName', width: 150, title: '公司名称', align: "center"},
+                {field: 'hireType', width: 150, title: '招聘岗位'},
+                {field: 'hireRequest', width: 150, title: '需求专业'},
+                {field: 'number', width:100, title: '招聘人数'},
+                {field: 'salary', width:100, title: '薪资'},
+                {field: 'place', width:100, title: '工作地点'},
+                {field: 'desc', width:300, title: '详情'},
+                {field: 'tel', width:100, title: '联系方式'},
+                {field: 'time', width: 100, title: '发布时间'},
+                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             page: true,
             done: function (res, curr, count) {
@@ -245,9 +245,9 @@
                     //添加的提交请求
                     url = "/admin/roomType/addRoomType";
                     //重置默认图片,注意：显示图片必须在图片名称前加上/hotel/show
-                    $(".thumbImg").attr("src","/hotel/show/images/defaultimg.jpg");
+                    $(".thumbImg").attr("src","/static/images/defaultimg.jpg");
                     //重置图片隐藏域的值
-                    $("#photo").val("images/defaultimg.jpg");
+                    $("#photo").val("/static/images/defaultimg.jpg");
                 }
             });
         }

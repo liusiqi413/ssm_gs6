@@ -1,5 +1,6 @@
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\TreeNode.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\MenuMapper.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\HireService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Student.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuEmployController.java
@@ -18,9 +19,11 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\PasswordUtil.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuMaster.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuMasterController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\HireController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuUserVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\UUIDUtils.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\HireServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\ExceluploadController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\TeacherServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuEmpVo.java
@@ -29,6 +32,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuHomeServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\MenuService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\SystemConstant.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\HireVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuEmp.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuHomeMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\TreeUtil.java
@@ -39,11 +43,13 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuHomeVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuHomeController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\TeacherMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\RoleServiceImpl.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\HireMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\SystemController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\RoleMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\UserMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\RoleController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\MenuNode.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Hire.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\RoleService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\TeacherService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Menu.java

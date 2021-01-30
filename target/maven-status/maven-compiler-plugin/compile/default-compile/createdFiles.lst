@@ -7,11 +7,13 @@ com\entity\Role.class
 com\service\TeacherService.class
 com\controller\admin\StuUserExcelController.class
 com\dao\StuMapper.class
+com\service\HireService.class
 com\service\impl\TeacherServiceImpl.class
 com\service\StuHomeService.class
 com\dao\StuEmpMapper.class
 com\service\UserService.class
 com\service\impl\StuEmpServicImp.class
+com\controller\admin\HireController.class
 com\dao\RoleMapper.class
 com\controller\admin\StuUserController.class
 com\utils\UUIDUtils.class
@@ -28,6 +30,7 @@ com\vo\StuEmpVo.class
 com\controller\admin\RoleController.class
 com\entity\Teacher.class
 com\utils\ExcelUtils.class
+com\vo\HireVo.class
 com\service\RoleService.class
 com\controller\admin\StuController.class
 com\controller\admin\MenuController.class
@@ -44,6 +47,7 @@ com\dao\TeacherMapper.class
 com\entity\Menu.class
 com\service\impl\RoleServiceImpl.class
 com\service\StuMasterService.class
+com\service\impl\HireServiceImpl.class
 com\controller\admin\StuHomeController.class
 com\entity\Student.class
 com\entity\StuEmp.class
@@ -59,5 +63,7 @@ com\utils\TreeUtil.class
 com\vo\StuVo.class
 com\dao\StuMasterMapper.class
 com\service\impl\StuHomeServiceImpl.class
+com\dao\HireMapper.class
 com\entity\StuMaster.class
+com\entity\Hire.class
 com\controller\admin\TeacherController.class
