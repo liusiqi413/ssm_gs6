@@ -9,5 +9,7 @@
         </if>
     </where>
 </select>
-
+<insert id="addHire">
+INSERT INTO hire_emp(companyName,hireType,request,numbers,salary,place,photo,descs,tel,times) VALUES (#{companyName},#{hireType},#{request},#{numbers},#{salary},#{place},#{photo},#{descs},#{tel},#{times})
+</insert>
 </mapper>

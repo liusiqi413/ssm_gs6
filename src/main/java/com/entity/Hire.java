@@ -9,16 +9,32 @@ public class Hire {
     private Integer id;
     private String companyName;
     private String hireType;
-    private String hireRequest;
-    private String number;
+    private String request;
+    private String numbers;
     private String salary;
     private String place;
     private String photo;
-    private String desc;
+    private String descs;
     private String tel;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private Date time;
+    private Date times;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
     public String getHireType() {
         return hireType;
@@ -28,20 +44,20 @@ public class Hire {
         this.hireType = hireType;
     }
 
-    public String getHireRequest() {
-        return hireRequest;
+    public String getRequest() {
+        return request;
     }
 
-    public void setHireRequest(String hireRequest) {
-        this.hireRequest = hireRequest;
+    public void setRequest(String request) {
+        this.request = request;
     }
 
-    public String getNumber() {
-        return number;
+    public String getNumbers() {
+        return numbers;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setNumbers(String numbers) {
+        this.numbers = numbers;
     }
 
     public String getSalary() {
@@ -60,30 +76,6 @@ public class Hire {
         this.place = place;
     }
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getPhoto() {
         return photo;
     }
@@ -92,19 +84,27 @@ public class Hire {
         this.photo = photo;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescs() {
+        return descs;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescs(String descs) {
+        this.descs = descs;
     }
 
-    public Date getTime() {
-        return time;
+    public String getTel() {
+        return tel;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public Date getTimes() {
+        return times;
+    }
+
+    public void setTimes(Date times) {
+        this.times = times;
     }
 }

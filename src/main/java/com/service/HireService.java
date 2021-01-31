@@ -10,4 +10,8 @@ public interface HireService {
 查询招聘信息列表
  */
     List<Hire> findHireList(HireVo hirevo);
+    /*
+    添加招聘信息
+     */
+int addHire(Hire hire);
 }
