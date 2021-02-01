@@ -14,4 +14,12 @@ List<Hire> findHireList(HireVo hirevo);
 添加招聘信息
  */
 int addHire(Hire hire);
+    /*
+    修改招聘信息
+     */
+    int updateHire(Hire hire);
+    /**
+     * 删除招聘信息
+     */
+    int deleteById(int id);
 }

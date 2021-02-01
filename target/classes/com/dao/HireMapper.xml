@@ -12,4 +12,43 @@
 <insert id="addHire">
 INSERT INTO hire_emp(companyName,hireType,request,numbers,salary,place,photo,descs,tel,times) VALUES (#{companyName},#{hireType},#{request},#{numbers},#{salary},#{place},#{photo},#{descs},#{tel},#{times})
 </insert>
+    <update id="updateHire">
+        update hire_emp
+        <set>
+            <if test="companyName!=null and companyName!=''">
+                companyName=#{companyName},
+            </if>
+            <if test="hireType!=null and hireType!=''">
+                hireType=#{hireType},
+            </if>
+            <if test="request!=null and request!=''">
+                request=#{request},
+            </if>
+            <if test="numbers!=null and numbers!=''">
+                numbers=#{numbers},
+            </if>
+            <if test="salary!=null and salary!=''">
+                salary=#{salary},
+            </if>
+            <if test="place!=null and place!=''">
+                place=#{place},
+            </if>
+            <if test="photo!=null and photo!=''">
+                photo=#{photo},
+            </if>
+            <if test="descs!=null and descs!=''">
+                descs=#{descs},
+            </if>
+            <if test="tel!=null and tel!=''">
+                tel=#{tel},
+            </if>
+            <if test="times!=null and times!=''">
+                times=#{times}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteById">
+        delete from hire_emp where id=#{id}
+    </delete>
 </mapper>

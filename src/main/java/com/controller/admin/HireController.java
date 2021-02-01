@@ -98,4 +98,34 @@ public class HireController {
         }
         return JSON.toJSONString(map);
     }
+    /*
+ 添加招聘信息
+  */
+    @RequestMapping("/updateHire")
+    public String updateHire(Hire hire){
+        Map<String,Object> map=new HashMap<String, Object>();
+        if(hireService.updateHire(hire)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"修改成功");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"修改失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /*
+添加招聘信息
+ */
+    @RequestMapping("/deleteHire")
+    public String deleteHire(Integer id){
+        Map<String,Object> map=new HashMap<String, Object>();
+        if(hireService.deleteById(id)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"删除成功");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"删除失败");
+        }
+        return JSON.toJSONString(map);
+    }
 }

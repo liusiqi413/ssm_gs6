@@ -27,4 +27,14 @@ private HireMapper hireMapper;
         hire.setTimes(new Date());
         return hireMapper.addHire(hire);
     }
+
+    @Override
+    public int updateHire(Hire hire) {
+        return hireMapper.updateHire(hire);
+    }
+
+    @Override
+    public int deleteById(int id) {
+        return hireMapper.deleteById(id);
+    }
 }

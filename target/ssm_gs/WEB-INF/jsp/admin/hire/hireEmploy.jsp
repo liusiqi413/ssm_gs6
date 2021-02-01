@@ -112,7 +112,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">详情</label>
                                 <div class="layui-input-block">
-                                    <textarea class="layui-textarea" name="descs" id="desc"></textarea>
+                                    <textarea name="descs" id="descs" style="display: none;"></textarea>
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -147,13 +147,14 @@
 </div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['form', 'table', 'laydate', 'jquery', 'layer','upload'], function () {
+    layui.use(['form', 'table', 'laydate', 'jquery', 'layer','upload','layedit'], function () {
         var $ = layui.jquery,
             form = layui.form,
             laydate = layui.laydate,
             upload = layui.upload,
             layer = layui.layer,
-            table = layui.table;
+            table = layui.table,
+            layedit=layui.layedit;
 
         //渲染表格组件
         var tableIns = table.render({
@@ -197,7 +198,22 @@
             });
             return false;
         });
-
+//渲染文件上传区域
+        upload.render({
+            elem:".thumbImg",//绑定元素
+            url: '/admin/hire/uploadFile',//文件上传地址
+            acceptMime: 'image/*',//规定打开文件选择框时，筛选出的文件类型
+            field: 'file',//文件上传的字段值，等同于input标签的name属性值，该值必须与控制器中的方法参数名一致
+            method: "post",//提交方式
+            //文件上传成功后的回调函数
+            done: function (res, index, upload) {
+                //设置图片回显路径
+                $(".thumbImg").attr("src",res.data.src);
+                $('.thumbBox').css("background", "#fff");
+                //给图片隐藏域赋值
+                $("#photo").val(res.imagePath);
+            }
+        });
         //监听头部工具栏事件
         table.on("toolbar(currentTableFilter)",function (obj) {
             switch (obj.event) {
@@ -223,7 +239,7 @@
 
         var url;//提交地址
         var mainIndex;//打开窗口的索引
-
+        var detailIndex;//富文本编辑器的索引
         /**
          * 打开添加窗口
          */
@@ -233,6 +249,7 @@
                 title: "添加招聘信息",//窗口标题
                 area: ["800px", "500px"],//窗口宽高
                 content: $("#addOrUpdateWindow"),//引用的内容窗口
+                maxmin:true,//窗口在最大化
                 success: function () {
                     //清空表单数据
                     $("#dataFrm")[0].reset();
@@ -242,6 +259,15 @@
                     $(".thumbImg").attr("src","/company/show/images/defaultimg.jpg");
                     //重置图片隐藏域的值
                     $("#photo").val("images/defaultimg.jpg");
+                }
+            });
+            //设置窗口最大化
+            layer.full(mainIndex);
+            //初始化文本编辑器
+            detailIndex=layedit.build("descs",{
+                uploadImage:{
+                    url:"/admin/hire/uploadFile",//文件上传地址
+                    type:"post"//提交方式
                 }
             });
         }
@@ -254,6 +280,7 @@
                 title: "修改招聘信息",//窗口标题
                 area: ["800px", "500px"],//窗口宽高
                 content: $("#addOrUpdateWindow"),//引用的内容窗口
+                maxmin:true,
                 success: function () {
                     //表单数据回显
                     form.val("dataFrm",data);
@@ -265,31 +292,23 @@
                     $("#photo").val(data.photo);
                 }
             });
+            //设置窗口打开时最大化显示
+            layer.full(mainIndex);
+            //初始化富文本编辑器
+            detailIndex=layedit.build("descs",{
+                uploadImage: {
+                    url:"/admin/hire/uploadFile", //文件上传地址
+                    type:"post"//提交方式
+                }
+            });
         }
-
-        //渲染文件上传区域
-        upload.render({
-            elem:".thumbImg",//绑定元素
-            url: '/admin/hire/uploadFile',//文件上传地址
-            acceptMime: 'image/*',//规定打开文件选择框时，筛选出的文件类型
-            field: 'file',//文件上传的字段值，等同于input标签的name属性值，该值必须与控制器中的方法参数名一致
-            method: "post",//提交方式
-            //文件上传成功后的回调函数
-            done: function (res, index, upload) {
-                //设置图片回显路径
-                $(".thumbImg").attr("src",res.data.src);
-                $('.thumbBox').css("background", "#fff");
-                //给图片隐藏域赋值
-                $("#photo").val(res.imagePath);
-            }
-        });
-
-
-
 
         //监听表单提交事件
         form.on("submit(doSubmit)",function (data) {
-            $.post(url,data.field,function(result){
+            //将富文本编辑器的内容同步到textarea文本域中
+            layedit.sync(detailIndex);
+            //$("#dataFrm").serialize()一次性获取表单数据，要求表单标签必须有name属性值
+            $.post(url,$("#dataFrm").serialize(),function(result){
                 if(result.success){
                     //刷新数据表格
                     tableIns.reload();
@@ -302,7 +321,24 @@
             //禁止页面刷新
             return false;
         });
-
+        //删除该学生
+        function deleteById(data) {
+            //提示用户是否删除该学生
+            layer.confirm("确定要删除[<font color='red'>"+data.companyName+"</font>]吗？",{icon:3,title:"提示"},function(index){
+                //发送ajax请求
+                $.post("/admin/hire/deleteHire",{"id":data.id},function (result) {
+                    if (result.success){
+                        layer.alert(result.message,{icon:1});
+                        //刷新表格数据
+                        tableIns.reload();
+                    }else{
+                        layer.alert(result.message,{icon:2});
+                    }
+                },"json");
+                //关闭提示框
+                layer.close(index);
+            });
+        }
        
     });
 </script>
