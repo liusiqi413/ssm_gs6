@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/global(1).css" charset="utf-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/store.css" charset="utf-8">
     <link rel="icon" href="${pageContext.request.contextPath}/static/front/images/favicon.ico">
-    <title>首页-酒店管理系统</title>
+    <title>邢台学院毕业生就业首页</title>
 <body>
 <!-- 顶部start -->
 <div class="layui-header header header-store" style="background-color: #393D49;">
@@ -25,15 +25,8 @@
                 <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">首页</a>
             </li>
             <li data-id="room" class="layui-nav-item layui-hide-xs">
-                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">房间</a>
+                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">信息填写</a>
             </li>
-            <li data-id="login" class="layui-nav-item layui-hide-xs ">
-                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">登入</a>
-            </li>
-            <li data-id="register" class="layui-nav-item layui-hide-xs ">
-                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">注册</a>
-            </li>
-            <span class="layui-nav-bar" style="left: 560px; top: 55px; width: 0px; opacity: 0;"></span>
         </ul>
     </div>
 </div>
@@ -41,80 +34,38 @@
 
 <!-- 中间区域开始 -->
 <div class="shop-nav shop-index">
-    <!--搜索 start-->
-    <div id="LAY-topbar" style="height: auto;">
-        <form class="layui-form layuimini-form">
-            <div class="input-search">
-                <div id="searchRoom">
-                    <input type="text" placeholder="搜索你需要的房间" name="keywords" id="searchKeywords"
-                           autocomplete="off" value="">
-                    <button class="layui-btn layui-btn-shop" lay-submit="" lay-filter="searchHotelRoom" style="background-color: #009688">
-                        <i class="layui-icon layui-icon-search"></i>
-                    </button>
-                </div>
-                <div class="layui-container layui-hide-xs"><a href="#" class="topbar-logo">
-                    <img src="${pageContext.request.contextPath}/static/front/images/logo-1.png" alt="layui"> </a></div>
-            </div>
-        </form>
-    </div>
-    <!--搜索 end-->
     <div class="shop-banner">
-        <!-- 左侧导航开始 -->
-        <div class="layui-container layui-hide-xs">
-            <div class="product-list">
-                <dl id="getIndexRoomType">
-                    <dt style="background-color: #009688"><a href="lists.html" target="_blank">房间分类</a></dt>
-                    <dd data-id="1">
-                        <a class="fly-case-active" href="JavaScript:void(0);" data-type="toRoomTypeList">单人间</a>
-                    </dd>
-                    <dd data-id="1">
-                        <a class="fly-case-active" href="JavaScript:void(0);" data-type="toRoomTypeList">单人间</a>
-                    </dd>
-                    <dd data-id="1">
-                        <a class="fly-case-active" href="JavaScript:void(0);" data-type="toRoomTypeList">单人间</a>
-                    </dd>
-                    <dd data-id="1">
-                        <a class="fly-case-active" href="JavaScript:void(0);" data-type="toRoomTypeList">单人间</a>
-                    </dd>
-                    <dd data-id="1">
-                        <a class="fly-case-active" href="JavaScript:void(0);" data-type="toRoomTypeList">单人间</a>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <!-- 左侧导航结束 -->
-
         <!-- 轮播图开始 -->
         <div class="layui-carousel" lay-filter="LAY-store-banner" id="LAY-store-banner" lay-anim lay-indicator="inside" >
             <div carousel-item>
                 <div class="layui-this">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/1.jpg" alt="酒店系统"></a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt7.png" alt="邢台学院"></a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/2.jpg" alt="酒店系统"></a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt8.png" alt="邢台学院"></a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/3.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt9.png" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/4.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt1.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/5.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt3.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/6.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt4.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
             </div>
@@ -393,7 +344,7 @@
 
 <!-- 底部 -->
 <div class="fly-footer">
-    <p><a href="#">酒店系统</a> 2020 © <a href="#">test.cn</a></p>
+    <p><a href="#">邢台学院</a> 2020 © <a href="#">test.cn</a></p>
 
 </div>
 

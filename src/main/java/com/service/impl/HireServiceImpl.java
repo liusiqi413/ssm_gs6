@@ -37,4 +37,9 @@ private HireMapper hireMapper;
     public int deleteById(int id) {
         return hireMapper.deleteById(id);
     }
+
+    @Override
+    public List<Hire> findCompanyListById(Integer id) {
+        return hireMapper.findCompanyListById(id);
+    }
 }

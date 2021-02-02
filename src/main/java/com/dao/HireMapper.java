@@ -22,4 +22,8 @@ int addHire(Hire hire);
      * 删除招聘信息
      */
     int deleteById(int id);
+    /*
+    查询公司名称列表
+     */
+    List<Hire>findCompanyListById();
 }
