@@ -51,4 +51,10 @@ INSERT INTO hire_emp(companyName,hireType,request,numbers,salary,place,photo,des
     <delete id="deleteById">
         delete from hire_emp where id=#{id}
     </delete>
+    <select id="findCompanyListById" resultType="com.entity.Hire">
+        select * from hire_emp
+    </select>
+    <select id="findById" resultType="com.entity.Hire">
+        select * from hire_emp where id=#{id}
+    </select>
 </mapper>

@@ -52,6 +52,9 @@ INSERT INTO hire_emp(companyName,hireType,request,numbers,salary,place,photo,des
         delete from hire_emp where id=#{id}
     </delete>
     <select id="findCompanyListById" resultType="com.entity.Hire">
-        select * from hire_emp where id=#{id} limit 9
+        select * from hire_emp
+    </select>
+    <select id="findById" resultType="com.entity.Hire">
+        select * from hire_emp where id=#{id}
     </select>
 </mapper>

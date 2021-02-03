@@ -30,7 +30,7 @@
 
 /* æˆå‘­å§ª */
 .fly-html-store .layui-card-header{height: 50px; line-height: 50px;}
-.fly-html-store .layui-card-body{padding: 5px;}
+.fly-html-store .layui-card-body{padding: 10px;}
 .store-color-bar{display: inline-block; width: 67px; height: 20px;}
 
 /*login*/
@@ -166,7 +166,7 @@
 .store-detail-price span{ font-size: 26px; color: #EF4E33;}
 .store-detail-price cite{font-style: normal;}
 .store-detail-active{padding: 29px 0 20px;}
-.shopdata-content .layui-card-body{padding: 30px;}
+.shopdata-content .layui-card-body{padding: 10px;}
 .shopdata-content .detail-body img{border: 1px solid #f6f6f6; cursor: default;}
 
 

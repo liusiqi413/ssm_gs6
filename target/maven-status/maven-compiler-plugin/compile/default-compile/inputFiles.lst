@@ -10,6 +10,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuEmpMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuMasterService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMasterMapper.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\CompanyController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\RoleVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuUser.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserExcelController.java
@@ -29,6 +30,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\TeacherServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuEmpVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuMasterVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\IndexController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuHomeServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\MenuService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\SystemConstant.java

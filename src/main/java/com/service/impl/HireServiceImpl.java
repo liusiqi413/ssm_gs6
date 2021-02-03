@@ -39,7 +39,13 @@ private HireMapper hireMapper;
     }
 
     @Override
-    public List<Hire> findCompanyListById(Integer id) {
-        return hireMapper.findCompanyListById(id);
+    public List<Hire> findCompanyListById() {
+        return hireMapper.findCompanyListById();
     }
+
+    @Override
+    public Hire findById(Integer id) {
+        return hireMapper.findById(id);
+    }
+
 }

@@ -116,7 +116,7 @@
             $.post("/user/login",data.field,function(result){
                 if(result.success){
                     //跳转到首页
-                    location.href="/index.html";
+                    location.href="/home.html";
                 }else{
                     layer.alert(result.message,{icon:5});
                 }

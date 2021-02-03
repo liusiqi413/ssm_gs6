@@ -320,7 +320,7 @@ body .layui-edit-face  .layui-layer-content{padding:0; background-color:#fff; co
 .detail-hits .layui-btn{border-radius: 0;}
 .detail-hits .layui-btn+.layui-btn{margin-left: 5px;}
 .detail-hits .jie-admin{margin-right: 1px;}
-.detail-body{margin: 20px 0 0; min-height: 306px; line-height: 26px; font-size: 16px; color: #333; word-wrap: break-word;}
+.detail-body{margin: 20px 0 0; min-height: 306px; line-height: 25px; font-size: 16px; color: #333; word-wrap: break-word;}
 .detail-body p{margin-bottom:15px;}
 .detail-body img{max-width: 100%; cursor: pointer;}
 /*
@@ -333,7 +333,7 @@ body .layui-edit-face  .layui-layer-content{padding:0; background-color:#fff; co
 .detail-body .layui-btn{margin: 0 10px 10px 0;}
 .detail-body .layui-btn a{color: #fff;}
 .detail-body ul>li{margin-top: 0;}
-.detail-body .layui-elem-quote{margin: 10px 0; font-size: 14px; line-height: 26px;}
+.detail-body .layui-elem-quote{margin: 5px 0; font-size: 14px; line-height: 20px;}
 
 /* é™æˆç¬˜ */
 .layui-form-item.layui-col-space15{margin-bottom: 7.5px;}
@@ -514,12 +514,12 @@ body .fly-user-main{position: relative; min-height: 600px;}
 .fly-extend-doc .layui-card-header{height: 45px; line-height: 45px; padding: 0 20px;}
 .fly-extend-doc .layui-card-header .layui-inline.layui-this{padding: 0 15px; border-bottom: 2px solid #5FB878;}
 .layui-extend-doc-edit{position: absolute; right: 20px; bottom: -50px;}
-.fly-extend-doc .layui-card-body{margin: 0; padding: 20px; font-size: 14px; color: #666;}
+.fly-extend-doc .layui-card-body{margin: 0; padding: 10px; font-size: 14px; color: #666;}
 
 .fly-extend-card-release{margin-top: 20px;}
 .fly-extend-card-release .layui-card-header{padding: 20px 0 0; border-bottom: none; text-align: center;}
 .fly-extend-card-release .layui-card-header .layui-elem-field{width: 200px; margin: 0;}
-.fly-extend-card-release .layui-card-body{padding: 30px;}
+.fly-extend-card-release .layui-card-body{padding: 20px;}
 
 .fly-extend-update-title{padding-top: 5px; font-weight: 300;}
 .fly-extend-update-title h2{font-size: 20px;}

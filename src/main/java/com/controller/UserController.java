@@ -32,7 +32,7 @@ public class UserController {
         if(loginUser!=null){
             map.put(SystemConstant.SUCCESS,true);//成功
             loginUser.setPassWord(null);
-            session.setAttribute(SystemConstant.LOGINUSER,loginUser);
+            session.setAttribute(SystemConstant.FRONT_LOGIN_USER,loginUser);
         }else{
             map.put(SystemConstant.SUCCESS,false);//失败
             map.put(SystemConstant.MESSAGE,"账号密码错误，登录失败");

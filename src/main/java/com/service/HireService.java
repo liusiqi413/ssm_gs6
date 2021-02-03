@@ -26,4 +26,8 @@ int addHire(Hire hire);
     查询公司名称列表
      */
     List<Hire>findCompanyListById();
+    /*
+查询招聘详情
+ */
+    Hire findById(Integer id);
 }

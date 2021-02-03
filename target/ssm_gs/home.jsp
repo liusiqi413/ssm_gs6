@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" class="fly-html-layui fly-html-store">
@@ -40,32 +41,32 @@
             <div carousel-item>
                 <div class="layui-this">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt7.png" alt="酒店系统"></a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt7.png" alt="邢台学院"></a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt8.png" alt="酒店系统"></a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt8.png" alt="邢台学院"></a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt9.png" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt9.png" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt1.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt1.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt3.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt3.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
                 <div class="">
                     <div class="layui-container"><a href="javascript:;" target="_blank">
-                        <img src="${pageContext.request.contextPath}/static/front/images/xt4.jpg" alt="酒店系统"> </a>
+                        <img src="${pageContext.request.contextPath}/static/front/images/xt4.jpg" alt="邢台学院"> </a>
                     </div>
                 </div>
             </div>
@@ -90,251 +91,20 @@
         <div class="shop-temp" id="getIndexFloor">
             <div class="temp-hot">
                 <div class="layui-container">
-                    <p class="temp-title-cn"><span></span>酒店1楼<span></span></p>
+                    <p class="temp-title-cn"><span></span>招聘公司<span></span></p>
                     <div class="layui-row layui-col-space20">
-                        <div data-id="1" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.100 </span></p>
+                        <c:forEach var="hire" items="${hireList}">
+                        <div data-id="${hire.id}" class="layui-col-xs6 layui-col-md3">
+                            <a class="template store-list-box fly-case-active" href="/company/${hire.id}.html" data-type="toRoomInfo">
+                                <img src="/company/show/${hire.photo}" class="store-list-cover">
+                                <h2 class="layui-elip">${hire.companyName}</h2>
                             </a>
                         </div>
-                        <div data-id="7" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.101 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="13" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.102 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="19" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.103 </span></p>
-                            </a>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
 
-            <div class="temp-normal" style="background-color: #f2f2f2">
-                <div class="layui-container">
-                    <p class="temp-title-cn"> <span></span> <a href="">酒店2楼</a> <span></span> </p>
-                    <div class="layui-row layui-col-space20 shoplist">
-                        <div data-id="2" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.200</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="8" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.201</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="14" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.202</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="20" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.203</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="temp-hot">
-                <div class="layui-container">
-                    <p class="temp-title-cn"><span></span>酒店3楼<span></span></p>
-                    <div class="layui-row layui-col-space20">
-                        <div data-id="3" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.300 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="9" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.301 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="15" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.302 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="21" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.303 </span></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="temp-normal" style="background-color: #f2f2f2">
-                <div class="layui-container">
-                    <p class="temp-title-cn"> <span></span> <a href="">酒店4楼</a> <span></span> </p>
-                    <div class="layui-row layui-col-space20 shoplist">
-                        <div data-id="4" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.400</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="10" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.401</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="16" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.402</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="22" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.403</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="temp-hot">
-                <div class="layui-container">
-                    <p class="temp-title-cn"><span></span>酒店5楼<span></span></p>
-                    <div class="layui-row layui-col-space20">
-                        <div data-id="5" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.500 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="11" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.501 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="17" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.502 </span></p>
-                            </a>
-                        </div>
-                        <div data-id="23" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <p class="price"> <span title="金额"> ￥1 </span> <span title="房号" style="color:  #fff;background: #0e88cc;padding: 3px;text-align: center;border: 1px solid #4cffb3;font-size: 13px;"> NO.503 </span></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="temp-normal" style="background-color: #f2f2f2">
-                <div class="layui-container">
-                    <p class="temp-title-cn"> <span></span> <a href="">酒店6楼</a> <span></span> </p>
-                    <div class="layui-row layui-col-space20 shoplist">
-                        <div data-id="6" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/950f5d78-d2a2-4e60-843a-60cbd0bd2651.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">经济舒适单人间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.600</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="12" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/47e28094-4ebf-40b3-9ea3-55f77c71c865.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">商务双床房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.601</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="18" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/acfae30b-e1d6-4d94-b7d4-fccba740fe62.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">普通标准间</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.602</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div data-id="24" class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg3">
-                            <a class="template store-list-box fly-case-active" href="JavaScript:void(0);" data-type="toRoomInfo">
-                                <img src="http://qiniu.goodym.cn/7e45a065-8ffa-4044-9ff4-4eeba5d4c6a4.jpg" class="store-list-cover">
-                                <h2 class="layui-elip">豪华总统套房</h2>
-                                <div> <label class="layui-badge-rim store-list-pay"> ￥1 </label>
-                                    <div class="store-list-colorbar" title=""> <span class="store-color-bar" style="color:  #fff;background: #cc9812;padding: 3px;text-align: center;">NO.603</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- 酒店楼层结束 -->
 

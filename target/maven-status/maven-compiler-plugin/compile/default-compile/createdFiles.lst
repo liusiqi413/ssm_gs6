@@ -21,6 +21,7 @@ com\service\impl\StuServiceImpl.class
 com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class
 com\dao\StuHomeMapper.class
+com\controller\IndexController.class
 com\dao\StuUserMapper.class
 com\service\impl\UserServiceImpl.class
 com\utils\MenuNode.class
@@ -36,6 +37,7 @@ com\controller\admin\StuController.class
 com\controller\admin\MenuController.class
 com\controller\admin\StuEmployController.class
 com\service\StuUserService.class
+com\controller\CompanyController.class
 com\vo\StuHomeVo.class
 com\dao\MenuMapper.class
 com\utils\SystemConstant.class
