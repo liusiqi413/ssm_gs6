@@ -73,10 +73,10 @@
 
 
 .shop-nav .shop-banner{ margin-top: 5px; background: white; text-align: center;}
-.shop-nav .shop-banner .layui-carousel{height: 500px; background: white;}
+.shop-nav .shop-banner .layui-carousel{height: 450px; background: white;}
 .shop-nav .shop-banner .layui-carousel img{width: 100%;height: 100%;}
 
-.shop-nav .shop-banner .layui-carousel .layui-container{width: 1500px;height: 500px;}
+.shop-nav .shop-banner .layui-carousel .layui-container{width: 1500px;height: 450px;}
 .shop-banner .layui-carousel>*[carousel-item] > *{background: none;}
 .shop-banner .layui-carousel>*[carousel-item]:before{color: #fff; color: rgba(255,255,255,.6);}
 
@@ -146,7 +146,7 @@
 .store-attrs li img{margin-left: 10px;}
 .store-attrs li img{width: 20px; position: relative; top: -3px;}
 .store-attrs li:last-child span{display: inline-block; width: 30px; height: 8px; background-color: #009688;}
-.store-attrs .summary{width: 100%; height: 249px; background: #f5f5f5; padding-top: 5px; }
+.store-attrs .summary{width: 100%; height: 200px;padding-top: 5px; }
 .store-attrs .summary p{line-height: 40px; padding-left: 34px; color: #888888;}
 .store-attrs .summary p span{padding-right: 40px;}
 .store-attrs .summary .activity .price{font-size: 30px; color: #ee0000;}

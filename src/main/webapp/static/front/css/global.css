@@ -514,7 +514,7 @@ body .fly-user-main{position: relative; min-height: 600px;}
 .fly-extend-doc .layui-card-header{height: 45px; line-height: 45px; padding: 0 20px;}
 .fly-extend-doc .layui-card-header .layui-inline.layui-this{padding: 0 15px; border-bottom: 2px solid #5FB878;}
 .layui-extend-doc-edit{position: absolute; right: 20px; bottom: -50px;}
-.fly-extend-doc .layui-card-body{margin: 0; padding: 10px; font-size: 14px; color: #666;}
+.fly-extend-doc .layui-card-body{margin: 0; padding: 10px; font-size: 14px;}
 
 .fly-extend-card-release{margin-top: 20px;}
 .fly-extend-card-release .layui-card-header{padding: 20px 0 0; border-bottom: none; text-align: center;}

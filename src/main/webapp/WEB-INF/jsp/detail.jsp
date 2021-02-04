@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/global.css" charset="utf-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/global(1).css" charset="utf-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/store.css" charset="utf-8">
-    <link rel="icon" href="${pageContext.request.contextPath}/static/front/images/favicon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/static/layui/images/tim.jpeg">
     <title>首页</title>
 <body>
 <!-- 顶部start -->
@@ -39,7 +39,7 @@
 </div>
 <!-- 中间区域结束 -->
 
-<!-- 房间详情start -->
+<!-- 详情start -->
 <div class="layui-container shopdata">
     <div class="layui-card shopdata-intro">
         <div class="layui-card-header">
@@ -47,9 +47,6 @@
 						 <a><cite>招聘详情</cite></a> </span>
         </div>
         <div class="layui-card-body layui-row">
-            <div class="layui-col-md6">
-                <div class="intro-img photos"> <img id="coverImg" src="/company/show/${hire.photo}" alt="招聘公司封面" layer-index="0"> </div>
-            </div>
             <div class="layui-col-md6">
                 <div class="intro-txt">
                     <h1 class="title" id="roomName">${hire.companyName}</h1>
@@ -78,7 +75,7 @@
         </div>
     </div>
 </div>
-<!-- 房间详情end -->
+<!-- 详情end -->
 
 <!-- 底部 -->
 <div class="fly-footer">

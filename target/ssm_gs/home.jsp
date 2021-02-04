@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/global.css" charset="utf-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/global(1).css" charset="utf-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/store.css" charset="utf-8">
-    <link rel="icon" href="${pageContext.request.contextPath}/static/front/images/favicon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/static/layui/images/tim.jpeg">
     <title>邢台学院毕业生就业首页</title>
 <body>
 <!-- 顶部start -->
@@ -28,6 +28,8 @@
             <li data-id="room" class="layui-nav-item layui-hide-xs">
                 <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">信息填写</a>
             </li>
+            <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
+                                                                         href="JavaScript:void(0);">密码修改</a></li>
         </ul>
     </div>
 </div>
@@ -96,10 +98,20 @@
                         <c:forEach var="hire" items="${hireList}">
                         <div data-id="${hire.id}" class="layui-col-xs6 layui-col-md3">
                             <a class="template store-list-box fly-case-active" href="/company/${hire.id}.html" data-type="toRoomInfo">
-                                <img src="/company/show/${hire.photo}" class="store-list-cover">
+<%--                                <img src="/company/show/${hire.photo}" class="store-list-cover">--%>
                                 <h2 class="layui-elip">${hire.companyName}</h2>
                             </a>
                         </div>
+<%--                            <div class="mn z view view2 infoB" id="mn">--%>
+<%--                            <div class="infoBox campus-index-front-list">--%>
+<%--                                <ul class="infoTit">--%>
+<%--                                    <li class="span4" style="width:740px">招聘公告名称</li>--%>
+<%--                                    <li class="span"7 style="width:150px">发布时间</li>--%>
+<%--                                </ul>--%>
+<%--                                <ul class="infoList">--%>
+<%--                                    <li class="span4"style="width:740px"><a href="/company/${hire.id}.html" target="_blank">${hire.companyName}</a></li>--%>
+<%--                                    <li class="span7" style="width:150px">${hire.times}</li>--%>
+<%--                                </ul>--%>
                         </c:forEach>
                     </div>
                 </div>
