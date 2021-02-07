@@ -30,4 +30,6 @@ int addHire(Hire hire);
 查询招聘详情
  */
     Hire findById(Integer id);
+    //查询所有用户
+    List<Hire> getAllUser();
 }

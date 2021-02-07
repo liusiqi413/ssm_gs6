@@ -13,7 +13,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class HireController {
     @RequestMapping("/list")
     public DataGridViewResult list(HireVo hireVo){
         //设置分页信息
-        PageHelper .startPage(hireVo.getPage(),hireVo.getLimit());
+        PageHelper.startPage(hireVo.getPage(),hireVo.getLimit());
         //调用查询的方法
         List<Hire> hireList=hireService.findHireList(hireVo);
         //创建分页对象

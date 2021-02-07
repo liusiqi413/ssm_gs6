@@ -24,7 +24,7 @@ pre{position: relative; margin: 10px 0; padding: 15px; line-height: 20px; border
 pre{border: none; border-left: 5px solid #ddd;}
 
 
-.layui-container{padding: 0;}
+.layui-container{padding: 5px;}
 .fly-main{width: 1079px; min-height: 600px; margin: 0 auto 15px;}
 .layui-badge{height: 20px; line-height: 20px; border-radius: 2px;}
 
@@ -333,7 +333,7 @@ body .layui-edit-face  .layui-layer-content{padding:0; background-color:#fff; co
 .detail-body .layui-btn{margin: 0 10px 10px 0;}
 .detail-body .layui-btn a{color: #fff;}
 .detail-body ul>li{margin-top: 0;}
-.detail-body .layui-elem-quote{margin: 5px 0; font-size: 14px; line-height: 20px;}
+.detail-body .layui-elem-quote{margin:0 0 15px 0;font-size: 14px;color:red;}
 
 /* é™æˆç¬˜ */
 .layui-form-item.layui-col-space15{margin-bottom: 7.5px;}
@@ -501,7 +501,7 @@ body .fly-user-main{position: relative; min-height: 600px;}
 .fly-extend-list-desc{height: 48px; line-height: 24px; overflow: hidden; color: #999; word-wrap: break-word;}
 
 .fly-extend-detail{position: relative; margin-bottom: 20px; padding: 35px 0 50px; background-color: #fff;}
-.fly-extend-detail .layui-container{padding: 0 15px;}
+.fly-extend-detail .layui-container{padding: 5px 15px;}
 .fly-extend-doc-nav{padding: 15px 0;}
 .fly-extend-doc-nav li{position: relative; height: 45px; line-height: 45px; margin: 5px 0; padding: 0 15px; text-align: center;}
 .fly-extend-doc-nav li a{display: block;}
@@ -514,12 +514,12 @@ body .fly-user-main{position: relative; min-height: 600px;}
 .fly-extend-doc .layui-card-header{height: 45px; line-height: 45px; padding: 0 20px;}
 .fly-extend-doc .layui-card-header .layui-inline.layui-this{padding: 0 15px; border-bottom: 2px solid #5FB878;}
 .layui-extend-doc-edit{position: absolute; right: 20px; bottom: -50px;}
-.fly-extend-doc .layui-card-body{margin: 0; padding: 10px; font-size: 14px;}
+.fly-extend-doc .layui-card-body{margin: 0; padding: 0px; font-size: 14px;}
 
 .fly-extend-card-release{margin-top: 20px;}
 .fly-extend-card-release .layui-card-header{padding: 20px 0 0; border-bottom: none; text-align: center;}
 .fly-extend-card-release .layui-card-header .layui-elem-field{width: 200px; margin: 0;}
-.fly-extend-card-release .layui-card-body{padding: 20px;}
+.fly-extend-card-release .layui-card-body{padding: 0px;}
 
 .fly-extend-update-title{padding-top: 5px; font-weight: 300;}
 .fly-extend-update-title h2{font-size: 20px;}

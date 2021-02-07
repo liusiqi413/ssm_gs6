@@ -48,4 +48,8 @@ private HireMapper hireMapper;
         return hireMapper.findById(id);
     }
 
+    @Override
+    public List<Hire> getAllUser() {
+        return hireMapper.getAllUser();
+    }
 }

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en" class="fly-html-layui fly-html-store">
 <head>
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/store.css" charset="utf-8">
     <link rel="icon" href="${pageContext.request.contextPath}/static/layui/images/tim.jpeg">
     <title>首页</title>
+</head>
 <body>
 <!-- 顶部start -->
 <div class="layui-header header header-store" style="background-color: #393D49;">
@@ -34,46 +36,44 @@
 </div>
 <!-- 顶部end -->
 
-<!-- 中间区域开始 -->
-<div class="shop-nav shop-index">
-</div>
-<!-- 中间区域结束 -->
-
 <!-- 详情start -->
 <div class="layui-container shopdata">
-    <div class="layui-card shopdata-intro">
-        <div class="layui-card-header">
+    <div class="layui-card shopdata-content">
+        <div class="layui-card shopdata-intro">
+            <div class="layui-card-header">
 				<span class="layui-breadcrumb layui-hide-xs" style="visibility: visible;">
 						 <a><cite>招聘详情</cite></a> </span>
-        </div>
-        <div class="layui-card-body layui-row">
-            <div class="layui-col-md6">
-                <div class="intro-txt">
-                    <h1 class="title" id="roomName">${hire.companyName}</h1>
-                    <input type="hidden" id="id" name="id" value="1">
-                    <div class="store-attrs">
-                        <div class="summary">
-                            <p class="reference"><span>招聘岗位</span> <span id="roomNumber">${hire.hireType}</span></p>
-                            <p class="reference"><span>招聘要求</span> <span id="bedType">${hire.request}</span></p>
-                            <p class="reference"><span>招聘人数</span> <span id="broadband">${hire.numbers}</span></p>
-                            <p class="reference"><span>招聘薪资</span> ￥<span id="standardPrice">${hire.salary}</span></p>
-                            <p class="reference"><span>工作地点</span><span>${hire.place}</span></p>
+            </div>
+            <div class="layui-card-body layui-row">
+                <div class="layui-col-md6">
+                    <div class="intro-txt">
+                        <h1 class="title" id="roomName">${hire.companyName}</h1>
+                        <input type="hidden" id="id" name="id" value="1">
+                        <div class="store-attrs">
+                            <div class="summary">
+                                <p class="reference"><span>招聘岗位</span> <span id="roomNumber">${hire.hireType}</span></p>
+                                <p class="reference"><span>招聘要求</span> <span id="bedType">${hire.request}</span></p>
+                                <p class="reference"><span>招聘人数</span> <span id="broadband">${hire.numbers}</span></p>
+                                <p class="reference"><span>招聘薪资</span> ￥<span id="standardPrice">${hire.salary}</span></p>
+                                <p class="reference"><span>工作地点</span><span>${hire.place}</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="layui-col-md6">
+                    <div class="intro-img photos"> <img id="coverImg" src="/company/show/${hire.photo}" alt="招聘封面" layer-index="0"> </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="layui-card shopdata-content">
         <div class="layui-card-body detail-body layui-text">
             <div class="layui-elem-quote"> 温馨提示：抵制招聘诈骗，加强自我保护，以任何理由索取财物，均涉嫌违法，请提高警惕！</div>
             <div id="roomContent">
                 ${hire.descs}
             </div>
-            <p class="reference"><span>联系方式</span><span>${hire.tel}</span></p>
-            <p class="reference"><span>发布时间</span><span>${hire.times}</span></p>
+            <p class="reference"><strong><span>联系方式：</span><span>${hire.tel}</span></strong></p>
+            <p class="reference"><span>发布时间：</span><span><fmt:formatDate value="${hire.times}" pattern="yyyy-MM-dd  HH:mm:ss"/></span></p>
         </div>
     </div>
+</div>
 </div>
 <!-- 详情end -->
 

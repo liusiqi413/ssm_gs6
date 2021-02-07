@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en" class="fly-html-layui fly-html-store">
 <head>
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/front/css/store.css" charset="utf-8">
     <link rel="icon" href="${pageContext.request.contextPath}/static/layui/images/tim.jpeg">
     <title>邢台学院毕业生就业首页</title>
+</head>
 <body>
 <!-- 顶部start -->
 <div class="layui-header header header-store" style="background-color: #393D49;">
@@ -89,41 +91,28 @@
         </div>
         <!-- 轮播图结束 -->
 
+        <!-- 招聘公告开始 -->
         <!-- 酒店楼层开始 -->
         <div class="shop-temp" id="getIndexFloor">
-            <div class="temp-hot">
                 <div class="layui-container">
-                    <p class="temp-title-cn"><span></span>招聘公司<span></span></p>
-                    <div class="layui-row layui-col-space20">
+                    <p class="temp-title-cn"><span></span>招聘公告<span></span></p>
                         <c:forEach var="hire" items="${hireList}">
-                        <div data-id="${hire.id}" class="layui-col-xs6 layui-col-md3">
-                            <a class="template store-list-box fly-case-active" href="/company/${hire.id}.html" data-type="toRoomInfo">
+                            <div data-id="${hire.id}" >
+                                <a class="hire" href="/company/${hire.id}.html" data-type="toRoomInfo">
 <%--                                <img src="/company/show/${hire.photo}" class="store-list-cover">--%>
-                                <h2 class="layui-elip">${hire.companyName}</h2>
+                                <h2 class="board">${hire.boardCast}</h2>
+                                <h2 class="time"><fmt:formatDate value="${hire.times}" pattern="yyyy-MM-dd  HH:mm:ss"/></h2>
                             </a>
                         </div>
-<%--                            <div class="mn z view view2 infoB" id="mn">--%>
-<%--                            <div class="infoBox campus-index-front-list">--%>
-<%--                                <ul class="infoTit">--%>
-<%--                                    <li class="span4" style="width:740px">招聘公告名称</li>--%>
-<%--                                    <li class="span"7 style="width:150px">发布时间</li>--%>
-<%--                                </ul>--%>
-<%--                                <ul class="infoList">--%>
-<%--                                    <li class="span4"style="width:740px"><a href="/company/${hire.id}.html" target="_blank">${hire.companyName}</a></li>--%>
-<%--                                    <li class="span7" style="width:150px">${hire.times}</li>--%>
-<%--                                </ul>--%>
                         </c:forEach>
-                    </div>
-                </div>
+                    <a href="list"><h2 class="info">更多信息</h2></a>
             </div>
+            </div>
+            <!-- 招聘公告结束 -->
 
-        </div>
-        <!-- 酒店楼层结束 -->
 
     </div>
 </div>
-<!-- 中间区域结束 -->
-
 <!-- 底部 -->
 <div class="fly-footer">
     <p><a href="#">邢台学院</a> 2020 © <a href="#">test.cn</a></p>
@@ -134,11 +123,12 @@
 <!-- 脚本开始 -->
 <script src="${pageContext.request.contextPath}/static/front/layui/dist/layui.js"></script>
 <script>
-    layui.use(["form","element","carousel"], function () {
+    layui.use(["form","element","carousel",'laypage'], function () {
         var form = layui.form,
             layer = layui.layer,
             element = layui.element,
             carousel = layui.carousel,
+            laypage = layui.laypage;
             $ = layui.$;
 
         //渲染轮播图
@@ -155,6 +145,5 @@
     <li class="layui-icon layui-fixbar-top" lay-type="top" style=""></li>
 </ul>
 <div class="layui-layer-move"></div>
-
 </body>
 </html>

@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Hire {
     private Integer id;
+    private String boardCast;
     private String companyName;
     private String hireType;
     private String request;
@@ -17,8 +18,17 @@ public class Hire {
     private String descs;
     private String tel;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
     private Date times;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    public String getBoardCast() {
+        return boardCast;
+    }
+
+    public void setBoardCast(String boardCast) {
+        this.boardCast = boardCast;
+    }
 
     public Integer getId() {
         return id;
