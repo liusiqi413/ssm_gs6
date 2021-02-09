@@ -30,4 +30,8 @@ public interface StuMapper {
   查询修改学生数据是否重复
    */
     Student checkUpdateStuName(Student student);
+    /*
+    根据学生号查询学生
+     */
+    List<Student> findStuByStuno(String stuno);
 }

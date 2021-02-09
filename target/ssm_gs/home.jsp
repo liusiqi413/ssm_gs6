@@ -28,7 +28,7 @@
                 <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">首页</a>
             </li>
             <li data-id="room" class="layui-nav-item layui-hide-xs">
-                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">信息填写</a>
+                <a class="fly-case-active" data-type="toTopNav" href="info.html">信息填写</a>
             </li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
                                                                          href="JavaScript:void(0);">密码修改</a></li>
@@ -92,7 +92,6 @@
         <!-- 轮播图结束 -->
 
         <!-- 招聘公告开始 -->
-        <!-- 酒店楼层开始 -->
         <div class="shop-temp" id="getIndexFloor">
                 <div class="layui-container">
                     <p class="temp-title-cn"><span></span>招聘公告<span></span></p>

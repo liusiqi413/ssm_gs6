@@ -1,4 +1,5 @@
 com\dao\UserMapper.class
+com\controller\StuInfoController.class
 com\service\StuService.class
 com\service\impl\StuUserServiceImpl.class
 com\utils\DataGridViewResult.class

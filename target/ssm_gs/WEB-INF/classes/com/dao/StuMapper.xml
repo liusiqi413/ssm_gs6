@@ -68,4 +68,7 @@ WHERE id NOT IN
 (SELECT id FROM stu_info
 WHERE id=#{id}) and stuno=#{stuno}
     </select>
+    <select id="findStuByStuno" resultType="com.entity.Student">
+        select * from stu_info where stuno=#{stuno}
+    </select>
 </mapper>

@@ -23,7 +23,6 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping("/login")
-
     public String login(String loginName, String passWord, HttpSession session){
         Map<String,Object> map = new HashMap<String,Object>();
         //调用学生登录的方法
@@ -39,4 +38,5 @@ public class UserController {
         }
         return JSON.toJSONString(map);
     }
+
 }

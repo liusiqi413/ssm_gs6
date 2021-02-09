@@ -1,6 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" class="fly-html-layui fly-html-store">
 <head>
     <meta charset="utf-8">
     <title>layui</title>
@@ -24,11 +26,11 @@
         </a>
         <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
         <ul class="layui-nav" id="layui-nav-userinfo">
-            <li data-id="index" class="layui-nav-item layui-hide-xs layui-this">
-                <a class="fly-case-active" data-type="toTopNav" href="home.jsp">首页</a>
+            <li data-id="index" class="layui-nav-item layui-hide-xs">
+                <a class="fly-case-active" data-type="toTopNav" href="home.html">首页</a>
             </li>
-            <li data-id="room" class="layui-nav-item layui-hide-xs">
-                <a class="fly-case-active" data-type="toTopNav" href="info.jsp">信息填写</a>
+            <li data-id="room" class="layui-nav-item layui-hide-xs layui-this">
+                <a class="fly-case-active" data-type="toTopNav" href="info.html">信息填写</a>
             </li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
                                                                          href="JavaScript:void(0);">密码修改</a></li>
@@ -40,80 +42,90 @@
     <div class="shop-banner">
         <div class="shop-temp" id="getIndexFloor">
             <div class="layui-container">
-                <p class="temp-title-cn"><span></span>信息填写<span></span></p>
-                <%--隐藏域，保存当前登录用户的ID--%>
-                <input type="hidden" id="currentStuId" value="${sessionScope.currentUser.id}">
                 <!-- 示例-970 -->
                 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
 
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-                    <legend>初始赋值演示</legend>
+                    <legend>信息填写</legend>
                 </fieldset>
-
-                <form class="layui-form" action="" lay-filter="example">
+                <c:forEach var="student" items="${stuList}">
+                <div data-id="${student.id}" >
                     <div class="layui-form-item">
-                        <label class="layui-form-label">输入框</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="username" lay-verify="title" autocomplete="off" disabled="disabled" value="readonly" class="layui-input">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="stuno" id="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="stuname" value="${student.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="stuname" value="${student.gender}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">密码框</label>
-                        <div class="layui-input-block">
-                            <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学院</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="college" id="college" value="${student.college}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">专业</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="major" value="${student.major}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">班级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" value="${student.classes}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
                     </div>
-
                     <div class="layui-form-item">
-                        <label class="layui-form-label">选择框</label>
-                        <div class="layui-input-block">
-                            <select name="interest" lay-filter="aihao">
-                                <option value=""></option>
-                                <option value="0">写作</option>
-                                <option value="1">阅读</option>
-                                <option value="2">游戏</option>
-                                <option value="3">音乐</option>
-                                <option value="4">旅行</option>
-                            </select>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">入学日期</label>
+                            <div class="layui-input-block">
+                                <fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">毕业日期</label>
+                            <div class="layui-input-inline">
+                                <fmt:formatDate value="${student.gradu}" pattern="yyyy-MM-dd"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学历</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="diploma" value="${student.diploma}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
                     </div>
-
                     <div class="layui-form-item">
-                        <label class="layui-form-label">复选框</label>
-                        <div class="layui-input-block">
-                            <input type="checkbox" name="like[write]" title="写作">
-                            <input type="checkbox" name="like[read]" title="阅读">
-                            <input type="checkbox" name="like[daze]" title="发呆">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">培养方式</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="train" id="train" value="${student.train}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">电话号码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="stutel" value="${student.stutel}" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
                     </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">开关</label>
-                        <div class="layui-input-block">
-                            <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF">
-                        </div>
                     </div>
-
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">单选框</label>
-                        <div class="layui-input-block">
-                            <input type="radio" name="sex" value="男" title="男" checked="">
-                            <input type="radio" name="sex" value="女" title="女">
-                        </div>
-                    </div>
-                    <div class="layui-form-item layui-form-text">
-                        <label class="layui-form-label">文本域</label>
-                        <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                        </div>
-                    </div>
-                </form>
+                </c:forEach>
             </div>
         </div>
     </div>

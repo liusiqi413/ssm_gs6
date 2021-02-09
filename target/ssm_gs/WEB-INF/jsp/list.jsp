@@ -20,21 +20,28 @@
         <c:forEach items="${pageInfo.list}" var="hire">
             <tr>
 <%--                <td>${hire.id}</td>--%>
-                <td><a href="/company/${hire.id}.html"> <h2 class="boardCast">${hire.boardCast}</h2 class="board"></a></td>
+                <td><a href="/company/${hire.id}.html" class="boardCast"> ${hire.boardCast}</a></td>
     <td><h2 class="hireTimes"><fmt:formatDate value="${hire.times}" pattern="yyyy-MM-dd  HH:mm:ss"/></h2></td>
 
             </tr>
         </c:forEach>
     </table>
 </div>
+<center>
     <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
         页,总 ${pageInfo.total } 条记录</div></p>
     <c:if test="${pageInfo.hasPreviousPage }">
-        <a href="list?pageNo=${pageInfo.pageNum-1}">上一页</a>
+        <a href="list?pageNo=${pageInfo.pageNum-1}" class="previous">上一页</a>
     </c:if>
 
     <c:if test="${pageInfo.hasNextPage }">
-        <a href="list?pageNo=${pageInfo.pageNum+1}">下一页</a>
+        <a href="list?pageNo=${pageInfo.pageNum+1}" class="previous">下一页</a>
     </c:if>
+</center>
+<center>
+<div class="fly-footer">
+    <p><a href="#" class="bottom">邢台学院 2020 © www.xteducation.cn</a></p>
+</div>
+</center>
 </body>
 </html>

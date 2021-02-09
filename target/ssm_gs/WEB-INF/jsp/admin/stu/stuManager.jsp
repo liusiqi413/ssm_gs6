@@ -209,14 +209,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">入学时间</label>
                     <div class="layui-input-block">
-                        <input type="text" name="start" id="starttime" readonly="readonly" lay-reqText="请输入入学时间" autocomplete="off"
+                        <input type="text" name="start" id="starttime" lay-reqText="请输入入学时间" autocomplete="off"
                                placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">毕业时间</label>
                     <div class="layui-input-block">
-                        <input type="text" name="gradu" id="gradutime" readonly="readonly" lay-reqText="请输入毕业时间" autocomplete="off"
+                        <input type="text" name="gradu" id="gradutime" lay-reqText="请输入毕业时间" autocomplete="off"
                                placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>

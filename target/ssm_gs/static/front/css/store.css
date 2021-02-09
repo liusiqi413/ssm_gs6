@@ -152,18 +152,35 @@ list里的div
   padding-left: 150px;
   font-size: 20px;
   color:#5694E9;
+  font-weight: normal;
+  text-decoration: none;
 }
-.boardCast:hover{box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.05);line-height: 50px;}
+.boardCast:hover{color: #00FF00;}
 .hireTime{
-  padding-right: 120px;
+  padding-right: 20px;
 }
 .hireTimes{
+  padding-top: 10px;
   text-align: right;
-  padding-right: 150px;
-  font-size: 20px;
+  padding-right: 50px;
+  font-size: 18px;
   color: #0A0E11;
+  font-weight: normal;
 }
-
+.previous{
+  font-size: 20px;
+  color:#5694E9;
+  text-decoration: none;
+}
+.previous:hover{
+  color: #00FF00;
+}
+.bottom{
+  font-size: 14px;
+  color: #0D1206;
+  text-decoration: none;
+  font-weight: bold;
+}
 /*ç’‡ï¸½å„æ¤¤ï¿½*/
 .store-detail-info{position: absolute; right: 15px; top: 0; font-size: 0}
 .store-detail-info .item{display: inline-block; vertical-align: middle; font-size: 14px;}
