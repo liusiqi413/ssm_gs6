@@ -5,7 +5,7 @@
 <html lang="en" class="fly-html-layui fly-html-store">
 <head>
     <meta charset="utf-8">
-    <title>layui</title>
+    <title>邢台学院</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,20 +63,22 @@
                                 <input type="text" name="stuname" value="${student.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+                    </div>
+                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">性别</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" value="${student.gender}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学院</label>
                             <div class="layui-input-block">
                                 <input type="text" name="college" id="college" value="${student.college}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+                    </div>
+                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">专业</label>
                             <div class="layui-input-inline">
@@ -94,41 +96,115 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">入学日期</label>
                             <div class="layui-input-block">
-                                <fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>
+                                <input type="text"  value="<fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">毕业日期</label>
                             <div class="layui-input-inline">
-                                <fmt:formatDate value="${student.gradu}" pattern="yyyy-MM-dd"/>
+                                <input type="text"  value="<fmt:formatDate value="${student.gradu}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+                    </div>
+                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学历</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="diploma" value="${student.diploma}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">培养方式</label>
                             <div class="layui-input-block">
                                 <input type="text" name="train" id="train" value="${student.train}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">电话号码</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="stutel" value="${student.stutel}" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
                     </div>
                     </div>
                 </c:forEach>
+                <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                    <label class="layui-form-label">电话号码：</label>
+                    <div class="layui-input-inline">
+                        <input name="stutel" type="text" id="stutel" lay-verify="required" placeholder="请输入电话号码" autocomplete="off" class="layui-input">
+                    </div>
+                    </div>
+                    <div class="layui-inline">
+                    <label class="layui-form-label">高考考号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="examno" id="examno" autocomplete="off" class="layui-input">
+                    </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                    <label class="layui-form-label">身份证号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="idcard" id="idcard" placeholder="请输入身份证号" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                    </div>
+                    <div class="layui-inline">
+                    <label class="layui-form-label">生源地：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="stuaddr" id="stuaddr" placeholder="请输入生源地" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                    <label class="layui-form-label">家庭住址：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="homeaddr" id="homeaddr" placeholder="请输入家庭住址" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                    </div>
+                    <div class="layui-inline">
+                    <label class="layui-form-label">民族：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ethnic" id="ethnic" placeholder="请输入民族" lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                    <label class="layui-form-label">出生日期</label>
+                    <div class="layui-input-block">
+                        <input type="date" name="birth" id="birth" lay-reqText="请输入入学时间" autocomplete="off"
+                               placeholder="yyyy-MM-dd" class="layui-input">
+                    </div>
+                </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit="" lay-filter="demoInfo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
+
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.use(['jquery','form','table','laydate','layer'], function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+        var table = layui.table;
+        var laydate = layui.laydate;
+        var layer = layui.layer;
+        //渲染日期组件
+        laydate.render({
+            elem:"#birth",
+            type:"date"
+        });
+        //监听提交
+        form.on('submit(demoInfo)', function(data){
+            $.post()
+        });
+    });
+</script>
 </body>
 </html>

@@ -25,4 +25,5 @@ public class StuInfoController {
         model.addAttribute("stuList",stuList);
         return "forward:info.jsp";
     }
+
 }
