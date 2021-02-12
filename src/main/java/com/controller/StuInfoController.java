@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.entity.StuUser;
 import com.entity.Student;
 import com.service.StuService;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StuInfoController {
@@ -25,5 +28,21 @@ public class StuInfoController {
         model.addAttribute("stuList",stuList);
         return "forward:info.jsp";
     }
-
+/*
+添加信息
+ */
+    @RequestMapping("/updateInfo")
+    public String updateInfo(Student student){
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用添加学生的方法
+        if(stuService.updateInfo(student)>0){
+            map.put(SystemConstant.SUCCESS,true);//成功
+            map.put(SystemConstant.MESSAGE,"提交成功");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);//失败
+            map.put(SystemConstant.MESSAGE,"提交失败");
+        }
+        //将map集合以JSON格式返回
+        return JSON.toJSONString(map);
+    }
 }

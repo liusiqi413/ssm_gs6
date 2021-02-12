@@ -71,4 +71,32 @@ WHERE id=#{id}) and stuno=#{stuno}
     <select id="findStuByStuno" resultType="com.entity.Student">
         select * from stu_info where stuno=#{stuno}
     </select>
+    <!-- 添加信息-->
+    <update id="updateInfo">
+        update stu_info
+        <set>
+            <if test="stutel!=null and stutel!=''">
+                stutel=#{stutel},
+            </if>
+            <if test="examno!=null and examno!=''">
+                examno=#{examno},
+            </if>
+            <if test="idcard!=null and idcard!=''">
+                idcard=#{idcard},
+            </if>
+            <if test="stuaddr!=null and stuaddr!=''">
+                stuaddr=#{stuaddr},
+            </if>
+            <if test="homeaddr!=null and homeaddr!=''">
+                homeaddr=#{homeaddr},
+            </if>
+            <if test="birth!=null">
+                birth=#{birth},
+            </if>
+            <if test="ethnic!=null and ethnic!=''">
+                ethnic=#{ethnic},
+            </if>
+        </set>
+        where stunos=#{stuno}
+    </update>
 </mapper>

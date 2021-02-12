@@ -122,8 +122,10 @@
                     </div>
                     </div>
                 </c:forEach>
-                <form class="layui-form" action="">
+                    <form class="layui-form" action="">
+
                 <div class="layui-form-item">
+                    <input type="text" name="stuno" id="stunos" value="${sessionScope.currentUser.loginName}">
                     <div class="layui-inline">
                     <label class="layui-form-label">电话号码：</label>
                     <div class="layui-input-inline">
@@ -167,12 +169,17 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                    <label class="layui-form-label">出生日期</label>
+                    <label class="layui-form-label">出生日期：</label>
                     <div class="layui-input-block">
                         <input type="date" name="birth" id="birth" lay-reqText="请输入入学时间" autocomplete="off"
                                placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline">
+                        </div>
+                    </div>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -180,7 +187,7 @@
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
-                                    </form>
+                </form>
             </div>
         </div>
 
@@ -202,7 +209,11 @@
         });
         //监听提交
         form.on('submit(demoInfo)', function(data){
-            $.post()
+            $.post("/updateInfo",data.field,function (result) {
+                layer.msg(result.message);
+            }, "json");
+            //禁止页面刷新
+            return false;
         });
     });
 </script>

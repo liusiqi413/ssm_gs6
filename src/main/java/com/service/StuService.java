@@ -42,4 +42,8 @@ public interface StuService {
    根据学生号查询学生
     */
     List <Student> findStuByStuno(String stuno);
+    /*
+   添加信息
+    */
+    int updateInfo(Student student);
 }

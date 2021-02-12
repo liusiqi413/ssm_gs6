@@ -34,4 +34,8 @@ public interface StuMapper {
     根据学生号查询学生
      */
     List<Student> findStuByStuno(String stuno);
+    /*
+    添加学生信息
+     */
+    int updateInfo(Student student);
 }
