@@ -46,7 +46,7 @@
                 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
 
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
-                    <legend>信息填写</legend>
+                    <legend>基本信息填写</legend>
                 </fieldset>
                 <c:forEach var="student" items="${stuList}">
                 <div data-id="${student.id}" >
@@ -54,7 +54,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">学号</label>
                             <div class="layui-input-block">
-                                <input type="text" name="stuno" id="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
+                                <input type="text" name="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -123,9 +123,8 @@
                     </div>
                 </c:forEach>
                     <form class="layui-form" action="">
-
                 <div class="layui-form-item">
-                    <input type="text" name="stuno" id="stunos" value="${sessionScope.currentUser.loginName}">
+                    <input type="hidden" name="stuno" id="stuno" value="${sessionScope.currentUser.loginName}">
                     <div class="layui-inline">
                     <label class="layui-form-label">电话号码：</label>
                     <div class="layui-input-inline">
@@ -188,6 +187,25 @@
                     </div>
                 </div>
                 </form>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                    <legend>就业信息填写</legend>
+                </fieldset>
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生学号：</label>
+                            <div class="layui-input-inline">
+                                <input name="stuno" type="text" disabled="disabled" value="${sessionScope.currentUser.loginName}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生姓名：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="stuname" disabled="disabled" value="${sessionScope.currentUser.realName}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
 
@@ -210,7 +228,7 @@
         //监听提交
         form.on('submit(demoInfo)', function(data){
             $.post("/updateInfo",data.field,function (result) {
-                layer.msg(result.message);
+                layer.alert(result.message);
             }, "json");
             //禁止页面刷新
             return false;

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.StuInfoMapper">
+    <!-- 添加信息-->
+    <update id="updateInfo">
+        update stu_info
+        <set>
+            <if test="stutel!=null and stutel!=''">
+                stutel=#{stutel},
+            </if>
+            <if test="examno!=null and examno!=''">
+                examno=#{examno},
+            </if>
+            <if test="idcard!=null and idcard!=''">
+                idcard=#{idcard},
+            </if>
+            <if test="stuaddr!=null and stuaddr!=''">
+                stuaddr=#{stuaddr},
+            </if>
+            <if test="homeaddr!=null and homeaddr!=''">
+                homeaddr=#{homeaddr},
+            </if>
+            <if test="birth!=null">
+                birth=#{birth},
+            </if>
+            <if test="ethnic!=null and ethnic!=''">
+                ethnic=#{ethnic}
+            </if>
+        </set>
+        where stuno=#{stuno}
+    </update>
+
+
+</mapper>

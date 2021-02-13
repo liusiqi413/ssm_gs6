@@ -140,11 +140,5 @@ public class StuServiceImpl implements StuService {
     public List<Student> findStuByStuno(String stuno) {
         return stuMapper.findStuByStuno(stuno);
     }
-
-    @Override
-    public int updateInfo(Student student) {
-        return stuMapper.updateInfo(student);
     }
-
-}
 

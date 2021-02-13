@@ -14,8 +14,10 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\CompanyController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\RoleVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuUser.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserExcelController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\StuInfoManagerController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\UserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\interceptor\LoginInterceptor.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuInfoServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\PasswordUtil.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuMaster.java
@@ -31,6 +33,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuEmpVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\StuMasterVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\admin\StuUserController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\IndexController.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuInfoMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\StuHomeServiceImpl.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\MenuService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\utils\SystemConstant.java
@@ -64,6 +67,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuUserService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Teacher.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\Role.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\impl\MenuServiceImpl.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuInfoService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuHomeService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\StuInfoController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuService.java
