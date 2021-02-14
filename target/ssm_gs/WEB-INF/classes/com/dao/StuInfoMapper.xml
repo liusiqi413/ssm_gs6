@@ -29,6 +29,9 @@
         </set>
         where stuno=#{stuno}
     </update>
-
+<!--添加学生就业信息-->
+    <insert id="addEmp">
+        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary})
+    </insert>
 
 </mapper>

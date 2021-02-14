@@ -10,6 +10,15 @@ public class StuEmp {
     private String employunit;
     private String country;
     private String city;
+    private Integer salary;
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
 
     public Integer getId() {
         return id;

@@ -2,6 +2,7 @@ package com.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.entity.StuEmp;
 import com.entity.Student;
 import com.service.StuInfoService;
 import com.utils.SystemConstant;
@@ -25,6 +26,19 @@ public class StuInfoManagerController {
         Map<String, Object> map = new HashMap<String, Object>();
         //调用添加学生的方法
         if (stuInfoService.updateInfo(student) > 0) {
+            map.put(SystemConstant.SUCCESS, true);
+            map.put(SystemConstant.MESSAGE, "提交成功");
+        } else {
+            map.put(SystemConstant.SUCCESS, false);
+            map.put(SystemConstant.MESSAGE, "提交失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    @RequestMapping("/addEmp")
+    public String addEmp(StuEmp stuEmp) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //调用添加学生的方法
+        if (stuInfoService.addEmp(stuEmp) > 0) {
             map.put(SystemConstant.SUCCESS, true);
             map.put(SystemConstant.MESSAGE, "提交成功");
         } else {

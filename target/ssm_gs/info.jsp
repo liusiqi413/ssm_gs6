@@ -206,9 +206,71 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
-
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">就业协议书号：</label>
+                            <div class="layui-input-inline">
+                                <input name="employno" type="text" lay-verify="required" placeholder="请输入就业协议书号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">公司名：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="company" lay-verify="required" placeholder="请输入公司名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">工作类别：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="category" placeholder="请输入工作类别" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">就业单位性质：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="employunit" placeholder="请输入就业单位性质" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">就业国家：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="country" placeholder="请输入就业国家" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">就业城市：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="city" placeholder="请输入就业城市" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">就业薪资：</label>
+                            <div class="layui-input-inline">
+                                <input type="number" name="salary" placeholder="请输入就业薪资" lay-verify="required" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="demoEmployee">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+</div>
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
@@ -222,12 +284,20 @@
         var layer = layui.layer;
         //渲染日期组件
         laydate.render({
-            elem:"#birth",
-            type:"date"
+            elem: "#birth",
+            type: "date"
         });
         //监听提交
-        form.on('submit(demoInfo)', function(data){
-            $.post("/updateInfo",data.field,function (result) {
+        form.on('submit(demoInfo)', function (data) {
+            $.post("/updateInfo", data.field, function (result) {
+                layer.alert(result.message);
+            }, "json");
+            //禁止页面刷新
+            return false;
+        });
+        //监听提交
+        form.on('submit(demoEmployee)', function (data) {
+            $.post("/addEmp", data.field, function (result) {
                 layer.alert(result.message);
             }, "json");
             //禁止页面刷新
