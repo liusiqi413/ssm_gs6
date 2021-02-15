@@ -182,7 +182,7 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit="" lay-filter="demoInfo">立即提交</button>
+                        <button type="button" class="layui-btn" lay-submit lay-filter="demoInfo">立即提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">学生学号：</label>
                             <div class="layui-input-inline">
-                                <input name="stuno" type="text" disabled="disabled" value="${sessionScope.currentUser.loginName}" autocomplete="off" class="layui-input">
+                                <input name="stuno" type="text" id="stu" disabled="disabled" value="${sessionScope.currentUser.loginName}" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -210,7 +210,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">就业协议书号：</label>
                             <div class="layui-input-inline">
-                                <input name="employno" type="text" lay-verify="required" placeholder="请输入就业协议书号" autocomplete="off" class="layui-input">
+                                <input name="employno" type="text" id="employno" lay-verify="required" placeholder="请输入就业协议书号" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -264,7 +264,62 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demoEmployee">立即提交</button>
+                            <button type="button" class="layui-btn" lay-submit lay-filter="demoEmployee">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                    <legend>考研信息填写</legend>
+                </fieldset>
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生学号：</label>
+                            <div class="layui-input-inline">
+                                <input name="stuno" type="text" id="stuMaster" disabled="disabled" value="${sessionScope.currentUser.loginName}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生姓名：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="stuname" disabled="disabled" value="${sessionScope.currentUser.realName}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">考研成功与否</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="success" value="1" title="成功" checked>
+                                <input type="radio" name="success" value="2" title="失败" >
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">升学院校：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="university" placeholder="请输入升学院校" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">升学国家：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="area" placeholder="请输入升学国家" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">升学城市：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="city" placeholder="请输入升学城市" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit lay-filter="demoMaster">立即提交</button>
                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                         </div>
                     </div>
@@ -295,13 +350,46 @@
             //禁止页面刷新
             return false;
         });
+        var flag=false;
+        var stuno = $("#stu").val().trim();
+            $.get("/checkEmp", {"stuno": stuno}, function (result) {
+                if (result.exist) {
+                    flag = true;
+                } else {
+                    flag = false;//不存在
+                }
+            }, "json");
         //监听提交
         form.on('submit(demoEmployee)', function (data) {
-            $.post("/addEmp", data.field, function (result) {
-                layer.alert(result.message);
-            }, "json");
-            //禁止页面刷新
-            return false;
+            if(flag){
+                layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
+            }else{
+                $.post("/addEmp", data.field, function (result) {
+                    layer.alert(result.message);
+                }, "json");
+                //禁止页面刷新
+                return false;
+            }
+        });
+        var stuno=$("#stuMaster").val().trim();
+        $.get("/checkMaster", {"stuno": stuno}, function (result) {
+            if (result.exist) {
+                flag = true;
+            } else {
+                flag = false;//不存在
+            }
+        }, "json");
+        //监听提交
+        form.on('submit(demoMaster)', function (data) {
+            if(flag){
+                layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
+            }else{
+                $.post("/addMaster", data.field, function (result) {
+                    layer.alert(result.message);
+                }, "json");
+                //禁止页面刷新
+                return false;
+            }
         });
     });
 </script>

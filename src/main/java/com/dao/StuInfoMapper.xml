@@ -33,5 +33,13 @@
     <insert id="addEmp">
         insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary})
     </insert>
-
+<select id="findStuEmpByName" resultType="com.entity.StuEmp">
+    select stuno from stu_employ where stuno=#{stuno}
+</select>
+    <select id="findStuMasterByName" resultType="com.entity.StuMaster">
+        select stuno from stu_master where stuno=#{stuno}
+    </select>
+    <insert id="addMaster">
+        insert into stu_master(stuno,stuname,success,university,area,city)values (#{stuno},#{stuname},#{success},#{university},#{area},#{city})
+    </insert>
 </mapper>

@@ -434,7 +434,7 @@
         //监听表单提交事件
         form.on("submit(doSubmit)",function (data) {
             if(flag){
-                layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+                layer.alert("已有相同学号，请确认后重新输入！",{icon:5});
             }else {
                 //发送ajax请求提交
                 $.post(url, data.field, function (result) {
@@ -473,7 +473,7 @@
         form.on("submit(updateDoSubmit)",function (data) {
             //判断是否存在
             if(flag){
-                layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
+                layer.alert("已有相同学号，请确认后重新输入！",{icon:5});
             }else {
                 //发送ajax请求提交
                 $.post(url, data.field, function (result) {

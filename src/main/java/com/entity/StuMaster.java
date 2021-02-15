@@ -4,10 +4,18 @@ public class StuMaster {
     private Integer id;
     private String stuno;
     private String stuname;
-    private boolean success;
+    private Integer success;
     private String university;
     private String area;
     private String city;
+
+    public Integer getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Integer success) {
+        this.success = success;
+    }
 
     public Integer getId() {
         return id;
@@ -31,14 +39,6 @@ public class StuMaster {
 
     public void setStuname(String stuname) {
         this.stuname = stuname;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
     }
 
     public String getUniversity() {

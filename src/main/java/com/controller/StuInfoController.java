@@ -1,12 +1,16 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.entity.StuEmp;
 import com.entity.StuUser;
 import com.entity.Student;
+import com.service.StuInfoService;
 import com.service.StuService;
 import com.utils.SystemConstant;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
