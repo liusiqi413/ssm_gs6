@@ -19,6 +19,7 @@ com\controller\admin\HireController.class
 com\dao\RoleMapper.class
 com\controller\admin\StuUserController.class
 com\utils\UUIDUtils.class
+com\controller\StuUpdateController.class
 com\service\impl\StuServiceImpl.class
 com\controller\admin\ExceluploadController.class
 com\vo\TeacherVo.class

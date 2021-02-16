@@ -21,7 +21,7 @@
 <!-- 顶部start -->
 <div class="layui-header header header-store" style="background-color: #393D49;">
     <div class="layui-container">
-        <a class="logo" href="index.html">
+        <a class="logo" href="home.html">
             <img src="${pageContext.request.contextPath}/static/front/images/logo.png" alt="layui">
         </a>
         <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
@@ -29,8 +29,11 @@
             <li data-id="index" class="layui-nav-item layui-hide-xs">
                 <a class="fly-case-active" data-type="toTopNav" href="home.html">首页</a>
             </li>
-            <li data-id="room" class="layui-nav-item layui-hide-xs layui-this">
+            <li data-id="addInfo" class="layui-nav-item layui-hide-xs layui-this">
                 <a class="fly-case-active" data-type="toTopNav" href="info.html">信息填写</a>
+            </li>
+            <li data-id="editInfo" class="layui-nav-item layui-hide-xs">
+                <a class="fly-case-active" data-type="toTopNav" href="edit.html">信息修改</a>
             </li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
                                                                          href="JavaScript:void(0);">密码修改</a></li>
@@ -52,13 +55,13 @@
                 <div data-id="${student.id}" >
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学号</label>
+                            <label class="layui-form-label">学号:</label>
                             <div class="layui-input-block">
                                 <input type="text" name="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">姓名</label>
+                            <label class="layui-form-label">姓名:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" value="${student.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
@@ -66,13 +69,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">性别</label>
+                            <label class="layui-form-label">性别:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" value="${student.gender}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">学院</label>
+                            <label class="layui-form-label">学院:</label>
                             <div class="layui-input-block">
                                 <input type="text" name="college" id="college" value="${student.college}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
@@ -80,13 +83,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">专业</label>
+                            <label class="layui-form-label">专业:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="major" value="${student.major}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">班级</label>
+                            <label class="layui-form-label">班级:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="classes" value="${student.classes}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
@@ -94,13 +97,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">入学日期</label>
+                            <label class="layui-form-label">入学日期:</label>
                             <div class="layui-input-block">
                                 <input type="text"  value="<fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">毕业日期</label>
+                            <label class="layui-form-label">毕业日期:</label>
                             <div class="layui-input-inline">
                                 <input type="text"  value="<fmt:formatDate value="${student.gradu}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
@@ -108,13 +111,13 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学历</label>
+                            <label class="layui-form-label">学历:</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="diploma" value="${student.diploma}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">培养方式</label>
+                            <label class="layui-form-label">培养方式:</label>
                             <div class="layui-input-block">
                                 <input type="text" name="train" id="train" value="${student.train}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
@@ -122,7 +125,7 @@
                     </div>
                     </div>
                 </c:forEach>
-                    <form class="layui-form" action="">
+                    <form class="layui-form" id="test2" lay-filter="test2" action="">
                 <div class="layui-form-item">
                     <input type="hidden" name="stuno" id="stuno" value="${sessionScope.currentUser.loginName}">
                     <div class="layui-inline">
@@ -170,7 +173,7 @@
                     <div class="layui-inline">
                     <label class="layui-form-label">出生日期：</label>
                     <div class="layui-input-block">
-                        <input type="date" name="birth" id="birth" lay-reqText="请输入入学时间" autocomplete="off"
+                        <input type="date" name="birth" id="birth" autocomplete="off"
                                placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
@@ -191,7 +194,7 @@
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
                     <legend>就业信息填写</legend>
                 </fieldset>
-                <form class="layui-form" action="">
+                <form class="layui-form" id="test" lay-filter="test" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学生学号：</label>
@@ -273,7 +276,7 @@
                 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
                     <legend>考研信息填写</legend>
                 </fieldset>
-                <form class="layui-form" action="">
+                <form class="layui-form" id="test1" lay-filter="test1" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学生学号：</label>
@@ -331,10 +334,9 @@
 <script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 
 <script>
-    layui.use(['jquery','form','table','laydate','layer'], function () {
+    layui.use(['jquery','form','laydate','layer'], function () {
         var $ = layui.jquery;
         var form = layui.form;
-        var table = layui.table;
         var laydate = layui.laydate;
         var layer = layui.layer;
         //渲染日期组件
@@ -344,52 +346,69 @@
         });
         //监听提交
         form.on('submit(demoInfo)', function (data) {
+            var idcard=$("#idcard").val().trim();
+            $.get("/checkStuInfo", {"idcard": idcard}, function (result) {
+                if (result.exist) {
+                    layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
+                } else {
             $.post("/updateInfo", data.field, function (result) {
+                if (result.success) {
+                    //刷新数据表格
+                    form.render(null,'test2');
+                    //提示信息
                 layer.alert(result.message);
-            }, "json");
-            //禁止页面刷新
+            }else {
+                        //提示信息
+                        layer.alert(result.message);
+                    }
+                }, "json");
             return false;
-        });
-        var flag=false;
-        var stuno = $("#stu").val().trim();
+        }
+    },"json");
+    });
+        //监听提交
+        form.on('submit(demoEmployee)',function (data) {
+            var stuno = $("#stu").val().trim();
             $.get("/checkEmp", {"stuno": stuno}, function (result) {
                 if (result.exist) {
-                    flag = true;
+                    layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
                 } else {
-                    flag = false;//不存在
+                    $.post("/addEmp", data.field, function (result) {
+                        if (result.success) {
+                            //刷新数据表格
+                            form.render(null,'test');
+                            //提示信息
+                            layer.alert(result.message);
+                        }else {
+                            //提示信息
+                            layer.alert(result.message);
+                        }
+                    }, "json");
+                    return false;
                 }
-            }, "json");
-        //监听提交
-        form.on('submit(demoEmployee)', function (data) {
-            if(flag){
-                layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
-            }else{
-                $.post("/addEmp", data.field, function (result) {
-                    layer.alert(result.message);
-                }, "json");
-                //禁止页面刷新
-                return false;
-            }
+            },"json");
         });
-        var stuno=$("#stuMaster").val().trim();
-        $.get("/checkMaster", {"stuno": stuno}, function (result) {
-            if (result.exist) {
-                flag = true;
-            } else {
-                flag = false;//不存在
-            }
-        }, "json");
         //监听提交
         form.on('submit(demoMaster)', function (data) {
-            if(flag){
-                layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
-            }else{
-                $.post("/addMaster", data.field, function (result) {
-                    layer.alert(result.message);
-                }, "json");
-                //禁止页面刷新
-                return false;
-            }
+            var stuno=$("#stuMaster").val().trim();
+            $.get("/checkMaster", {"stuno": stuno}, function (result) {
+                if (result.exist) {
+                    layer.alert("您已经提交过，如需修改，请前往修改页面！", {icon: 5});
+                } else {
+                    $.post("/addMaster", data.field, function (result) {
+                        if (result.success) {
+                            //刷新数据表格
+                            form.render(null,'test1');
+                            //提示信息
+                            layer.alert(result.message);
+                        }else {
+                            //提示信息
+                            layer.alert(result.message);
+                        }
+                    }, "json");
+                    return false;
+                }
+            },"json");
         });
     });
 </script>

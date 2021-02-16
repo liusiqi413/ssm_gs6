@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
+
 @Service
 @Transactional
 public class StuInfoServiceImpl implements StuInfoService {
@@ -36,5 +38,15 @@ public class StuInfoServiceImpl implements StuInfoService {
     @Override
     public int addMaster(StuMaster stuMaster) {
         return stuInfoMapper.addMaster(stuMaster);
+    }
+
+    @Override
+    public Student findStuInfoByName(Student student) {
+        return stuInfoMapper.findStuInfoByName(student);
+    }
+
+    @Override
+    public List<StuEmp> findStuEmpByStuno(String stuno) {
+        return stuInfoMapper.findStuEmpByStuno(stuno);
     }
 }

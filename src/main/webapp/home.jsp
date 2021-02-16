@@ -19,7 +19,7 @@
 <!-- 顶部start -->
 <div class="layui-header header header-store" style="background-color: #393D49;">
     <div class="layui-container">
-        <a class="logo" href="index.html">
+        <a class="logo" href="home.html">
             <img src="${pageContext.request.contextPath}/static/front/images/logo.png" alt="layui">
         </a>
         <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
@@ -27,8 +27,11 @@
             <li data-id="index" class="layui-nav-item layui-hide-xs layui-this">
                 <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">首页</a>
             </li>
-            <li data-id="room" class="layui-nav-item layui-hide-xs">
+            <li data-id="addInfo" class="layui-nav-item layui-hide-xs">
                 <a class="fly-case-active" data-type="toTopNav" href="info.html">信息填写</a>
+            </li>
+            <li data-id="editInfo" class="layui-nav-item layui-hide-xs">
+                <a class="fly-case-active" data-type="toTopNav" href="edit.html">信息修改</a>
             </li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
                                                                          href="JavaScript:void(0);">密码修改</a></li>

@@ -29,6 +29,9 @@
         </set>
         where stuno=#{stuno}
     </update>
+    <select id="findStuInfoByName" resultType="com.entity.Student">
+        select idcard from stu_info where idcard=#{idcard}
+    </select>
 <!--添加学生就业信息-->
     <insert id="addEmp">
         insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary})
@@ -42,4 +45,7 @@
     <insert id="addMaster">
         insert into stu_master(stuno,stuname,success,university,area,city)values (#{stuno},#{stuname},#{success},#{university},#{area},#{city})
     </insert>
+    <select id="findStuEmpByStuno" resultType="com.entity.StuEmp">
+    select * from stu_employ where stuno=#{stuno}
+</select>
 </mapper>

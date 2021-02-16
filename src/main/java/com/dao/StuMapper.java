@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.entity.StuEmp;
 import com.entity.Student;
 import com.vo.StuVo;
 
@@ -34,4 +35,5 @@ public interface StuMapper {
     根据学生号查询学生
      */
     List<Student> findStuByStuno(String stuno);
+
 }

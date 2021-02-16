@@ -22,6 +22,19 @@ public class StuInfoManagerController {
     @Resource
     private StuInfoService stuInfoService;
 
+    @RequestMapping("/checkStuInfo")
+    public String checkStuInfo(Student student){
+        //创建map集合保存结果信息
+        Map<String,Object> map=new HashMap<String, Object>();
+        //调用注册的方法
+        if(stuInfoService.findStuInfoByName(student)!=null){
+            map.put(SystemConstant.EXIST,true);
+            map.put(SystemConstant.MESSAGE,"您已经提交过，如需修改，请前往修改页面！");
+        }else{
+            map.put(SystemConstant.EXIST,false);
+        }
+        return JSON.toJSONString(map);
+    }
     @RequestMapping("/updateInfo")
     public String updateInfo(Student student) {
         Map<String, Object> map = new HashMap<String, Object>();

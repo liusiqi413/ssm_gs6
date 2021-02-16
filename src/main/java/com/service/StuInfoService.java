@@ -5,6 +5,8 @@ import com.entity.StuEmp;
 import com.entity.StuMaster;
 import com.entity.Student;
 
+import java.util.List;
+
 public interface StuInfoService {
     /*
   添加信息
@@ -26,4 +28,12 @@ public interface StuInfoService {
    添加学生考研信息
     */
     int addMaster(StuMaster stuMaster);
+    /*
+ 根据学生电话号查询该学生基本信息
+  */
+    Student findStuInfoByName(Student student);
+    /*
+     根据学生号查询学生就业信息
+      */
+    List<StuEmp> findStuEmpByStuno(String stuno);
 }

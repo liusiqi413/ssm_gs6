@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.StuEmp;
 import com.entity.Student;
 import com.vo.StuVo;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,5 +43,4 @@ public interface StuService {
    根据学生号查询学生
     */
     List <Student> findStuByStuno(String stuno);
-
 }
