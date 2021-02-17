@@ -33,6 +33,7 @@ com\service\impl\MenuServiceImpl.class
 com\vo\StuEmpVo.class
 com\controller\admin\RoleController.class
 com\entity\Teacher.class
+com\interceptor\StuLoginInterceptor.class
 com\utils\ExcelUtils.class
 com\vo\HireVo.class
 com\service\RoleService.class

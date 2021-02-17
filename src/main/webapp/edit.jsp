@@ -56,7 +56,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学号:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">学院:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="college" id="college" value="${student.college}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">入学日期:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text"  value="<fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">培养方式:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="train" id="train" value="${student.train}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                         <div class="layui-form-item">
                             <div class="layui-inline">
                                 <label class="layui-form-label">出生日期：</label>
-                                <div class="layui-input-block">
+                                <div class="layui-input-inline">
                                     <input type="date" name="birth" id="birth" value="<fmt:formatDate value="${student.birth}" pattern="yyyy-MM-dd"/>" autocomplete="off"
                                            placeholder="yyyy-MM-dd" class="layui-input">
                                 </div>
@@ -198,7 +198,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学号:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="stuno" value="${stuEmp.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -210,23 +210,140 @@
                         </div>
                     </div>
                         <form class="layui-form" id="stuEmpUpdate" lay-filter="stuEmpUpdate" action="">
+                            <input type="hidden" name="stuno" value="${sessionScope.currentUser.loginName}">
                             <div class="layui-form-item">
-                                <input type="hidden" name="stuno" value="${sessionScope.currentUser.loginName}">
-                                <div class="layui-inline">
-                                    <label class="layui-form-label">就业协议书号：</label>
-                                    <div class="layui-input-inline">
+                                <div class="master">
+                                    <label>就业协议号：</label>
+                                    <div class="layui-inline">
                                         <input name="employno" type="text" id="employno" lay-verify="required" value="${stuEmp.employno}" autocomplete="off" class="layui-input">
+                                    </div>
+                                        <label class="company">公司名：</label>
+                                    <div class="layui-inline">
+                                        <input type="text" name="company" id="company" value="${stuEmp.company}" autocomplete="off" class="layui-input">
+                            </div>
+                            </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">工作类别：</label>
+                                    <div class="layui-input-inline">
+                                        <input name="category" type="text" id="category" lay-verify="required" value="${stuEmp.category}" autocomplete="off" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-inline">
-                                    <label class="layui-form-label">公司名：</label>
+                                    <label class="layui-form-label">单位性质：</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="company" id="company" value="${stuEmp.company}" autocomplete="off" class="layui-input">
+                                        <input type="text" name="employunit" id="employunit" value="${stuEmp.employunit}" autocomplete="off" class="layui-input">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">就业国家：</label>
+                                    <div class="layui-input-inline">
+                                        <input name="country" type="text" id="country" lay-verify="required" value="${stuEmp.country}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">就业城市：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="city" id="city" value="${stuEmp.city}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">薪资：</label>
+                                    <div class="layui-input-inline">
+                                        <input type="number" name="salary" id="salary" value="${stuEmp.salary}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-inline">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" lay-submit lay-filter="demoEditEmp">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
                             </div>
                         </form>
                             </div>
+                </c:forEach>
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                    <legend>考研信息修改</legend>
+                </fieldset>
+                <c:forEach var="stuMaster" items="${stuMasterList}">
+                    <div data-id="${stuMaster.id}">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">学号:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="stuno" value="${stuMaster.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">姓名:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="stuname" value="${stuMaster.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <form class="layui-form" id="stuMasterUpdate" lay-filter="stuMasterUpdate" action="">
+                            <input type="hidden" name="stuno" value="${sessionScope.currentUser.loginName}">
+                            <div class="layui-form-item" pane="">
+                                <div class="master">
+                                <label>考研结果：</label>
+                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='1'}">checked="checked"</c:if> value="1" title="成功"/>
+                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='2'}">checked="checked"</c:if> value="2" title="失败" />
+                                </div>
+                            </div>
+                            <div class="layui-form-item" pane="">
+                                <div class="master">
+                                    <label>研究生类别：</label>
+                                        <input type="radio" name="master" <c:if test="${stuMaster.master=='1'}">checked="checked"</c:if> value="1" title="全日制研究生"/>
+                                        <input type="radio" name="master" <c:if test="${stuMaster.master=='2'}">checked="checked"</c:if> value="2" title="非全日制研究生" />
+                            </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">升学院校：</label>
+                                    <div class="layui-input-inline">
+                                        <input name="university" type="text" id="university" value="${stuMaster.university}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">升学国家:</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="area" value="${stuMaster.area}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">升学城市：</label>
+                                    <div class="layui-input-inline">
+                                        <input name="city" type="text" value="${stuMaster.city}" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <label class="layui-form-label"></label>
+                                    <div class="layui-input-inline">
+                                        <input type="hidden" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" lay-submit lay-filter="demoEditMaster">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </c:forEach>
             </div>
         </div>
@@ -260,6 +377,36 @@
                 }, "json");
                 return false;
             });
+        //监听提交
+        form.on('submit(demoEditEmp)', function (data) {
+            $.post("/updateEditEmp", data.field, function (result) {
+                if (result.success) {
+                    //刷新数据表格
+                    form.render(null, 'stuEmpUpdate');
+                    //提示信息
+                    layer.alert("修改成功");
+                } else {
+                    //提示信息
+                    layer.alert("修改失败");
+                }
+            }, "json");
+            return false;
+        });
+        //监听提交
+        form.on('submit(demoEditMaster)', function (data) {
+            $.post("/updateEditMaster", data.field, function (result) {
+                if (result.success) {
+                    //刷新数据表格
+                    form.render(null, 'stuEmpUpdate');
+                    //提示信息
+                    layer.alert("修改成功");
+                } else {
+                    //提示信息
+                    layer.alert("修改失败");
+                }
+            }, "json");
+            return false;
+        });
         });
 </script>
 </body>

@@ -5,9 +5,18 @@ public class StuMaster {
     private String stuno;
     private String stuname;
     private Integer success;
+    private Integer master;
     private String university;
     private String area;
     private String city;
+
+    public Integer getMaster() {
+        return master;
+    }
+
+    public void setMaster(Integer master) {
+        this.master = master;
+    }
 
     public Integer getSuccess() {
         return success;

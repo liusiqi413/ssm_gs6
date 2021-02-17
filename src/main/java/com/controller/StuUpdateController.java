@@ -1,7 +1,7 @@
 package com.controller;
 
-import com.dao.StuInfoMapper;
 import com.entity.StuEmp;
+import com.entity.StuMaster;
 import com.entity.StuUser;
 import com.entity.Student;
 import com.service.StuInfoService;
@@ -28,9 +28,12 @@ public class StuUpdateController {
         List<Student> stuList=stuService.findStuByStuno(stuUser.getLoginName());
         //调用查询学生就业信息列表
         List<StuEmp> stuEmpList=stuInfoService.findStuEmpByStuno(stuUser.getLoginName());
+        //调用查询学生就业信息列表
+        List<StuMaster> stuMasterList=stuInfoService.findStuMasterByStuno(stuUser.getLoginName());
         //将数据放进模型中
         model.addAttribute("stuList",stuList);
         model.addAttribute("stuEmpList",stuEmpList);
+        model.addAttribute("stuMasterList",stuMasterList);
         return "forward:edit.jsp";
     }
 }

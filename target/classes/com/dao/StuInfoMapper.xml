@@ -43,9 +43,62 @@
         select stuno from stu_master where stuno=#{stuno}
     </select>
     <insert id="addMaster">
-        insert into stu_master(stuno,stuname,success,university,area,city)values (#{stuno},#{stuname},#{success},#{university},#{area},#{city})
+        insert into stu_master(stuno,stuname,success,master,university,area,city)values (#{stuno},#{stuname},#{success},#{master},#{university},#{area},#{city})
     </insert>
     <select id="findStuEmpByStuno" resultType="com.entity.StuEmp">
     select * from stu_employ where stuno=#{stuno}
 </select>
+    <!-- 修改学生就业信息-->
+    <update id="updateEditEmp">
+        update stu_employ
+        <set>
+            <if test="employno!=null and employno!=''">
+                employno=#{employno},
+            </if>
+            <if test="company!=null and company!=''">
+                company=#{company},
+            </if>
+            <if test="category!=null and category!=''">
+                category=#{category},
+            </if>
+            <if test="employunit!=null and employunit!=''">
+                employunit=#{employunit},
+            </if>
+            <if test="country!=null and country!=''">
+                country=#{country},
+            </if>
+            <if test="city!=null and city!=''">
+                city=#{city},
+            </if>
+            <if test="salary!=null and salary!=''">
+                salary=#{salary}
+            </if>
+        </set>
+        where stuno=#{stuno}
+    </update>
+    <select id="findStuMasterByStuno" resultType="com.entity.StuMaster">
+    select * from stu_master where stuno=#{stuno}
+</select>
+    <!-- 修改学生就业信息-->
+    <update id="updateEditMaster">
+        update stu_master
+        <set>
+            <if test="success!=null and success!=''">
+                success=#{success},
+            </if>
+            <if test="master!=null and master!=''">
+                master=#{master},
+            </if>
+            <if test="university!=null and university!=''">
+                university=#{university},
+            </if>
+            <if test="area!=null and area!=''">
+                area=#{area},
+            </if>
+            <if test="city!=null and city!=''">
+                city=#{city}
+            </if>
+        </set>
+        where stuno=#{stuno}
+    </update>
 </mapper>

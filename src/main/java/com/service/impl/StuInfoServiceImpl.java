@@ -49,4 +49,19 @@ public class StuInfoServiceImpl implements StuInfoService {
     public List<StuEmp> findStuEmpByStuno(String stuno) {
         return stuInfoMapper.findStuEmpByStuno(stuno);
     }
+
+    @Override
+    public int updateEditEmp(StuEmp stump) {
+        return stuInfoMapper.updateEditEmp(stump);
+    }
+
+    @Override
+    public List<StuMaster> findStuMasterByStuno(String stuno) {
+        return stuInfoMapper.findStuMasterByStuno(stuno);
+    }
+
+    @Override
+    public int updateEditMaster(StuMaster stuMaster) {
+        return stuInfoMapper.updateEditMaster(stuMaster);
+    }
 }

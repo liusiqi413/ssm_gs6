@@ -56,7 +56,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">学号:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="stuno" value="${student.stuno}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">学院:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="college" id="college" value="${student.college}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">入学日期:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text"  value="<fmt:formatDate value="${student.start}" pattern="yyyy-MM-dd"/>" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">培养方式:</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-inline">
                                 <input type="text" name="train" id="train" value="${student.train}" disabled="disabled" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                     <div class="layui-inline">
                     <label class="layui-form-label">高考考号：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="examno" id="examno" autocomplete="off" class="layui-input">
+                        <input type="text" name="examno" id="examno" autocomplete="off" placeholder="请输入高考考号" class="layui-input">
                     </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                     <label class="layui-form-label">出生日期：</label>
-                    <div class="layui-input-block">
+                    <div class="layui-input-inline">
                         <input type="date" name="birth" id="birth" autocomplete="off"
                                placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
@@ -210,16 +210,14 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">就业协议书号：</label>
-                            <div class="layui-input-inline">
-                                <input name="employno" type="text" id="employno" lay-verify="required" placeholder="请输入就业协议书号" autocomplete="off" class="layui-input">
+                        <div class="master">
+                            <label>就业协议号：</label>
+                            <div class="layui-inline">
+                                <input name="employno" type="text" id="employno" placeholder="请输入就业协议号：" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">公司名：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="company" lay-verify="required" placeholder="请输入公司名" autocomplete="off" class="layui-input">
+                            <label class="company">公司名：</label>
+                            <div class="layui-inline">
+                                <input type="text" name="company" id="company" placeholder="公司名：" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -231,7 +229,7 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">就业单位性质：</label>
+                            <label class="layui-form-label">单位性质：</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="employunit" placeholder="请输入就业单位性质" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
@@ -291,32 +289,45 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">考研成功与否</label>
-                            <div class="layui-input-block">
-                                <input type="radio" name="success" value="1" title="成功" checked>
-                                <input type="radio" name="success" value="2" title="失败" >
-                            </div>
+                    <div class="layui-form-item" pane="">
+                        <div class="master">
+                            <label>考研结果：</label>
+                            <input type="radio" name="success" value="1" title="成功"/>
+                            <input type="radio" name="success" value="2" title="失败" />
                         </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <div class="master">
+                            <label>研究生类别：</label>
+                            <input type="radio" name="master" value="1" title="全日制研究生"/>
+                            <input type="radio" name="master" value="2" title="非全日制研究生" />
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">升学院校：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="university" placeholder="请输入升学院校" autocomplete="off" class="layui-input">
+                                <input name="university" type="text" id="university" placeholder="请输入升学院校" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">升学国家:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="area" placeholder="请输入升学国家" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">升学国家：</label>
+                            <label class="layui-form-label">升学城市：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="area" placeholder="请输入升学国家" autocomplete="off" class="layui-input">
+                                <input name="city" type="text" placeholder="请输入升学城市" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">升学城市：</label>
+                            <label class="layui-form-label"></label>
                             <div class="layui-input-inline">
-                                <input type="text" name="city" placeholder="请输入升学城市" autocomplete="off" class="layui-input">
+                                <input type="hidden" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>

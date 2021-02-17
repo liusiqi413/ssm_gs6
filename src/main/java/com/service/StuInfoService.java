@@ -36,4 +36,16 @@ public interface StuInfoService {
      根据学生号查询学生就业信息
       */
     List<StuEmp> findStuEmpByStuno(String stuno);
+    /*
+ 修改学生就业信息
+ */
+    int updateEditEmp(StuEmp stump);
+    /*
+      根据学生号查询考研信息
+       */
+    List<StuMaster> findStuMasterByStuno(String stuno);
+    /*
+    修改学生就业信息
+    */
+    int updateEditMaster(StuMaster stuMaster);
 }

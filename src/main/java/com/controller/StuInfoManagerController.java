@@ -48,6 +48,19 @@ public class StuInfoManagerController {
         }
         return JSON.toJSONString(map);
     }
+    @RequestMapping("/updateEditEmp")
+    public String updateEditEmp(StuEmp stuEmp) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //调用添加学生的方法
+        if (stuInfoService.updateEditEmp(stuEmp) > 0) {
+            map.put(SystemConstant.SUCCESS, true);
+            map.put(SystemConstant.MESSAGE, "修改成功");
+        } else {
+            map.put(SystemConstant.SUCCESS, false);
+            map.put(SystemConstant.MESSAGE, "修改失败");
+        }
+        return JSON.toJSONString(map);
+    }
     @RequestMapping("/addEmp")
     public String addEmp(StuEmp stuEmp) {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -97,6 +110,19 @@ public class StuInfoManagerController {
         } else {
             map.put(SystemConstant.SUCCESS, false);
             map.put(SystemConstant.MESSAGE, "提交失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    @RequestMapping("/updateEditMaster")
+    public String updateEditMaster(StuMaster stuMaster) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //调用添加学生的方法
+        if (stuInfoService.updateEditMaster(stuMaster) > 0) {
+            map.put(SystemConstant.SUCCESS, true);
+            map.put(SystemConstant.MESSAGE, "修改成功");
+        } else {
+            map.put(SystemConstant.SUCCESS, false);
+            map.put(SystemConstant.MESSAGE, "修改失败");
         }
         return JSON.toJSONString(map);
     }
