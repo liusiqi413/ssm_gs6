@@ -118,4 +118,96 @@ public class StuEmployController {
         }
         return JSON.toJSONString(map);
     }
+    /**
+     * 审核通过
+     */
+    @RequestMapping("/pass")
+    public String pass(StuEmp stuEmp){
+        Map<String,Object> map = new HashMap<String,Object>();
+        //将订单状态改成已确认(status=2)
+        stuEmp.setStatus(2);
+        //调用修改的方法
+        if(stuEmpService.updateStuEmp(stuEmp)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"审核通过");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核通过失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /**
+     * 审核未通过
+     */
+    @RequestMapping("/fail")
+    public String fail(StuEmp stuEmp){
+        Map<String,Object> map = new HashMap<String,Object>();
+        //将订单状态改成已确认(status=2)
+        stuEmp.setStatus(3);
+        //调用修改的方法
+        if(stuEmpService.updateStuEmp(stuEmp)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"审核未通过");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核未通过失败");
+        }
+        return JSON.toJSONString(map);
+    }
+   /*批量通过*/
+    @RequestMapping("/batchConfirm")
+    public String batchConfirm(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        //循环确认
+        for (int i = 0; i < idsStr.length; i++) {
+            //创建对象
+            StuEmp stuEmp = new StuEmp();
+            stuEmp.setStatus(2);//审核通过
+            stuEmp.setId(Integer.valueOf(idsStr[i]));
+            //调用修改审核的方法
+            count = stuEmpService.updateStuEmp(stuEmp);
+            //判断受影响行数是否大于0
+            if(count>0){
+                map.put(SystemConstant.SUCCESS,true);
+                map.put(SystemConstant.MESSAGE,"审核成功");
+            }
+        }
+        //判断受影响行数是否小于0
+        if(count<=0){
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /*批量未通过*/
+    @RequestMapping("/batchFail")
+    public String batchFail(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        //循环确认
+        for (int i = 0; i < idsStr.length; i++) {
+            //创建对象
+            StuEmp stuEmp = new StuEmp();
+            stuEmp.setStatus(3);//审核通过
+            stuEmp.setId(Integer.valueOf(idsStr[i]));
+            //调用修改审核的方法
+            count = stuEmpService.updateStuEmp(stuEmp);
+            //判断受影响行数是否大于0
+            if(count>0){
+                map.put(SystemConstant.SUCCESS,true);
+                map.put(SystemConstant.MESSAGE,"未审核成功");
+            }
+        }
+        //判断受影响行数是否小于0
+        if(count<=0){
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"未审核失败");
+        }
+        return JSON.toJSONString(map);
+    }
 }

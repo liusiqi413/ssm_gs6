@@ -11,6 +11,7 @@ E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuEmpMapper.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\service\StuMasterService.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\dao\StuMasterMapper.java
+E:\IDEAPROJECT\ssm_gs\src\main\java\com\interceptor\StuLoginInterceptor.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\controller\CompanyController.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\vo\RoleVo.java
 E:\IDEAPROJECT\ssm_gs\src\main\java\com\entity\StuUser.java

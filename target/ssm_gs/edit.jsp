@@ -123,6 +123,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="layui-elem-quote confrom">
+                        <c:if test="${student.status=='1'}">基本信息待审核</c:if>
+                        <c:if test="${student.status=='2'}">基本信息审核通过</c:if>
+                        <c:if test="${student.status=='3'}">基本信息审核未通过</c:if>
+                    </div>
                     <form class="layui-form" id="stuUpdate" lay-filter="stuUpdate" action="">
                         <div class="layui-form-item">
                             <input type="hidden" name="stuno" id="stuno" value="${sessionScope.currentUser.loginName}">
@@ -209,6 +214,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="layui-elem-quote confrom">
+                        <c:if test="${stuEmp.status=='1'}">就业信息待审核</c:if>
+                        <c:if test="${stuEmp.status=='2'}">就业信息审核通过</c:if>
+                        <c:if test="${stuEmp.status=='3'}">就业信息审核未通过</c:if>
+                    </div>
                         <form class="layui-form" id="stuEmpUpdate" lay-filter="stuEmpUpdate" action="">
                             <input type="hidden" name="stuno" value="${sessionScope.currentUser.loginName}">
                             <div class="layui-form-item">
@@ -291,6 +301,11 @@
                                     <input type="text" name="stuname" value="${stuMaster.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
+                        </div>
+                        <div class="layui-elem-quote confrom">
+                            <c:if test="${stuMaster.status=='1'}">考研信息待审核</c:if>
+                            <c:if test="${stuMaster.status=='2'}">考研信息审核通过</c:if>
+                            <c:if test="${stuMaster.status=='3'}">考研信息审核未通过</c:if>
                         </div>
                         <form class="layui-form" id="stuMasterUpdate" lay-filter="stuMasterUpdate" action="">
                             <input type="hidden" name="stuno" value="${sessionScope.currentUser.loginName}">

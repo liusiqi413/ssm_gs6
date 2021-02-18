@@ -18,11 +18,13 @@ public class StuInfoServiceImpl implements StuInfoService {
     private StuInfoMapper stuInfoMapper;
 
     public int updateInfo(Student student) {
+        student.setStatus(1);
         return stuInfoMapper.updateInfo(student);
     }
 
     @Override
     public int addEmp(StuEmp stuEmp) {
+        stuEmp.setStatus(1);
         return stuInfoMapper.addEmp(stuEmp);
     }
 
@@ -37,6 +39,7 @@ public class StuInfoServiceImpl implements StuInfoService {
 
     @Override
     public int addMaster(StuMaster stuMaster) {
+        stuMaster.setStatus(1);
         return stuInfoMapper.addMaster(stuMaster);
     }
 

@@ -81,11 +81,10 @@
             <bean class="com.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
-            <!-- 拦截所有访问路径 -->
-            <mvc:mapping path="/**"/>
-            <!-- 排除老师登录的访问路径 -->
-            <mvc:exclude-mapping path="/user/login"/>
-            <mvc:exclude-mapping path="/login.jsp"/>
+            <!-- 拦截路径 -->
+            <mvc:mapping path="/edit.html"/>
+            <mvc:mapping path="/home.html"/>
+            <mvc:mapping path="/info.html"/>
             <!-- 注入拦截器 -->
             <bean class="com.interceptor.StuLoginInterceptor"/>
         </mvc:interceptor>

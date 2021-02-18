@@ -24,8 +24,12 @@
                 birth=#{birth},
             </if>
             <if test="ethnic!=null and ethnic!=''">
-                ethnic=#{ethnic}
+                ethnic=#{ethnic},
+             </if>
+            <if test="status!=null and status!=''">
+                    status=#{status}
             </if>
+
         </set>
         where stuno=#{stuno}
     </update>
@@ -34,7 +38,7 @@
     </select>
 <!--添加学生就业信息-->
     <insert id="addEmp">
-        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary})
+        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary,status) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary},#{status})
     </insert>
 <select id="findStuEmpByName" resultType="com.entity.StuEmp">
     select stuno from stu_employ where stuno=#{stuno}
@@ -43,7 +47,7 @@
         select stuno from stu_master where stuno=#{stuno}
     </select>
     <insert id="addMaster">
-        insert into stu_master(stuno,stuname,success,master,university,area,city)values (#{stuno},#{stuname},#{success},#{master},#{university},#{area},#{city})
+        insert into stu_master(stuno,stuname,success,master,university,area,city,status)values (#{stuno},#{stuname},#{success},#{master},#{university},#{area},#{city},#{status})
     </insert>
     <select id="findStuEmpByStuno" resultType="com.entity.StuEmp">
     select * from stu_employ where stuno=#{stuno}
@@ -69,9 +73,6 @@
             </if>
             <if test="city!=null and city!=''">
                 city=#{city},
-            </if>
-            <if test="salary!=null and salary!=''">
-                salary=#{salary}
             </if>
         </set>
         where stuno=#{stuno}

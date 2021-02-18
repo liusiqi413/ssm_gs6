@@ -87,7 +87,7 @@
 <div class="footer">
     ©版权所有 2020-2025 | 邢台学院<span class="padding-5">|</span>
 </div>
-<script src="${pageContext.request.contextPath}/static/layui/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/static/front/layui/dist/layui.js"></script>
 <script>
     layui.use(['form','jquery'], function () {
         var $ = layui.jquery,

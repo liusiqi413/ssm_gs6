@@ -13,7 +13,6 @@
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
-
         <fieldset class="table-search-fieldset">
             <legend>搜索信息</legend>
             <div style="margin: 10px 10px 10px 10px">
@@ -23,6 +22,17 @@
                             <label class="layui-form-label">学生姓名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">审核状态</label>
+                            <div class="layui-input-inline">
+                                <select name="status" autocomplete="off" class="layui-input">
+                                    <option value="">全部</option>
+                                    <option value="1">待审核</option>
+                                    <option value="2">审核通过</option>
+                                    <option value="3">审核未通过</option>
+                                </select>
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -38,8 +48,10 @@
         <%-- 头部工具栏区域 --%>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>
+<%--                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>--%>
                 <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchDelete"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="batchConfirm"><i class="layui-icon layui-icon-edit"></i>批量通过</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchFail"><i class="layui-icon layui-icon-close-fill"></i>批量未通过</button>
             </div>
         </script>
 
@@ -50,6 +62,10 @@
         <script type="text/html" id="currentTableBar">
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
+        </script>
+        <script type="text/html" id="currentTableBars">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="pass"><i class="layui-icon layui-icon-ok-circle"></i>通过</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="fail"><i class="layui-icon layui-icon-close-fill"></i>未通过</a>
         </script>
         <%-- 添加和修改窗口 --%>
         <div style="display: none;padding: 5px" id="addOrUpdateWindow">
@@ -109,13 +125,23 @@
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
-                        {field: 'employno', title: '就业协议书', minWidth: 80,align: 'center',sort: true},
-                        {field: 'company', width: 130, title: '公司名',align: 'center'},
-                        {field: 'category', width: 100, title: '工作类别', sort: true,align: 'center'},
-                        {field: 'employunit', width: 100, title: '就业单位性质', sort: true,align: 'center'},
+                        {field: 'employno', title: '就业协议书', width:150,align: 'center',sort: true},
+                        {field: 'company', width: 180, title: '公司名',align: 'center'},
+                        {field: 'category', width: 120, title: '工作类别', sort: true,align: 'center'},
+                        {field: 'employunit', width: 130, title: '就业单位性质', sort: true,align: 'center'},
                         {field: 'country', width: 100, title: '就业国家',sort: true,align: 'center'},
                         {field: 'city', width: 100, title: '就业城市',sort: true,align: 'center'},
-                        {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
+                        {field: 'status', width: 120, title: '状态', align: "center",templet:function (d) {
+                                if(d.status==1){
+                                    return "待审核";
+                                }else if(d.status==2){
+                                    return "审核通过";
+                                }else if(d.status==3){
+                                    return "审核未通过";
+                                }
+                            }},
+                        {title: '操作', width:180, toolbar: '#currentTableBar', align: "center"},
+                        {title: '审核', width:180, toolbar: '#currentTableBars', align: "center"}
                     ]],
                     page: true,
                     done: function (res, curr, count) {
@@ -145,11 +171,17 @@
                 //currentTableFilter是表格lay-filter过滤器的值
                 table.on("toolbar(currentTableFilter)",function(obj){
                     switch (obj.event) {
-                        case "add": //添加按钮
-                            openAddWindow();//打开添加窗口
-                            break;
+                        // case "add": //添加按钮
+                        //     openAddWindow();//打开添加窗口
+                        //     break;
                         case "batchDelete":   //打开批量删除
                             batchDeleteEmp();
+                            break;
+                        case "batchConfirm"://批量审核按钮
+                            batchConfirm();//确认
+                            break;
+                        case "batchFail"://批量审核按钮
+                            batchFail();//确认
                             break;
                     }
                 });
@@ -161,26 +193,32 @@
                         case "delete"://删除按钮
                             deleteById(obj.data);
                             break;
+                        case "pass"://审核通过按钮
+                            pass(obj.data);
+                            break;
+                        case "fail"://审核未通过按钮
+                            fail(obj.data);
+                            break;
                     }
                 });
                 var url;//提交地址
                 var mainIndex;//打开窗口的索引
 
-                //打开添加窗口
-                function openAddWindow(){
-                    mainIndex = layer.open({
-                        type:1,//打开类型
-                        title:"添加学生就业信息",  //窗口事件
-                        area:["800px","400px"],//窗口宽高
-                        content:$("#addOrUpdateWindow"),//引用的内容窗口
-                        success:function () {
-                            //清空表单数据
-                            $("#dataFrm")[0].reset();
-                            //添加提交的请求
-                            url="/admin/stu/addStuEmp";
-                        }
-                    });
-                }
+                // //打开添加窗口
+                // function openAddWindow(){
+                //     mainIndex = layer.open({
+                //         type:1,//打开类型
+                //         title:"添加学生就业信息",  //窗口事件
+                //         area:["800px","400px"],//窗口宽高
+                //         content:$("#addOrUpdateWindow"),//引用的内容窗口
+                //         success:function () {
+                //             //清空表单数据
+                //             $("#dataFrm")[0].reset();
+                //             //添加提交的请求
+                //             url="/admin/stu/addStuEmp";
+                //         }
+                //     });
+                // }
                 //打开修改窗口
                 function openUpdateWindow(data){
                     mainIndex = layer.open({
@@ -280,6 +318,130 @@
                         });
                     }else{
                         layer.msg("请选择要删除的学生");
+                    }
+                }
+                /**
+                 * 审核通过
+                 * @param data
+                 */
+                function pass(data) {
+                    //判断当前状态是否审核
+                    if(data.status!=2){
+                        //发送请求
+                        $.post("/admin/stu/pass",{"id":data.id},function(result){
+                            if(result.success){
+                                //刷新数据表格
+                                tableIns.reload();
+                            }
+                            layer.msg(result.message);
+                        },"json");
+                    }else{
+                        layer.msg("该生已审核通过，无需重复操作");
+                    }
+                }
+                /**
+                 * 审核未通过
+                 * @param data
+                 */
+                function fail(data) {
+                    //判断当前状态是否审核
+                    if(data.status!=3){
+                        //发送请求
+                        $.post("/admin/stu/fail",{"id":data.id},function(result){
+                            if(result.success){
+                                //刷新数据表格
+                                tableIns.reload();
+                            }
+                            layer.msg(result.message);
+                        },"json");
+                    }else{
+                        layer.msg("该生审核未通过，无需重复操作");
+                    }
+                }
+                /**
+                 * 批量通过
+                 */
+                function batchConfirm() {
+                    //获取选中行
+                    var checkStatus = table.checkStatus('currentTableId');
+                    //定义变量，保存选中行的数量
+                    var length = checkStatus.data.length;
+                    //判断当前是否有选中行
+                    if(length>0){
+                        //判断选中行中是否有包含(已确认)的状态，如果包含已确认或已入住，此时提示用户“只能操作状态为待确认的订单”
+                        for (var i = 0; i < length; i++) {
+                            if(checkStatus.data[i].status!=1){
+                                layer.alert("只能操作状态为<font color='blue'>待审核</font>的学生!",{icon:0});
+                                return;
+                            }
+                        }
+                        //提示用户是否确认
+                        layer.confirm("确定要审核通过这些学生吗?",{icon:3,title:"提示"},function (index) {
+                            //获取选中行数据
+                            var data = checkStatus.data;
+                            //声明数组，保存选中行的ID值
+                            var idArr = [];
+                            //循环遍历选中行的数据
+                            for (var i = 0; i < length; i++) {
+                                //将选中行的ID放到数组中
+                                idArr.push(data[i].id);
+                            }
+                            //将数组转换成字符串
+                            var ids = idArr.join(",");
+                            //发送请求
+                            $.post("/admin/stu/batchConfirm",{"ids":ids},function(result){
+                                if(result.success){
+                                    //刷新数据表格
+                                    tableIns.reload();
+                                }
+                                layer.msg(result.message);
+                            },"json");
+                        });
+                    }else{
+                        layer.msg("请选择要审核通过的学生");
+                    }
+                }
+                /**
+                 * 批量未通过
+                 */
+                function batchFail() {
+                    //获取选中行
+                    var checkStatus = table.checkStatus('currentTableId');
+                    //定义变量，保存选中行的数量
+                    var length = checkStatus.data.length;
+                    //判断当前是否有选中行
+                    if(length>0){
+                        //判断选中行中是否有包含(已确认)的状态，如果包含已确认或已入住，此时提示用户“只能操作状态为待确认的订单”
+                        for (var i = 0; i < length; i++) {
+                            if(checkStatus.data[i].status!=1){
+                                layer.alert("只能操作状态为<font color='blue'>待审核</font>的学生!",{icon:0});
+                                return;
+                            }
+                        }
+                        //提示用户是否确认
+                        layer.confirm("确定要未通过这些学生吗?",{icon:3,title:"提示"},function (index) {
+                            //获取选中行数据
+                            var data = checkStatus.data;
+                            //声明数组，保存选中行的ID值
+                            var idArr = [];
+                            //循环遍历选中行的数据
+                            for (var i = 0; i < length; i++) {
+                                //将选中行的ID放到数组中
+                                idArr.push(data[i].id);
+                            }
+                            //将数组转换成字符串
+                            var ids = idArr.join(",");
+                            //发送请求
+                            $.post("/admin/stu/batchFail",{"ids":ids},function(result){
+                                if(result.success){
+                                    //刷新数据表格
+                                    tableIns.reload();
+                                }
+                                layer.msg(result.message);
+                            },"json");
+                        });
+                    }else{
+                        layer.msg("请选择要未通过的学生");
                     }
                 }
             });

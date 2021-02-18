@@ -30,6 +30,9 @@
             <if test="ethnic!=null and ethnic!=''">
                 ethnic=#{ethnic},
             </if>
+            <if test="status!=null and status!=''">
+                status=#{status},
+            </if>
         </set>
         where id=#{id}
     </update>
