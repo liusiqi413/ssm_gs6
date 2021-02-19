@@ -11,10 +11,6 @@ public interface StuEmpService{
      */
     List<StuEmp> findStuEmpList(StuEmpVo stuEmpVo);
 /*
-添加
- */
-    int addStuEmp(StuEmp stuEmp);
-/*
 修改
  */
     int updateStuEmp(StuEmp stuEmp);
@@ -22,8 +18,9 @@ public interface StuEmpService{
 删除
  */
     int deleteStuEmpById(Integer id);
-   /*
-   根据学号查询学生信息
-    */
-    StuEmp findStuEmpNoByName(String stuno);
+
+    /*
+     根据学生号查询信息是否重复
+      */
+    StuEmp checkStuEmp(StuEmp stuEmp);
 }

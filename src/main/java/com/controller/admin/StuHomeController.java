@@ -2,6 +2,8 @@ package com.controller.admin;
 
 
 import com.alibaba.fastjson.JSON;
+import com.entity.StuEmp;
+import com.entity.Student;
 import com.entity.StudentHome;
 import com.github.pagehelper.PageHelper;;
 import com.github.pagehelper.PageInfo;
@@ -64,6 +66,98 @@ import java.util.Map;
         }else{
             map.put("success",false);
             map.put("message","删除失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /**
+     * 审核通过
+     */
+    @RequestMapping("/homePass")
+    public String homePass(StudentHome studentHome){
+        Map<String,Object> map = new HashMap<String,Object>();
+        //将订单状态改成已确认(status=2)
+        studentHome.setStatus(2);
+        //调用修改的方法
+        if(stuHomeService.updateStuHome(studentHome)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"审核通过");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核通过失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /**
+     * 审核未通过
+     */
+    @RequestMapping("/homeFail")
+    public String homeFail(StudentHome studentHome){
+        Map<String,Object> map = new HashMap<String,Object>();
+        //将订单状态改成已确认(status=2)
+        studentHome.setStatus(3);
+        //调用修改的方法
+        if(stuHomeService.updateStuHome(studentHome)>0){
+            map.put(SystemConstant.SUCCESS,true);
+            map.put(SystemConstant.MESSAGE,"审核未通过");
+        }else{
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核未通过失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /*批量通过*/
+    @RequestMapping("/batchHomeConfirm")
+    public String batchHomeConfirm(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        //循环确认
+        for (int i = 0; i < idsStr.length; i++) {
+            //创建对象
+            StudentHome studentHome = new StudentHome();
+            studentHome.setStatus(2);//审核通过
+            studentHome.setId(Integer.valueOf(idsStr[i]));
+            //调用修改审核的方法
+            count = stuHomeService.updateStuHome(studentHome);
+            //判断受影响行数是否大于0
+            if(count>0){
+                map.put(SystemConstant.SUCCESS,true);
+                map.put(SystemConstant.MESSAGE,"审核成功");
+            }
+        }
+        //判断受影响行数是否小于0
+        if(count<=0){
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"审核失败");
+        }
+        return JSON.toJSONString(map);
+    }
+    /*批量未通过*/
+    @RequestMapping("/batchHomeFail")
+    public String batchHomeFail(String ids){
+        Map<String,Object> map = new HashMap<String,Object>();
+        int count = 0;
+        //将字符串拆分成数组
+        String[] idsStr = ids.split(",");
+        //循环确认
+        for (int i = 0; i < idsStr.length; i++) {
+            //创建对象
+            StudentHome studentHome = new StudentHome();
+            studentHome.setStatus(3);//审核通过
+            studentHome.setId(Integer.valueOf(idsStr[i]));
+            //调用修改审核的方法
+            count = stuHomeService.updateStuHome(studentHome);
+            //判断受影响行数是否大于0
+            if(count>0){
+                map.put(SystemConstant.SUCCESS,true);
+                map.put(SystemConstant.MESSAGE,"未审核成功");
+            }
+        }
+        //判断受影响行数是否小于0
+        if(count<=0){
+            map.put(SystemConstant.SUCCESS,false);
+            map.put(SystemConstant.MESSAGE,"未审核失败");
         }
         return JSON.toJSONString(map);
     }

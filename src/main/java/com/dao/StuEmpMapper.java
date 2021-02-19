@@ -11,10 +11,6 @@ public interface StuEmpMapper {
      */
     List<StuEmp> findStuEmpList(StuEmpVo stuEmpVo);
     /*
-添加学生就业信息
- */
-    int addStuEmp(StuEmp stuEmp);
-    /*
     修改学生就业信息
      */
     int updateStuEmp(StuEmp stuEmp);
@@ -22,8 +18,8 @@ public interface StuEmpMapper {
     删除学生就业信息
      */
     int deleteStuEmpById(Integer id);
-     /*
-    根据学生学号查询学生信息
+    /*
+    根据学生号查询重复数据
      */
-    StuEmp findStuEmpNoByName(String stuno);
+    StuEmp checkStuEmp(StuEmp stuEmp);
 }

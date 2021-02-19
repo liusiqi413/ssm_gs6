@@ -7,9 +7,10 @@ import java.util.Date;
 
 public class StudentHome {
     private Integer id;
-    private String examno;
     private String stuno;
     private String stuname;
+    private String stutel;
+    private String examno;
     private String idcard;
     private String stuaddr;
     private String homeaddr;
@@ -18,6 +19,14 @@ public class StudentHome {
     private Date birth;
     private String ethnic;
     private Integer status;
+
+    public String getStutel() {
+        return stutel;
+    }
+
+    public void setStutel(String stutel) {
+        this.stutel = stutel;
+    }
 
     public Integer getStatus() {
         return status;

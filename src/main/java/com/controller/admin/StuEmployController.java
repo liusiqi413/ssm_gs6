@@ -35,23 +35,6 @@ public class StuEmployController {
         //返回数据
         return new DataGridViewResult(pageInfo.getTotal(),pageInfo.getList());
     }
-    /*
-   添加学生
-    */
-    @RequestMapping("/addStuEmp")
-    public String addStuEmp(StuEmp stuEmp){
-        Map<String,Object> map=new HashMap<String, Object>();
-        //调用添加学生的方法
-        if(stuEmpService.addStuEmp(stuEmp)>0){
-            map.put(SystemConstant.SUCCESS,true);//成功
-            map.put(SystemConstant.MESSAGE,"添加成功");
-        }else{
-            map.put(SystemConstant.SUCCESS,false);//失败
-            map.put(SystemConstant.MESSAGE,"添加失败");
-        }
-        //将map集合以JSON格式返回
-        return JSON.toJSONString(map);
-    }
 
     /*
    修改学生
@@ -86,11 +69,11 @@ public class StuEmployController {
         return JSON.toJSONString(map);
     }
     @RequestMapping("/checkStuEmp")
-    public String checkStuEmp(String stuno){
+    public String checkStuEmp(StuEmp stuEmp){
         //创建map集合保存结果信息
         Map<String,Object> map=new HashMap<String, Object>();
         //调用注册的方法
-        if(stuEmpService.findStuEmpNoByName(stuno)!=null){
+        if(stuEmpService.checkStuEmp(stuEmp)!=null){
             map.put(SystemConstant.EXIST,true);
             map.put(SystemConstant.MESSAGE,"已有相同学生号，请重新确认后再输入！");
         }else{

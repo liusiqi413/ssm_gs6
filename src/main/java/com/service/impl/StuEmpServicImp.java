@@ -20,11 +20,6 @@ public class StuEmpServicImp implements StuEmpService {
     }
 
     @Override
-    public int addStuEmp(StuEmp stuEmp) {
-        return stuEmpMapper.addStuEmp(stuEmp);
-    }
-
-    @Override
     public int updateStuEmp(StuEmp stuEmp) {
         return stuEmpMapper.updateStuEmp(stuEmp);
     }
@@ -35,7 +30,8 @@ public class StuEmpServicImp implements StuEmpService {
     }
 
     @Override
-    public StuEmp findStuEmpNoByName(String stuno) {
-        return stuEmpMapper.findStuEmpNoByName(stuno);
+    public StuEmp checkStuEmp(StuEmp stuEmp) {
+        return stuEmpMapper.checkStuEmp(stuEmp);
     }
+
 }

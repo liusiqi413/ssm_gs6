@@ -48,7 +48,6 @@
         <%-- 头部工具栏区域 --%>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
-<%--                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="add"><i class="layui-icon layui-icon-add-1"></i>添加 </button>--%>
                 <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchDelete"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
                 <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="batchConfirm"><i class="layui-icon layui-icon-edit"></i>批量通过</button>
                 <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchFail"><i class="layui-icon layui-icon-close-fill"></i>批量未通过</button>
@@ -67,15 +66,14 @@
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="pass"><i class="layui-icon layui-icon-ok-circle"></i>通过</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="fail"><i class="layui-icon layui-icon-close-fill"></i>未通过</a>
         </script>
-        <%-- 添加和修改窗口 --%>
+        <%-- 修改窗口 --%>
         <div style="display: none;padding: 5px" id="addOrUpdateWindow">
             <form class="layui-form" style="width:90%;"method="post" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
                     <%-- 隐藏域 --%>
-                    <input type="hidden" name="id">
+                    <input type="hidden" name="id" id="id">
                     <label class="layui-form-label">学生学号</label>
                     <div class="layui-input-block">
-
                         <input type="text" name="stuno" id="stuNo" lay-verify="required" autocomplete="off" placeholder="请输入学生学号"
                                class="layui-input">
                     </div>
@@ -171,9 +169,6 @@
                 //currentTableFilter是表格lay-filter过滤器的值
                 table.on("toolbar(currentTableFilter)",function(obj){
                     switch (obj.event) {
-                        // case "add": //添加按钮
-                        //     openAddWindow();//打开添加窗口
-                        //     break;
                         case "batchDelete":   //打开批量删除
                             batchDeleteEmp();
                             break;
@@ -204,21 +199,6 @@
                 var url;//提交地址
                 var mainIndex;//打开窗口的索引
 
-                // //打开添加窗口
-                // function openAddWindow(){
-                //     mainIndex = layer.open({
-                //         type:1,//打开类型
-                //         title:"添加学生就业信息",  //窗口事件
-                //         area:["800px","400px"],//窗口宽高
-                //         content:$("#addOrUpdateWindow"),//引用的内容窗口
-                //         success:function () {
-                //             //清空表单数据
-                //             $("#dataFrm")[0].reset();
-                //             //添加提交的请求
-                //             url="/admin/stu/addStuEmp";
-                //         }
-                //     });
-                // }
                 //打开修改窗口
                 function openUpdateWindow(data){
                     mainIndex = layer.open({
@@ -236,9 +216,10 @@
                 }
                 var flag = false;//定义变量，标识是否存在
                 $("#stuNo").blur(function () {
+                    var id=$("#id").val().trim();
                     var stuno=$("#stuNo").val().trim();
                     if(stuno.length>0){
-                        $.get("/admin/stu/checkStuEmp",{"stuno":stuno},function(result){
+                        $.get("/admin/stu/checkStuEmp",{"stuno":stuno,"id":id},function(result){
                             if(result.exist){
                                 layer.alert(result.message,{icon:5});
                                 //修改状态为true，表示已存在

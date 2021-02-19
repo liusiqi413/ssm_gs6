@@ -7,12 +7,11 @@
         <if test="stuname!=null and stuname!=''">
             and stuname like concat('%',#{stuname},'%')
         </if>
+        <if test="status!=null and status!=''">
+            and status like concat('%',#{status},'%')
+        </if>
     </where>
 </select>
-    <!-- 添加学生信息-->
-    <insert id="addStuMaster">
-        insert into stu_master(stuno,stuname) values(#{stuno},#{stuname})
-    </insert>
 
     <!--修改学生信息-->
     <update id="updateStuMaster">
@@ -23,6 +22,9 @@
             </if>
             <if test="stuname!=null and stuname!=''">
                 stuname=#{stuname},
+            </if>
+            <if test="status!=null and status!=''">
+                status=#{status}
             </if>
         </set>
         where id=#{id}

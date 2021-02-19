@@ -20,10 +20,6 @@ public class StuMasterServiceImpl implements StuMasterService {
         return stuMasterMapper.findStuMasterList(stuMasterVo);
     }
 
-    @Override
-    public int addStuMaster(StuMaster stuMaster) {
-        return stuMasterMapper.addStuMaster(stuMaster);
-    }
 
     @Override
     public int updateStuMaster(StuMaster stuMaster) {
@@ -35,10 +31,6 @@ public class StuMasterServiceImpl implements StuMasterService {
         return stuMasterMapper.deleteStuMasterById(id);
     }
 
-    @Override
-    public StuMaster findStuMasterNoByName(String stuno) {
-        return stuMasterMapper.findStuMasterNoByName(stuno);
-    }
 
     @Override
     public StuMaster checkUpdateStuMasterName(StuMaster stuMaster) {

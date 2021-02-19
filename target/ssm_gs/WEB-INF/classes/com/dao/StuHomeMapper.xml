@@ -7,11 +7,20 @@
         <if test="stuname!=null and stuname!=''">
             and stuname like concat('%',#{stuname},'%')
         </if>
+        <if test="status!=null and status!=''">
+            and status like concat('%',#{status},'%')
+        </if>
     </where>
 </select>
     <update id="updateStuHome">
         update stu_info
         <set>
+            <if test="stuno!=null and stuno!=''">
+                stuno=#{stuno},
+            </if>
+            <if test="stuname!=null and stuname!=''">
+                stuname=#{stuname},
+            </if>
             <if test="examno!=null and examno!=''">
                 examno=#{examno},
             </if>

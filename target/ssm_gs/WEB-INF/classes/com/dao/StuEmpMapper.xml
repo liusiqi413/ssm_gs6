@@ -12,10 +12,6 @@
             </if>
         </where>
     </select>
-    <!-- 添加学生信息-->
-    <insert id="addStuEmp">
-        insert into stu_employ(stuno,stuname) values(#{stuno},#{stuname})
-    </insert>
 
     <!--修改学生信息-->
     <update id="updateStuEmp">
@@ -39,7 +35,10 @@
     <delete id="deleteStuEmpById">
         delete from stu_employ where id=#{id}
     </delete>
-    <select id="findStuEmpNoByName" resultType="com.entity.StuEmp">
-        select * from stu_employ where stuno=#{stuno};
+    <select id="checkStuEmp" resultType="com.entity.StuEmp">
+        SELECT stuno FROM stu_employ
+WHERE id NOT IN
+(SELECT id FROM stu_info
+WHERE id=#{id}) and stuno=#{stuno}
     </select>
 </mapper>

@@ -26,6 +26,17 @@
                             </div>
                         </div>
                         <div class="layui-inline">
+                            <label class="layui-form-label">审核状态</label>
+                            <div class="layui-input-inline">
+                                <select name="status" autocomplete="off" class="layui-input">
+                                    <option value="">全部</option>
+                                    <option value="1">待审核</option>
+                                    <option value="2">审核通过</option>
+                                    <option value="3">审核未通过</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <button type="submit" class="layui-btn"  lay-submit lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i>搜索</button>
                             <button type="reset" class="layui-btn layui-btn-warm"><i class="layui-icon layui-icon-refresh-1"></i>重置
                             </button>
@@ -38,6 +49,8 @@
         <%-- 头部工具栏区域 --%>
         <script type="text/html" id="toolbarDemo">
             <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="batchConfirm"><i class="layui-icon layui-icon-edit"></i>批量通过</button>
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="batchFail"><i class="layui-icon layui-icon-close-fill"></i>批量未通过</button>
             </div>
         </script>
 
@@ -49,17 +62,41 @@
             <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</a>
         </script>
-        <%-- 添加和修改窗口 --%>
+        <script type="text/html" id="currentTableBars">
+            <a class="layui-btn layui-btn-xs data-count-edit" lay-event="pass"><i class="layui-icon layui-icon-ok-circle"></i>通过</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="fail"><i class="layui-icon layui-icon-close-fill"></i>未通过</a>
+        </script>
+        <%-- 修改窗口 --%>
         <div style="display: none;padding: 5px" id="addOrUpdateStuHomeWindow">
             <form class="layui-form" style="width:90%;"method="post" id="dataFrm" lay-filter="dataFrm">
                 <div class="layui-form-item">
                     <%-- 隐藏域 --%>
-                    <input type="hidden" name="id">
+                    <input type="hidden" name="id" id="id">
+                    <label class="layui-form-label">学号：</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="stuno" id="stu" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="stuname" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机号：</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="stutel" lay-verify="required" autocomplete="off" placeholder="请输入学生手机号"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">高考考号</label>
                     <div class="layui-input-block">
                         <input type="text" name="examno" lay-verify="required" autocomplete="off" placeholder="请输入学生高考考号"
                                class="layui-input">
                     </div>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">身份证号</label>
                     <div class="layui-input-block">
@@ -84,8 +121,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生生日</label>
                     <div class="layui-input-block">
-                        <input type="text" name="birth" id="birth" readonly="readonly" lay-reqText="请输入学生出生日期" autocomplete="off"
-                               placeholder="yyyy-MM-dd" class="layui-input">
+                        <input type="date" name="birth" id="birth" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -129,16 +165,28 @@
             url: '${pageContext.request.contextPath}/admin/stu/lists',
             toolbar: '#toolbarDemo',
             cols: [[
-                {field: 'id', width: 60, title: 'ID', sort: true},
-                {field: 'examno', width:120, title: '高考考号',sort:true},
+                {type:"checkbox",fixed:"left",width:50,align:"center"},
+                {field: 'id', width: 60, title: 'ID',align:"center", sort: true},
                 {field: 'stuno', width:120, title: '学生学号'},
                 {field: 'stuname', width: 90, title: '学生姓名', sort: true,align: 'center'},
+                {field: 'stutel', width: 120, title: '电话',align: 'center'},
+                {field: 'examno', width:120, title: '高考考号',sort:true},
                 {field: 'idcard', title: '身份证号', width: 120,sort: true},
-                {field: 'stuaddr', width: 130, title: '生源地'},
-                {field: 'homeaddr', width: 130, title: '家庭住址', sort: true},
+                {field: 'stuaddr', width: 150, title: '生源地'},
+                {field: 'homeaddr', width: 150, title: '家庭住址', sort: true},
                 {field: 'birth', width: 130, title: '出生日期', sort: true},
                 {field: 'ethnic', width: 90, title: '民族',sort: true,align: 'center'},
-                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"}
+                {field: 'status', width: 120, title: '状态', align: "center",templet:function (d) {
+                        if(d.status==1){
+                            return "待审核";
+                        }else if(d.status==2){
+                            return "审核通过";
+                        }else if(d.status==3){
+                            return "审核未通过";
+                        }
+                    }},
+                {title: '操作', width: 150, toolbar: '#currentTableBar', align: "center"},
+                {title: '审核', width:180, toolbar: '#currentTableBars', align: "center"}
             ]],
             page: true,
             done: function (res, curr, count) {
@@ -167,6 +215,16 @@
     //监听表格头部工具栏事件
     //toolbar是头部工具栏事件
     //currentTableFilter是表格lay-filter过滤器的值
+        table.on("toolbar(currentTableFilter)",function(obj){
+            switch (obj.event) {
+                case "batchConfirm"://批量审核按钮
+                    batchConfirm();//确认
+                    break;
+                case "batchFail"://批量审核按钮
+                    batchFail();//确认
+                    break;
+            }
+        });
     table.on("tool(currentTableFilter)",function(obj){
         switch (obj.event) {
             case "edit": //修改按钮
@@ -174,6 +232,12 @@
                 break;
             case "delete"://删除按钮
                 deleteStuHomeById(obj.data);
+                break;
+            case "pass"://审核通过按钮
+                pass(obj.data);
+                break;
+            case "fail"://审核未通过按钮
+                fail(obj.data);
                 break;
         }
     });
@@ -195,19 +259,42 @@
             }
         });
     }
+        //当用户名输入框失去焦点事件触发验证
+        $("#stu").blur(function () {
+            //获取用户名
+            var id=$("#id").val().trim();
+            var stu = $("#stu").val().trim();
+            //判断用户名是否为空，不为空则发送请求验证
+            if(stu.length>0){
+                $.get("/admin/stu/checkUpdateStuName",{"stuno":stu,"id":id},function(result){
+                    if(result.exist){
+                        layer.alert(result.message,{icon:5});
+                        //修改状态为true，表示已存在
+                        flag = true;
+                    }else{
+                        flag = false;//不存在
+                    }
+                },"json");
+            }
+        });
     //监听表单提交事件
     form.on("submit(doSubmit)",function (data) {
-        //发送ajax请求提交
-        $.post(url,data.field,function (result) {
-            if(result.success){
-                //刷新数据表格
-                tableIns.reload();
-                //关闭窗口
-                layer.close(mainIndex);
-            }
-            //提示信息
-            layer.msg(result.message);
-        },"json");
+        //判断是否存在
+        if(flag){
+            layer.alert("已有相同学号，请确认后重新输入！",{icon:5});
+        }else {
+            //发送ajax请求提交
+            $.post(url, data.field, function (result) {
+                if (result.success) {
+                    //刷新数据表格
+                    tableIns.reload();
+                    //关闭窗口
+                    layer.close(mainIndex);
+                }
+                //提示信息
+                layer.msg(result.message);
+            }, "json");
+        }
         //禁止页面刷新
         return false;
     });
@@ -229,6 +316,130 @@
             layer.close(index);
         });
     }
+        /**
+         * 审核通过
+         * @param data
+         */
+        function pass(data) {
+            //判断当前状态是否审核
+            if(data.status!=2){
+                //发送请求
+                $.post("/admin/stu/homePass",{"id":data.id},function(result){
+                    if(result.success){
+                        //刷新数据表格
+                        tableIns.reload();
+                    }
+                    layer.msg(result.message);
+                },"json");
+            }else{
+                layer.msg("该生已审核通过，无需重复操作");
+            }
+        }
+        /**
+         * 审核未通过
+         * @param data
+         */
+        function fail(data) {
+            //判断当前状态是否审核
+            if(data.status!=3){
+                //发送请求
+                $.post("/admin/stu/homeFail",{"id":data.id},function(result){
+                    if(result.success){
+                        //刷新数据表格
+                        tableIns.reload();
+                    }
+                    layer.msg(result.message);
+                },"json");
+            }else{
+                layer.msg("该生审核未通过，无需重复操作");
+            }
+        }
+        /**
+         * 批量通过
+         */
+        function batchConfirm() {
+            //获取选中行
+            var checkStatus = table.checkStatus('currentTableId');
+            //定义变量，保存选中行的数量
+            var length = checkStatus.data.length;
+            //判断当前是否有选中行
+            if(length>0){
+                //判断选中行中是否有包含(已确认)的状态，如果包含已确认或已入住，此时提示用户“只能操作状态为待确认的订单”
+                for (var i = 0; i < length; i++) {
+                    if(checkStatus.data[i].status!=1){
+                        layer.alert("只能操作状态为<font color='blue'>待审核</font>的学生!",{icon:0});
+                        return;
+                    }
+                }
+                //提示用户是否确认
+                layer.confirm("确定要审核通过这些学生吗?",{icon:3,title:"提示"},function (index) {
+                    //获取选中行数据
+                    var data = checkStatus.data;
+                    //声明数组，保存选中行的ID值
+                    var idArr = [];
+                    //循环遍历选中行的数据
+                    for (var i = 0; i < length; i++) {
+                        //将选中行的ID放到数组中
+                        idArr.push(data[i].id);
+                    }
+                    //将数组转换成字符串
+                    var ids = idArr.join(",");
+                    //发送请求
+                    $.post("/admin/stu/batchHomeConfirm",{"ids":ids},function(result){
+                        if(result.success){
+                            //刷新数据表格
+                            tableIns.reload();
+                        }
+                        layer.msg(result.message);
+                    },"json");
+                });
+            }else{
+                layer.msg("请选择要审核通过的学生");
+            }
+        }
+        /**
+         * 批量未通过
+         */
+        function batchFail() {
+            //获取选中行
+            var checkStatus = table.checkStatus('currentTableId');
+            //定义变量，保存选中行的数量
+            var length = checkStatus.data.length;
+            //判断当前是否有选中行
+            if(length>0){
+                //判断选中行中是否有包含(已确认)的状态，如果包含已确认或已入住，此时提示用户“只能操作状态为待确认的订单”
+                for (var i = 0; i < length; i++) {
+                    if(checkStatus.data[i].status!=1){
+                        layer.alert("只能操作状态为<font color='blue'>待审核</font>的学生!",{icon:0});
+                        return;
+                    }
+                }
+                //提示用户是否确认
+                layer.confirm("确定要未通过这些学生吗?",{icon:3,title:"提示"},function (index) {
+                    //获取选中行数据
+                    var data = checkStatus.data;
+                    //声明数组，保存选中行的ID值
+                    var idArr = [];
+                    //循环遍历选中行的数据
+                    for (var i = 0; i < length; i++) {
+                        //将选中行的ID放到数组中
+                        idArr.push(data[i].id);
+                    }
+                    //将数组转换成字符串
+                    var ids = idArr.join(",");
+                    //发送请求
+                    $.post("/admin/stu/batchHomeFail",{"ids":ids},function(result){
+                        if(result.success){
+                            //刷新数据表格
+                            tableIns.reload();
+                        }
+                        layer.msg(result.message);
+                    },"json");
+                });
+            }else{
+                layer.msg("请选择要未通过的学生");
+            }
+        }
     });
 </script>
 </body>

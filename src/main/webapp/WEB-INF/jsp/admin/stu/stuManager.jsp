@@ -122,15 +122,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">入学时间</label>
                     <div class="layui-input-block">
-                        <input type="text" name="start" id="start" readonly="readonly" lay-reqText="请输入入学时间" autocomplete="off"
-                               placeholder="yyyy-MM-dd" class="layui-input">
+                        <input type="date" name="start" id="start" lay-reqText="请输入入学时间" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">毕业时间</label>
                     <div class="layui-input-block">
-                        <input type="text" name="gradu" id="gradu" readonly="readonly" lay-reqText="请输入毕业时间" autocomplete="off"
-                               placeholder="yyyy-MM-dd" class="layui-input">
+                        <input type="date" name="gradu" id="gradu" lay-reqText="请输入毕业时间" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -209,15 +205,11 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">入学时间</label>
                     <div class="layui-input-block">
-                        <input type="date" name="start" id="starttime" lay-reqText="请输入入学时间" autocomplete="off"
-                               placeholder="yyyy-MM-dd" class="layui-input">
+                        <input type="date" name="start" id="starttime" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">毕业时间</label>
                     <div class="layui-input-block">
-                        <input type="data" name="gradu" id="gradutime" lay-reqText="请输入毕业时间" autocomplete="off"
-                               placeholder="yyyy-MM-dd" class="layui-input">
+                        <input type="data" name="gradu" id="gradutime" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -289,6 +281,14 @@
             elem:"#gradu",
             type:"date"
         });
+        laydate.render({
+            elem:"#starttime",
+            type:"date"
+        });
+        laydate.render({
+            elem:"#gradutime",
+            type:"date"
+        });
         //选完文件后不自动上传
         upload.render({
             elem: '#test8'
@@ -298,7 +298,6 @@
             //,multiple: true
             ,bindAction: '#test19'
             ,done: function(res){
-                console.log(res)
                 //上传完毕
                 //如果上传失败
                 if(res.code > 0){
@@ -321,12 +320,11 @@
                 {field: 'gender', width: 80, title: '性别', sort: true,align: 'center'},
                 {field: 'college', title: '学院', width: 100,align: 'center',sort: true},
                 {field: 'major', width: 130, title: '专业',align: 'center'},
-                {field: 'classes', width: 110, title: '班级', sort: true},
-                {field: 'start', width: 100, title: '入学时间', sort: true},
-                {field: 'gradu', width: 100, title: '毕业时间',sort: true},
+                {field: 'classes', width: 130, title: '班级', sort: true,align: 'center'},
+                {field: 'start', width: 130, title: '入学时间', sort: true},
+                {field: 'gradu', width: 130, title: '毕业时间',sort: true},
                 {field: 'diploma', width: 90, title: '文凭', sort: true,align: 'center'},
                 {field: 'train', width: 100, title: '培养方式',align: 'center'},
-                {field: 'stutel', width: 120, title: '电话',align: 'center'},
                 {title: '操作', width: 150, toolbar: '#barDemo', align: "center"}
             ]],
            page: true,

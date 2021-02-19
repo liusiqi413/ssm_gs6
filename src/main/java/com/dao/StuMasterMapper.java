@@ -12,10 +12,6 @@ public interface StuMasterMapper {
  */
     List<StuMaster> findStuMasterList(StuMasterVo stuMasterVo);
     /*
-添加学生信息
- */
-    int addStuMaster(StuMaster stuMaster);
-    /*
     修改学生信息
      */
     int updateStuMaster(StuMaster stuMaster);
@@ -23,10 +19,6 @@ public interface StuMasterMapper {
     删除学生信息
      */
     int deleteStuMasterById(Integer id);
-    /*
-    根据学生学号查询学生信息
-     */
-    StuMaster findStuMasterNoByName(String stuno);
     /*
 查询修改学生数据是否重复
  */
