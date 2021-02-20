@@ -114,4 +114,11 @@ return "admin/stu/stuManager";
     public String toHireManagern(){
         return "admin/hire/hireEmploy";
     }
+    /*
+      去到就业统计页面
+       */
+    @RequestMapping("toEmpCount")
+    public String toEmpCount(){
+        return "admin/charts/EmpCharts";
+    }
 }
