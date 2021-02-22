@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>研究生统计</title>
+    <title>就业统计</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,19 +12,19 @@
 </head>
 <body>
 <!-- 搜索条件开始 -->
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>查询条件</legend>
-</fieldset>
+<%--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">--%>
+<%--    <legend>查询条件</legend>--%>
+<%--</fieldset>--%>
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择就业性质:</label>
+            <label class="layui-form-label">选择毕业年份:</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="employunit" readonly="readonly">
+                <input type="text" class="layui-input" id="year"  readonly="readonly" placeholder="yyyy">
             </div>
         </div>
         <div class="layui-inline">
-            <button type="button" class="layui-btn layui-btn-normal  layui-icon layui-icon-search" id="doSearch">查询</button>
+            <button type="button" class="layui-btn layui-btn-normal layui-icon layui-icon-search" id="doSearch">查询</button>
         </div>
     </div>
 </form>
@@ -51,55 +51,62 @@
             value: new Date()//默认选中当前年份
         });
 
+        //当点击查询按钮时调用getData()方法
+        $("#doSearch").click(function () {
+            getData();
+        });
 
-        var chartDom = document.getElementById('container');
-        var myChart = echarts.init(chartDom);
-        var option;
+        /*
+        获取数据
+         */
+        function getData() {
+            //获取年月
+            var date = $("#year").val();
+            $.get("/admin/charts/getTotalEmp",{"date":date}, function (result) {
+                var chartDom = document.getElementById('container');
+                var myChart = echarts.init(chartDom);
+                var option;
 
-        option = {
-            title: {
-                text: '就业统计',
-                subtext: '虚构数据',
-                left: 'center'
-            },
-            tooltip: {
-                trigger: 'item',
-                formatter: '{a} <br/>{b} : {c} ({d}%)'
-            },
-            legend: {
-                bottom: 10,
-                left: 'center',
-                data: ['私企', '国营',"个企"]
-            },
-            series: [
-                {
-                    type: 'pie',
-                    radius: '65%',
-                    center: ['50%', '50%'],
-                    selectedMode: 'single',
-                    data: [
+                option = {
+                    title: {
+                        text: '就业统计',
+                        // subtext: '虚构数据',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    legend: {
+                        bottom: 10,
+                        left: 'center',
+                        data: result
+                    },
+                    series: [
                         {
-                            value: 1548,
-                            name: '国企'
-                        },
-                        {value: 735, name: '个企'},
-                        {value: 510, name: '创业'},
-                        {value: 434, name: '自由'},
-                        {value: 335, name: '待业'}
-                    ],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            type: 'pie',
+                            radius: '65%',
+                            center: ['50%', '50%'],
+                            selectedMode: 'single',
+                            data: result,
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
                         }
-                    }
-                }
-            ]
-        };
+                    ]
+                };
 
-        option && myChart.setOption(option);
+                myChart.setOption(option);
 
+            }, "json");
+        }
+
+        //调用方法
+        getData();
     });
 </script>
 </body>
