@@ -12,15 +12,12 @@
 </head>
 <body>
 <!-- 搜索条件开始 -->
-<%--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">--%>
-<%--    <legend>查询条件</legend>--%>
-<%--</fieldset>--%>
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择毕业年份:</label>
+            <label class="layui-form-label">选择薪资年份:</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="year"  readonly="readonly" placeholder="yyyy">
+                <input type="text" class="layui-input" id="year" placeholder="yyyy">
             </div>
         </div>
         <div class="layui-inline">
@@ -29,11 +26,51 @@
     </div>
 </form>
 <!-- 搜索条件结束 -->
-
 <!-- 报表界面开始 -->
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
 <div id="container" style="height:550px;"></div>
+<form class="layui-form" method="post" id="searchFrm1">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">选择行业年份:</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="year1" placeholder="yyyy">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-normal layui-icon layui-icon-search" id="doSearch1">查询</button>
+        </div>
+    </div>
+</form>
 <div id="container1" style="height:550px;"></div>
+<form class="layui-form" method="post" id="searchFrm2">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">选择薪资年份:</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="year2" placeholder="yyyy">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-normal layui-icon layui-icon-search" id="doSearch2">查询</button>
+        </div>
+    </div>
+</form>
+<div id="main" style="height:550px;"></div>
+<form class="layui-form" method="post" id="searchFrm3">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">选择平均薪资年份:</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="year3" placeholder="yyyy">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-normal layui-icon layui-icon-search" id="doSearch3">查询</button>
+        </div>
+    </div>
+</form>
+<div id="main1" style="height:550px;"></div>
 <!-- 报表界面结束 -->
 
 <script src="${pageContext.request.contextPath}/static/echarts/jquery-3.1.1.min.js"></script>
@@ -51,12 +88,37 @@
             type: 'year',//控件选择类型
             value: new Date()//默认选中当前年份
         });
-
+        laydate.render({
+            elem: '#year1',//绑定渲染的元素
+            type: 'year',//控件选择类型
+            value: new Date()//默认选中当前年份
+        });
+        laydate.render({
+            elem: '#year2',//绑定渲染的元素
+            type: 'year',//控件选择类型
+            value: new Date()//默认选中当前年份
+        });
+        laydate.render({
+            elem: '#year3',//绑定渲染的元素
+            type: 'year',//控件选择类型
+            value: new Date()//默认选中当前年份
+        });
         //当点击查询按钮时调用getData()方法
         $("#doSearch").click(function () {
             getData();
         });
-
+        //当点击查询按钮时调用getData1()方法
+        $("#doSearch1").click(function () {
+            getData1();
+        });
+        //当点击查询按钮时调用getData2()方法
+        $("#doSearch2").click(function () {
+            getData2();
+        });
+        //当点击查询按钮时调用getData2()方法
+        $("#doSearch2").click(function () {
+            getData3();
+        });
         /*
         获取数据
          */
@@ -112,7 +174,7 @@
                 */
         function getData1() {
             //获取年月
-            var year = $("#year").val();
+            var year = $("#year1").val();
             $.get("/admin/charts/getTotalCategory",{"year":year}, function (result) {
                 var chartDom = document.getElementById('container1');
                 var myChart = echarts.init(chartDom);
@@ -120,7 +182,7 @@
 
                 option = {
                     title: {
-                        text: '就业统计',
+                        text: '所属行业统计',
                         // subtext: '虚构数据',
                         left: 'center'
                     },
@@ -157,7 +219,92 @@
         }
         //调用方法
         getData1();
-
+        /**
+         * 获取数据
+         */
+        function getData2() {
+            //获取年份
+            var year = $("#year2").val();
+            //判断年份是否为空
+            if(year=="" || year.length==0){
+                //如果年份为空，则默认使用当前年份
+                year = new Date().getFullYear();
+            }
+            //发送请求
+                $.get("/admin/charts/getSalaryCharts",{"year":year},function(result){
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'),'light');
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '就业薪资统计',//标题
+                            left: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        xAxis: {
+                            data: result.keyList
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '人数',
+                            type: 'bar',
+                            data: result.valueList
+                        }]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                },"json");
+            }
+        //调用方法
+        getData2();
+        /**
+         * 获取数据
+         */
+        function getData3() {
+            //获取年份
+            var year = $("#year3").val();
+            //判断年份是否为空
+            if(year=="" || year.length==0){
+                //如果年份为空，则默认使用当前年份
+                year = new Date().getFullYear();
+            }
+            //发送请求
+            $.get("/admin/charts/getSalaryAvgCharts",{"year":year},function(result){
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main1'),'light');
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '平均薪资统计',//标题
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    xAxis: {
+                        data: result.keyList
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '年份',
+                        type: 'bar',
+                        data: result.valueList
+                    }]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            },"json");
+        }
+        //调用方法
+        getData3();
     });
 </script>
 </body>
