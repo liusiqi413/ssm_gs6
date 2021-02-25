@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.ChartsMapper">
 <select id="getTotalEmp" resultType="com.vo.PieChartsVo">
---    SELECT employunit AS name,COUNT(employunit)AS value FROM stu_employ GROUP BY employunit
 select employunit as name,count(employunit)as value from stu_employ inner join stu_info t2 on t2.stuno = stu_employ.stuno WHERE DATE_FORMAT(t2.gradu,'%Y')=#{year} group by stu_employ.employunit
 </select>
+<select id="getTotalMaster" resultType="com.vo.PieChartsVo">
+SELECT success AS NAME,COUNT(success) AS VALUE FROM stu_master inner join stu_info t2 on t2.stuno = stu_master.stuno WHERE DATE_FORMAT(t2.gradu,'%Y')=#{year} group by stu_master.success
+</select>
+    <select id="getTotalCategory" resultType="com.vo.PieChartsVo">
+    SELECT category AS NAME,COUNT(category) AS VALUE FROM stu_employ WHERE category&lt;>'' GROUP BY stu_employ.category
+    </select>
 </mapper>

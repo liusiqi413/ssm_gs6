@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
+
 @Service
 @Transactional
 public class ChartsServiceImpl implements ChartsService {
@@ -16,7 +16,18 @@ public class ChartsServiceImpl implements ChartsService {
     private ChartsMapper chartsMapper;
     @Override
     public List<PieChartsVo> getTotalEmp(String year) {
-
         return chartsMapper.getTotalEmp(year);
+    }
+
+
+
+
+    public List<PieChartsVo> getTotalMaster(String year) {
+        return chartsMapper.getTotalMaster(year);
+    }
+
+    @Override
+    public List<PieChartsVo> getTotalCategory(String year) {
+        return chartsMapper.getTotalCategory(year);
     }
 }

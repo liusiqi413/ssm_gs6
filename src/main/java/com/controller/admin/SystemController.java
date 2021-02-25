@@ -121,4 +121,11 @@ return "admin/stu/stuManager";
     public String toEmpCount(){
         return "admin/charts/EmpCharts";
     }
+    /*
+      去到就业统计页面
+       */
+    @RequestMapping("toMasterCount")
+    public String toMasterCount(){
+        return "admin/charts/MasterCharts";
+    }
 }

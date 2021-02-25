@@ -18,9 +18,9 @@
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择毕业年份:</label>
+            <label class="layui-form-label">选择考研年份:</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="year"  readonly="readonly" placeholder="yyyy">
+                <input type="text" class="layui-input" id="masterYear"  readonly="readonly" placeholder="yyyy">
             </div>
         </div>
         <div class="layui-inline">
@@ -33,7 +33,6 @@
 <!-- 报表界面开始 -->
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
 <div id="container" style="height:550px;"></div>
-<div id="container1" style="height:550px;"></div>
 <!-- 报表界面结束 -->
 
 <script src="${pageContext.request.contextPath}/static/echarts/jquery-3.1.1.min.js"></script>
@@ -47,7 +46,7 @@
         var laydate = layui.laydate;
         //初始化时间选择器
         laydate.render({
-            elem: '#year',//绑定渲染的元素
+            elem: '#masterYear',//绑定渲染的元素
             type: 'year',//控件选择类型
             value: new Date()//默认选中当前年份
         });
@@ -62,8 +61,8 @@
          */
         function getData() {
             //获取年月
-            var year = $("#year").val();
-            $.get("/admin/charts/getTotalEmp",{"year":year}, function (result) {
+            var year = $("#masterYear").val();
+            $.get("/admin/charts/getTotalMaster",{"year":year}, function (result) {
                 var chartDom = document.getElementById('container');
                 var myChart = echarts.init(chartDom);
                 var option;
@@ -72,7 +71,8 @@
                     title: {
                         text: '就业统计',
                         // subtext: '虚构数据',
-                        left: 'center'
+                        left: 'center',
+                        data:result
                     },
                     tooltip: {
                         trigger: 'item',
@@ -80,8 +80,7 @@
                     },
                     legend: {
                         bottom: 10,
-                        left: 'center',
-                        data: result
+                        left: 'center'
                     },
                     series: [
                         {
@@ -107,56 +106,6 @@
         }
         //调用方法
         getData();
-        /*
-               获取数据
-                */
-        function getData1() {
-            //获取年月
-            var year = $("#year").val();
-            $.get("/admin/charts/getTotalCategory",{"year":year}, function (result) {
-                var chartDom = document.getElementById('container1');
-                var myChart = echarts.init(chartDom);
-                var option;
-
-                option = {
-                    title: {
-                        text: '就业统计',
-                        // subtext: '虚构数据',
-                        left: 'center'
-                    },
-                    tooltip: {
-                        trigger: 'item',
-                        formatter: '{a} <br/>{b} : {c} ({d}%)'
-                    },
-                    legend: {
-                        bottom: 10,
-                        left: 'center',
-                        data: result
-                    },
-                    series: [
-                        {
-                            type: 'pie',
-                            radius: '65%',
-                            center: ['50%', '50%'],
-                            selectedMode: 'single',
-                            data: result,
-                            emphasis: {
-                                itemStyle: {
-                                    shadowBlur: 10,
-                                    shadowOffsetX: 0,
-                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                }
-                            }
-                        }
-                    ]
-                };
-
-                myChart.setOption(option);
-
-            }, "json");
-        }
-        //调用方法
-        getData1();
 
     });
 </script>

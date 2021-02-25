@@ -26,6 +26,7 @@ com\service\impl\MenuServiceImpl.class
 com\entity\Teacher.class
 com\service\impl\ChartsServiceImpl.class
 com\interceptor\StuLoginInterceptor.class
+com\vo\ChartsVo.class
 com\utils\ExcelUtils.class
 com\vo\HireVo.class
 com\service\RoleService.class

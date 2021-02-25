@@ -312,8 +312,8 @@
                             <div class="layui-form-item" pane="">
                                 <div class="master">
                                 <label>考研结果：</label>
-                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='1'}">checked="checked"</c:if> value="1" title="成功"/>
-                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='2'}">checked="checked"</c:if> value="2" title="失败" />
+                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='成功'}">checked="checked"</c:if> value="成功" title="成功"/>
+                                    <input type="radio" name="success" <c:if test="${stuMaster.success=='失败'}">checked="checked"</c:if> value="失败" title="失败" />
                                 </div>
                             </div>
                             <div class="layui-form-item" pane="">

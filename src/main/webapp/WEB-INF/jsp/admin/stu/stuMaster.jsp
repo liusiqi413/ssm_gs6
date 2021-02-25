@@ -122,9 +122,7 @@
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
-                        {field: 'success', title: '录取', width: 80,align: 'center',sort: true,templet:function (d) {
-                            return d.success==1?"是":"否";
-                            }},
+                        {field: 'success', title: '录取', width: 80,align: 'center',sort: true},
                         {field: 'university', width: 130, title: '院校',align: 'center'},
                         {field: 'area', width: 90, title: '国家', sort: true,align: 'center'},
                         {field: 'city', width: 90, title: '城市',sort: true,align: 'center'},

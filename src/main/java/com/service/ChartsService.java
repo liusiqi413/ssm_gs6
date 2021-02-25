@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ChartsService {
-//    List<Map> getTotalEmp();
     List<PieChartsVo> getTotalEmp(String year);
+    List<PieChartsVo> getTotalMaster(String year);
+    List<PieChartsVo> getTotalCategory(String year);
 }

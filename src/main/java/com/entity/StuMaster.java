@@ -4,7 +4,7 @@ public class StuMaster {
     private Integer id;
     private String stuno;
     private String stuname;
-    private Integer success;
+    private String success;
     private Integer master;
     private String university;
     private String area;
@@ -27,11 +27,11 @@ public class StuMaster {
         this.master = master;
     }
 
-    public Integer getSuccess() {
+    public String getSuccess() {
         return success;
     }
 
-    public void setSuccess(Integer success) {
+    public void setSuccess(String success) {
         this.success = success;
     }
 
