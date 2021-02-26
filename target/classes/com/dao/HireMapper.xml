@@ -10,11 +10,14 @@
     </where>
 </select>
 <insert id="addHire">
-INSERT INTO hire_emp(companyName,hireType,request,numbers,salary,place,photo,descs,tel,times) VALUES (#{companyName},#{hireType},#{request},#{numbers},#{salary},#{place},#{photo},#{descs},#{tel},#{times})
+INSERT INTO hire_emp(boardCast,companyName,hireType,request,numbers,salary,place,photo,descs,tel,times) VALUES (#{boardCast},#{companyName},#{hireType},#{request},#{numbers},#{salary},#{place},#{photo},#{descs},#{tel},#{times})
 </insert>
     <update id="updateHire">
         update hire_emp
         <set>
+            <if test="boardCast!=null and boardCast!=''">
+                boardCast=#{boardCast},
+            </if>
             <if test="companyName!=null and companyName!=''">
                 companyName=#{companyName},
             </if>

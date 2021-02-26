@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/layui/css/public.css" media="all">
 </head>
 <body>
-<!-- 搜索条件开始 -->
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -25,9 +24,6 @@
         </div>
     </div>
 </form>
-<!-- 搜索条件结束 -->
-<!-- 报表界面开始 -->
-<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
 <div id="container" style="height:550px;"></div>
 <form class="layui-form" method="post" id="searchFrm1">
     <div class="layui-form-item">
@@ -71,7 +67,20 @@
     </div>
 </form>
 <div id="main1" style="height:550px;"></div>
-<!-- 报表界面结束 -->
+<form class="layui-form" method="post" id="searchFrm4">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">选择平均薪资年份:</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="year4" placeholder="yyyy">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-normal layui-icon layui-icon-search" id="doSearch4">查询</button>
+        </div>
+    </div>
+</form>
+<div id="main2" style="height:550px;"></div>
 
 <script src="${pageContext.request.contextPath}/static/echarts/jquery-3.1.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/echarts/echarts.min.js"></script>
@@ -103,6 +112,11 @@
             type: 'year',//控件选择类型
             value: new Date()//默认选中当前年份
         });
+        laydate.render({
+            elem: '#year4',//绑定渲染的元素
+            type: 'year',//控件选择类型
+            value: new Date()//默认选中当前年份
+        });
         //当点击查询按钮时调用getData()方法
         $("#doSearch").click(function () {
             getData();
@@ -115,9 +129,13 @@
         $("#doSearch2").click(function () {
             getData2();
         });
-        //当点击查询按钮时调用getData2()方法
-        $("#doSearch2").click(function () {
+        //当点击查询按钮时调用getData3()方法
+        $("#doSearch3").click(function () {
             getData3();
+        });
+        //当点击查询按钮时调用getData4()方法
+        $("#doSearch4").click(function () {
+            getData4();
         });
         /*
         获取数据
@@ -305,6 +323,49 @@
         }
         //调用方法
         getData3();
+        /**
+         * 获取数据
+         */
+        function getData4() {
+            //获取年份
+            var year = $("#year4").val();
+            //判断年份是否为空
+            if(year=="" || year.length==0){
+                //如果年份为空，则默认使用当前年份
+                year = new Date().getFullYear();
+            }
+            //发送请求
+            $.get("/admin/charts/getProvinceCharts",{"year":year},function(result){
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('main2'),'light');
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '工作省份统计',//标题
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    xAxis: {
+                        data: result.keyList
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: '省份',
+                        type: 'bar',
+                        data: result.valueList
+                    }]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            },"json");
+        }
+        //调用方法
+        getData4();
     });
 </script>
 </body>

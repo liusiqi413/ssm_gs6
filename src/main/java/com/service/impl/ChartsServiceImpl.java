@@ -41,4 +41,9 @@ public class ChartsServiceImpl implements ChartsService {
     public List<Map> getSalaryAvgCharts(String year) {
         return chartsMapper.getSalaryAvgCharts(year);
     }
+
+    @Override
+    public List<Map> getProvinceCharts(String year) {
+        return chartsMapper.getProvinceCharts(year);
+    }
 }

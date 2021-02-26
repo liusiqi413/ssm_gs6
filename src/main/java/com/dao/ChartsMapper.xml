@@ -14,6 +14,9 @@ SELECT success AS NAME,COUNT(success) AS VALUE FROM stu_master inner join stu_in
         SELECT INTERVAL(salary,1000,2000,3000,4000,5000,6000,7000,8000,9000) as name, SUM(CASE WHEN salary BETWEEN 0 AND 10000 THEN 1 ELSE 0 END)as value FROM stu_employ INNER JOIN stu_info t2 ON t2.stuno = stu_employ.stuno WHERE stu_employ.status=2 OR stu_employ.status=3 and salary IS NOT NULL and salary&lt;>'' AND DATE_FORMAT(t2.gradu,'%Y')=#{year} GROUP BY NAME
     </select>
     <select id="getSalaryAvgCharts" resultType="map">
-        SELECT year(stu_info.gradu) AS gradu, AVG(salary)AS value FROM stu_employ INNER JOIN stu_info ON stu_info.stuno = stu_employ.stuno WHERE stu_employ.status=2 OR stu_employ.status=3 AND salary IS NOT NULL AND salary&lt;>'' AND DATE_FORMAT(stu_info.gradu,'%Y')=#{year} GROUP BY stu_info.gradu
+    SELECT AVG(salary) AS value FROM stu_employ INNER JOIN stu_info ON stu_info.stuno = stu_employ.stuno WHERE stu_employ.status=2 OR stu_employ.status=3 AND salary IS NOT NULL AND salary&lt;>'' AND DATE_FORMAT(stu_info.gradu,'%Y')=#{year}
+    </select>
+    <select id="getProvinceCharts" resultType="map">
+        SELECT province AS name,COUNT(province) AS value FROM stu_employ INNER JOIN stu_info t2 ON t2.stuno = stu_employ.stuno WHERE stu_employ.status=2 OR stu_employ.status=3 AND province IS NOT NULL AND province&lt;>'' AND DATE_FORMAT(t2.gradu,'%Y')=#{year} GROUP BY stu_employ.province
     </select>
 </mapper>

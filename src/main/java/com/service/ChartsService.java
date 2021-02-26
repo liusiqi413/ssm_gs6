@@ -11,4 +11,5 @@ public interface ChartsService {
     List<PieChartsVo> getTotalCategory(String year);
     List<Map> getTotalSalary(String year);
     List<Map> getSalaryAvgCharts(String year);
+    List<Map> getProvinceCharts(String year);
 }

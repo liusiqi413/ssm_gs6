@@ -74,9 +74,15 @@
                     <div class="layui-row layui-col-space10">
                         <div class="layui-col-md9 layui-col-xs7">
                             <div class="layui-form-item magt3" style="margin-top: 8px;">
+                                <label class="layui-form-label">招聘公告</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input" name="boardCast" lay-verify="required"  placeholder="请输入招聘公告">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
                                 <label class="layui-form-label">公司名称</label>
                                 <div class="layui-input-block">
-                                    <input type="text" class="layui-input" name="companyName" lay-verify="required"  placeholder="请输入公司名称">
+                                    <input type="text" class="layui-input" name="companyName" lay-verify="required"  placeholder="请输入公司名称"></textarea>
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -88,7 +94,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">需求专业</label>
                                 <div class="layui-input-block">
-                                    <input type="text" class="layui-input" name="Request" lay-verify="required"  placeholder="请输入需求专业"></textarea>
+                                    <input type="text" class="layui-input" name="request" lay-verify="required"  placeholder="请输入需求专业"></textarea>
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -118,7 +124,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">联系方式</label>
                                 <div class="layui-input-block">
-                                    <input type="text" class="layui-input" name="tel" lay-verify="required" placeholder="请输入工作地点"></textarea>
+                                    <input type="text" class="layui-input" name="tel" lay-verify="required" placeholder="请输入联系方式"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +169,7 @@
             toolbar: '#toolbarDemo',
             cols: [[
                 {field: 'id', width: 60, title: '编号', align: "center"},
+                {field: 'boardCast', width: 150, title: '公告', align: "center"},
                 {field: 'companyName', width: 150, title: '公司名称', align: "center"},
                 {field: 'hireType', width: 150, title: '招聘岗位'},
                 {field: 'request', width: 150, title: '需求专业'},
@@ -226,7 +233,6 @@
 
         //监听行工具栏事件
         table.on("tool(currentTableFilter)",function (obj) {
-            console.log(obj);
             switch (obj.event) {
                 case "edit"://编辑按钮
                     openUpdateWindow(obj.data);//打开修改窗口
