@@ -24,7 +24,7 @@
         </div>
     </div>
 </form>
-<div id="container" style="height:550px;"></div>
+<div id="container" style="height:500px;"></div>
 <form class="layui-form" method="post" id="searchFrm1">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -38,7 +38,7 @@
         </div>
     </div>
 </form>
-<div id="container1" style="height:550px;"></div>
+<div id="container1" style="height:500px;"></div>
 <form class="layui-form" method="post" id="searchFrm2">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -52,7 +52,7 @@
         </div>
     </div>
 </form>
-<div id="main" style="height:550px;"></div>
+<div id="main" style="height:500px;"></div>
 <form class="layui-form" method="post" id="searchFrm3">
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -66,7 +66,7 @@
         </div>
     </div>
 </form>
-<div id="main1" style="height:550px;"></div>
+<div id="main1" style="height:500px;"></div>
 <form class="layui-form" method="post" id="searchFrm4">
     <div class="layui-form-item">
         <div class="layui-inline">

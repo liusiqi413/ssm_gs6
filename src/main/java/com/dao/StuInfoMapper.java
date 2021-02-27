@@ -1,8 +1,6 @@
 package com.dao;
 
-import com.entity.StuEmp;
-import com.entity.StuMaster;
-import com.entity.Student;
+import com.entity.*;
 
 import java.util.List;
 
@@ -47,4 +45,12 @@ public interface StuInfoMapper {
   修改学生就业信息
   */
     int updateEditMaster(StuMaster stuMaster);
+    /*
+修改密码
+ */
+    StuUser findLoginPwdByLoginName(String loginName);
+    /*
+ 修改密码
+  */
+    int updateUserPassword(StuUser stuUser);
 }

@@ -32,7 +32,7 @@
 
 <!-- 报表界面开始 -->
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-<div id="container" style="height:550px;"></div>
+<div id="container" style="height:500px;"></div>
 <!-- 报表界面结束 -->
 
 <script src="${pageContext.request.contextPath}/static/echarts/jquery-3.1.1.min.js"></script>

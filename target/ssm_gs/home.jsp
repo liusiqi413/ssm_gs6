@@ -25,7 +25,7 @@
         <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
         <ul class="layui-nav" id="layui-nav-userinfo">
             <li data-id="index" class="layui-nav-item layui-hide-xs layui-this">
-                <a class="fly-case-active" data-type="toTopNav" href="JavaScript:void(0);">首页</a>
+                <a class="fly-case-active" data-type="toTopNav" href="/home.html">首页</a>
             </li>
             <li data-id="addInfo" class="layui-nav-item layui-hide-xs">
                 <a class="fly-case-active" data-type="toTopNav" href="info.html">信息填写</a>
@@ -34,7 +34,7 @@
                 <a class="fly-case-active" data-type="toTopNav" href="edit.html">信息修改</a>
             </li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
-                                                                         href="JavaScript:void(0);">密码修改</a></li>
+                                                                         href="reset.jsp">密码修改</a></li>
         </ul>
     </div>
 </div>

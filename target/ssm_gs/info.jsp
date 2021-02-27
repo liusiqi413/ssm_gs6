@@ -35,8 +35,8 @@
             <li data-id="editInfo" class="layui-nav-item layui-hide-xs">
                 <a class="fly-case-active" data-type="toTopNav" href="edit.html">信息修改</a>
             </li>
-            <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
-                                                                         href="JavaScript:void(0);">密码修改</a></li>
+            <li data-id="login" class="layui-nav-item layui-hide-xs ">
+                <a class="fly-case-active" data-type="toTopNav" href="reset.jsp">密码修改</a></li>
         </ul>
     </div>
 </div>
@@ -243,23 +243,23 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">就业城市：</label>
+                            <label class="layui-form-label">就业省份：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="city" placeholder="请输入就业城市" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="province" placeholder="请输入就业省份" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">就业薪资：</label>
+                            <label class="layui-form-label">就业城市：</label>
                             <div class="layui-input-inline">
-                                <input type="number" name="salary" placeholder="请输入就业薪资" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="city" placeholder="请输入就业城市" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label"></label>
+                            <label class="layui-form-label">就业薪资：</label>
                             <div class="layui-input-inline">
-                                <input type="hidden" autocomplete="off" class="layui-input">
+                                <input type="number" name="salary" placeholder="请输入就业薪资" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>

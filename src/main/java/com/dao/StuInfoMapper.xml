@@ -29,7 +29,6 @@
             <if test="status!=null and status!=''">
                     status=#{status}
             </if>
-
         </set>
         where stuno=#{stuno}
     </update>
@@ -38,7 +37,7 @@
     </select>
 <!--添加学生就业信息-->
     <insert id="addEmp">
-        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,city,salary,status) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{city},#{salary},#{status})
+        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,province,city,salary,status) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{province},#{city},#{salary},#{status})
     </insert>
 <select id="findStuEmpByName" resultType="com.entity.StuEmp">
     select stuno from stu_employ where stuno=#{stuno}
@@ -71,8 +70,17 @@
             <if test="country!=null and country!=''">
                 country=#{country},
             </if>
+            <if test="province!=null and province!=''">
+                province=#{province},
+            </if>
             <if test="city!=null and city!=''">
                 city=#{city},
+            </if>
+            <if test="salary!=null and salary!=''">
+                salary=#{salary},
+            </if>
+            <if test="status!=null and status!=''">
+                status=#{status}
             </if>
         </set>
         where stuno=#{stuno}
@@ -101,5 +109,26 @@
             </if>
         </set>
         where stuno=#{stuno}
+    </update>
+    <select id="findLoginPwdByLoginName" resultType="com.entity.StuUser">
+        SELECT * FROM t_user WHERE loginName = #{loginName}
+    </select>
+    <update id="updateUserPassword">
+        update t_user
+        <set>
+            <if test="loginName!=null and loginName!=''">
+                loginName=#{loginName},
+            </if>
+            <if test="passWord!=null and passWord!=''">
+                passWord=#{passWord},
+            </if>
+            <if test="realName!=null and realName!=''">
+                realName=#{realName},
+            </if>
+            <if test="salt!=null and salt!=''">
+                salt=#{salt},
+            </if>
+        </set>
+        where loginName=#{loginName}
     </update>
 </mapper>

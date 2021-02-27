@@ -54,7 +54,7 @@
                                 <p class="reference"><span>招聘岗位</span> <span id="roomNumber">${hire.hireType}</span></p>
                                 <p class="reference"><span>招聘要求</span> <span id="bedType">${hire.request}</span></p>
                                 <p class="reference"><span>招聘人数</span> <span id="broadband">${hire.numbers}</span></p>
-                                <p class="reference"><span>招聘薪资</span> ￥<span id="standardPrice">${hire.salary}</span></p>
+                                <p class="reference"><span>招聘薪资</span> <span id="standardPrice">${hire.salary}</span></p>
                                 <p class="reference"><span>工作地点</span><span>${hire.place}</span></p>
                             </div>
                         </div>

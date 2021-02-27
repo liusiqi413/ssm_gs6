@@ -1,10 +1,13 @@
 package com.service.impl;
 
 import com.dao.StuInfoMapper;
-import com.entity.StuEmp;
-import com.entity.StuMaster;
-import com.entity.Student;
+import com.dao.StuUserMapper;
+import com.entity.*;
 import com.service.StuInfoService;
+import com.utils.PasswordUtil;
+import com.utils.SystemConstant;
+import com.utils.UUIDUtils;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,8 +57,9 @@ public class StuInfoServiceImpl implements StuInfoService {
     }
 
     @Override
-    public int updateEditEmp(StuEmp stump) {
-        return stuInfoMapper.updateEditEmp(stump);
+    public int updateEditEmp(StuEmp stuEmp) {
+        stuEmp.setStatus(1);
+        return stuInfoMapper.updateEditEmp(stuEmp);
     }
 
     @Override
@@ -66,5 +70,27 @@ public class StuInfoServiceImpl implements StuInfoService {
     @Override
     public int updateEditMaster(StuMaster stuMaster) {
         return stuInfoMapper.updateEditMaster(stuMaster);
+    }
+
+    @Override
+    public StuUser findLoginPwdByLoginName(String loginName, String loginPwd) {
+        StuUser oldUser = stuInfoMapper.findLoginPwdByLoginName(loginName);
+        if(oldUser !=null) {
+            String newPassword = PasswordUtil.md5(loginPwd, oldUser.getSalt(), SystemConstant.PASSWORD_COUNT);
+            if (oldUser.getPassWord().equals(newPassword)) {
+                return oldUser;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public int updateUserPassword(StuUser stuUser) {
+        //自动生成盐值
+        stuUser.setSalt(UUIDUtils.randomUUID());
+        //密码加密
+        stuUser.setPassWord(PasswordUtil.md5(stuUser.getPassWord(),stuUser.getSalt(),SystemConstant.PASSWORD_COUNT));
+
+        return stuInfoMapper.updateUserPassword(stuUser);
     }
 }

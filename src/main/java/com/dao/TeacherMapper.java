@@ -31,7 +31,9 @@ public interface TeacherMapper {
     删除老师
      */
     int deleteById(Integer id);
-
+/*
+查询密码
+ */
     Teacher findLoginPwdByLoginName(String loginName);
 /*
 删除老师角色关系表

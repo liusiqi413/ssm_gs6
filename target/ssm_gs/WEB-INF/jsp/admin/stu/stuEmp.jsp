@@ -128,7 +128,9 @@
                         {field: 'category', width: 120, title: '工作类别', sort: true,align: 'center'},
                         {field: 'employunit', width: 130, title: '就业单位性质', sort: true,align: 'center'},
                         {field: 'country', width: 100, title: '就业国家',sort: true,align: 'center'},
+                        {field: 'province', width: 100, title: '就业省份',sort: true,align: 'center'},
                         {field: 'city', width: 100, title: '就业城市',sort: true,align: 'center'},
+                        {field: 'salary', width: 100, title: '薪资',sort: true,align: 'center'},
                         {field: 'status', width: 120, title: '状态', align: "center",templet:function (d) {
                                 if(d.status==1){
                                     return "待审核";

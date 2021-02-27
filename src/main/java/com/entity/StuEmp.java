@@ -9,9 +9,18 @@ public class StuEmp {
     private String category;
     private String employunit;
     private String country;
+    private String province;
     private String city;
     private Integer salary;
     private Integer status;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
 
     public Integer getStatus() {
         return status;

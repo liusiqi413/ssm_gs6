@@ -1,9 +1,7 @@
 package com.service;
 
 
-import com.entity.StuEmp;
-import com.entity.StuMaster;
-import com.entity.Student;
+import com.entity.*;
 
 import java.util.List;
 
@@ -48,4 +46,12 @@ public interface StuInfoService {
     修改学生就业信息
     */
     int updateEditMaster(StuMaster stuMaster);
+    /*
+    查询密码
+     */
+    StuUser findLoginPwdByLoginName(String loginName, String loginPwd);
+    /*
+   修改密码
+    */
+    int updateUserPassword(StuUser stuUser);
 }

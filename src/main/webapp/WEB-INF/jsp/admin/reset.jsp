@@ -111,7 +111,9 @@
                 $.post("/admin/teacher/updateTeacherPassword",{"loginName":loginName,"loginPwd":newloginPwd},function (result) {
                     if (result.success){
                     //提示信息
-                    layer.msg(result.message);}
+                    layer.msg(result.message);
+                    window.setTimeout("location.href='/login.jsp'",3000);
+                    }
                 }, "json");
             }else {
                 var oldLogin=$("#oldPwd").val().trim();
