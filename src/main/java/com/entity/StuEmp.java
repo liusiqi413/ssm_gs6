@@ -3,6 +3,7 @@ package com.entity;
 public class StuEmp {
     private Integer id;
     private String stuno;
+    private String classes;
     private String stuname;
     private String employno;
     private String company;
@@ -13,6 +14,14 @@ public class StuEmp {
     private String city;
     private Integer salary;
     private Integer status;
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
 
     public String getProvince() {
         return province;

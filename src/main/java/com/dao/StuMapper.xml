@@ -51,7 +51,10 @@
                 gradu=#{gradu},
             </if>
             <if test="diploma!=null and diploma!=''">
-                diploma=#{diploma}
+                diploma=#{diploma},
+            </if>
+            <if test="train!=null and train!=''">
+                train=#{train},
             </if>
         </set>
         where id=#{id}

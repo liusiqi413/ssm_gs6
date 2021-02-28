@@ -312,7 +312,7 @@
                     },
                     yAxis: {},
                     series: [{
-                        name: '年份',
+                        name: '薪资',
                         type: 'bar',
                         data: result.valueList
                     }]

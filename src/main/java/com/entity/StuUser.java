@@ -4,9 +4,17 @@ public class StuUser {
     private Integer id;
     private String loginName;
     private String passWord;
+    private String classes;
     private String realName;
-    private String status;
     private String salt;
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
 
     public String getRealName() {
         return realName;
@@ -38,14 +46,6 @@ public class StuUser {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getSalt() {

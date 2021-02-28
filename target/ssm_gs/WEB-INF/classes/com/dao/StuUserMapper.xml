@@ -16,7 +16,7 @@
         </where>
     </select>
     <insert id="addStuUser">
-        insert into t_user(loginName,passWord,realName,status,salt) values(#{loginName},#{passWord},#{realName},#{status},#{salt})
+        insert into t_user(loginName,passWord,realName,salt) values(#{loginName},#{passWord},#{realName},#{salt})
     </insert>
     <update id="updateStuUser">
         update t_user

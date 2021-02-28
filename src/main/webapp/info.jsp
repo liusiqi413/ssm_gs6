@@ -210,10 +210,23 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生班级：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" disabled="disabled" value="${sessionScope.currentUser.classes}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
                         <div class="master">
                             <label>就业协议号：</label>
                             <div class="layui-inline">
-                                <input name="employno" type="text" id="employno" placeholder="请输入就业协议号：" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input name="employno" type="text" id="employno" placeholder="请输入就业协议号：" autocomplete="off" class="layui-input">
                             </div>
                             <label class="company">公司名：</label>
                             <div class="layui-inline">
@@ -231,7 +244,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">单位性质：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="employunit" placeholder="请输入就业单位性质" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="employunit" placeholder="请输入就业单位性质" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -239,13 +252,13 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">就业国家：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="country" placeholder="请输入就业国家" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="country" placeholder="请输入就业国家" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">就业省份：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="province" placeholder="请输入就业省份" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="province" placeholder="请输入就业省份" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -253,13 +266,13 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">就业城市：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="city" placeholder="请输入就业城市" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="city" placeholder="请输入就业城市" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">就业薪资：</label>
                             <div class="layui-input-inline">
-                                <input type="number" name="salary" placeholder="请输入就业薪资" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="number" name="salary" placeholder="请输入就业薪资" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -286,6 +299,19 @@
                             <label class="layui-form-label">学生姓名：</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" disabled="disabled" value="${sessionScope.currentUser.realName}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学生班级：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" disabled="disabled" value="${sessionScope.currentUser.classes}" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
                             </div>
                         </div>
                     </div>

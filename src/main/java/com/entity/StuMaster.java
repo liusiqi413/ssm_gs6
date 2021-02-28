@@ -3,6 +3,7 @@ package com.entity;
 public class StuMaster {
     private Integer id;
     private String stuno;
+    private String classes;
     private String stuname;
     private String success;
     private Integer master;
@@ -10,6 +11,14 @@ public class StuMaster {
     private String area;
     private String city;
     private Integer status;
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
 
     public Integer getStatus() {
         return status;

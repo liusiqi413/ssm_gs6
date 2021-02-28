@@ -37,7 +37,7 @@
     </select>
 <!--添加学生就业信息-->
     <insert id="addEmp">
-        insert into stu_employ(stuno,stuname,employno,company,category,employunit,country,province,city,salary,status) values (#{stuno},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{province},#{city},#{salary},#{status})
+        insert into stu_employ(stuno,classes,stuname,employno,company,category,employunit,country,province,city,salary,status) values (#{stuno},#{classes},#{stuname},#{employno},#{company},#{category},#{employunit},#{country},#{province},#{city},#{salary},#{status})
     </insert>
 <select id="findStuEmpByName" resultType="com.entity.StuEmp">
     select stuno from stu_employ where stuno=#{stuno}
@@ -46,7 +46,7 @@
         select stuno from stu_master where stuno=#{stuno}
     </select>
     <insert id="addMaster">
-        insert into stu_master(stuno,stuname,success,master,university,area,city,status)values (#{stuno},#{stuname},#{success},#{master},#{university},#{area},#{city},#{status})
+        insert into stu_master(stuno,classes,stuname,success,master,university,area,city,status)values (#{stuno},#{classes},#{stuname},#{success},#{master},#{university},#{area},#{city},#{status})
     </insert>
     <select id="findStuEmpByStuno" resultType="com.entity.StuEmp">
     select * from stu_employ where stuno=#{stuno}

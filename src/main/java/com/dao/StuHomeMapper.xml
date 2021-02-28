@@ -4,6 +4,9 @@
 <select id="findStuHomeList" resultType="com.entity.StudentHome">
     select * from stu_info
     <where>
+        <if test="classes!=null and classes!=''">
+            and classes like concat('%',#{classes},'%')
+        </if>
         <if test="stuname!=null and stuname!=''">
             and stuname like concat('%',#{stuname},'%')
         </if>
@@ -17,6 +20,9 @@
         <set>
             <if test="stuno!=null and stuno!=''">
                 stuno=#{stuno},
+            </if>
+            <if test="classes!=null and classes!=''">
+                classes=#{classes},
             </if>
             <if test="stuname!=null and stuname!=''">
                 stuname=#{stuname},

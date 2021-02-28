@@ -20,6 +20,12 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
+                            <label class="layui-form-label">学生班级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">学生姓名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" autocomplete="off" class="layui-input">
@@ -81,6 +87,13 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">学生班级</label>
+            <div class="layui-input-block">
+                <input type="text" name="classes" lay-verify="required" autocomplete="off"
+                       placeholder="请输入学生班级" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">学生姓名</label>
             <div class="layui-input-block">
                 <input type="text" name="stuname" lay-verify="required" autocomplete="off"
@@ -121,6 +134,7 @@
                         {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
+                        {field: 'classes', width: 100, title: '学生班级', sort: true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
                         {field: 'success', title: '录取', width: 80,align: 'center',sort: true},
                         {field: 'university', width: 130, title: '院校',align: 'center'},

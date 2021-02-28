@@ -72,14 +72,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="realName" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                        <input type="text" name="realName" id="realName" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
                                class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">密码</label>
                     <div class="layui-input-block">
-                        <input type="text" name="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                        <input type="text" name="passWord" id="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
                                class="layui-input">
                     </div>
                 </div>
@@ -303,7 +303,7 @@
                         layer.alert("已有相同学号，请确认后重新输入！",{icon:5})
                     }else {
                         //发送ajax请求提交
-                        $.post(url, data.field, function (result) {
+                        $.post("/admin/stu/register", data.field, function (result) {
                             if (result.success) {
                                 layer.alert(result.message, {icon: 6});
                                 //刷新数据表格

@@ -214,6 +214,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">班级:</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" value="${stuEmp.classes}" disabled="disabled" autocomplete="off" class="layui-input">
+                            </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label"></label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="layui-elem-quote confrom">
                         <c:if test="${stuEmp.status=='1'}">就业信息待审核</c:if>
                         <c:if test="${stuEmp.status=='2'}">就业信息审核通过</c:if>
@@ -300,6 +314,20 @@
                                 <label class="layui-form-label">姓名:</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="stuname" value="${stuMaster.stuname}" disabled="disabled" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班级:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="classes" value="${stuMaster.classes}" disabled="disabled" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label"></label>
+                                <div class="layui-input-inline">
+                                    <input type="hidden" class="layui-input">
                                 </div>
                             </div>
                         </div>

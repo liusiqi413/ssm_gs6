@@ -4,6 +4,9 @@
     <select id="findStuEmpList" resultType="com.entity.StuEmp">
         select * from stu_employ
         <where>
+            <if test="classes!=null and classes!=''">
+                and classes like concat('%',#{classes},'%')
+            </if>
             <if test="stuname!=null and stuname!=''">
                 and stuname like concat('%',#{stuname},'%')
             </if>
@@ -22,6 +25,9 @@
             </if>
             <if test="stuname!=null and stuname!=''">
                 stuname=#{stuname},
+            </if>
+            <if test="classes!=null and classes!=''">
+                classes=#{classes},
             </if>
             <if test="employno!=null and employno!=''">
                 employno=#{employno},

@@ -19,6 +19,12 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
+                            <label class="layui-form-label">学生班级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">学生姓名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" autocomplete="off" class="layui-input">
@@ -86,9 +92,16 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">学生班级</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="classes" lay-verify="required" autocomplete="off"
+                               placeholder="请输入学生班级" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">就业协议书</label>
                     <div class="layui-input-block">
-                        <input type="text" name="employno" lay-verify="required" autocomplete="off"
+                        <input type="text" name="employno" autocomplete="off"
                                placeholder="请输入学生姓名" class="layui-input">
                     </div>
                 </div>
@@ -122,6 +135,7 @@
                         {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'stuno', width:130, title: '学生学号',sort:true,align: 'center'},
+                        {field: 'classes', width:130, title: '学生班级',sort:true,align: 'center'},
                         {field: 'stuname', width: 100, title: '学生姓名', sort: true,align: 'center'},
                         {field: 'employno', title: '就业协议书', width:150,align: 'center',sort: true},
                         {field: 'company', width: 180, title: '公司名',align: 'center'},

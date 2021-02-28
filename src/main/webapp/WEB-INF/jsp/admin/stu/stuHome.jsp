@@ -20,6 +20,12 @@
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
                         <div class="layui-inline">
+                            <label class="layui-form-label">学生班级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">学生姓名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="stuname" autocomplete="off" class="layui-input">
@@ -75,6 +81,12 @@
                     <label class="layui-form-label">学号：</label>
                     <div class="layui-input-block">
                         <input type="number" name="stuno" id="stu" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">班级：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="classes" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -168,6 +180,7 @@
                 {type:"checkbox",fixed:"left",width:50,align:"center"},
                 {field: 'id', width: 60, title: 'ID',align:"center", sort: true},
                 {field: 'stuno', width:120, title: '学生学号'},
+                {field: 'classes', width: 90, title: '学生班级', sort: true,align: 'center'},
                 {field: 'stuname', width: 90, title: '学生姓名', sort: true,align: 'center'},
                 {field: 'stutel', width: 120, title: '电话',align: 'center'},
                 {field: 'examno', width:120, title: '高考考号',sort:true},
@@ -259,6 +272,7 @@
             }
         });
     }
+    var flag="false";
         //当用户名输入框失去焦点事件触发验证
         $("#stu").blur(function () {
             //获取用户名
