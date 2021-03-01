@@ -226,11 +226,11 @@
                         <div class="master">
                             <label>就业协议号：</label>
                             <div class="layui-inline">
-                                <input name="employno" type="text" id="employno" placeholder="请输入就业协议号：" autocomplete="off" class="layui-input">
+                                <input name="employno" type="text" id="employno" placeholder="请输入就业协议号" autocomplete="off" class="layui-input">
                             </div>
                             <label class="company">公司名：</label>
                             <div class="layui-inline">
-                                <input type="text" name="company" id="company" placeholder="公司名：" autocomplete="off" class="layui-input">
+                                <input type="text" name="company" id="company" placeholder="公司名" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>
@@ -238,13 +238,13 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">工作类别：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="category" placeholder="请输入工作类别" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="category" placeholder="请输入工作类别" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">单位性质：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="employunit" placeholder="请输入就业单位性质" autocomplete="off" class="layui-input">
+                                <input type="text" name="employunit" placeholder="如待业请填待业其余无需填写" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>

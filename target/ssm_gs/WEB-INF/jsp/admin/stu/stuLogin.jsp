@@ -32,6 +32,12 @@
                                 <input type="text" name="realName" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">班级</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="classes" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block" style="text-align: center">
                                 <button type="submit" class="layui-btn"  lay-submit lay-filter="data-search-btn"><i class="layui-icon layui-icon-search"></i>搜索</button>
@@ -70,16 +76,23 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="passWord" id="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                           class="layui-input">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                <label class="layui-form-label">学生班级</label>
+                <div class="layui-input-block">
+                    <input type="text" name="classes" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                           class="layui-input">
+                </div>
+            </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
                         <input type="text" name="realName" id="realName" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="passWord" id="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
                                class="layui-input">
                     </div>
                 </div>
@@ -108,16 +121,23 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
+                           class="layui-input">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                <label class="layui-form-label">学生班级</label>
+                <div class="layui-input-block">
+                    <input type="text" name="classes" lay-verify="required" autocomplete="off" placeholder="请输入学生班级"
+                           class="layui-input">
+                </div>
+            </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
                         <input type="text" name="realName" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
-                               class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="passWord" lay-verify="required" autocomplete="off" placeholder="请输入学生姓名"
                                class="layui-input">
                     </div>
                 </div>
@@ -191,6 +211,7 @@
                         {type:"checkbox",fixed:"left",width:50,align:"center"},
                         {field: 'id', width: 60, title: 'ID', sort: true},
                         {field: 'loginName', width:130, title: '学生学号',sort:true},
+                        {field: 'classes', width: 130, title: '学生班级', sort: true,align: 'center'},
                         {field: 'realName', width: 130, title: '学生姓名', sort: true,align: 'center'},
                         {title: '操作', width: 300, toolbar: '#barDemo', align: "center"}
                     ]],

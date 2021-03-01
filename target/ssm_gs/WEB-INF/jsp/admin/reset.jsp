@@ -112,7 +112,7 @@
                     if (result.success){
                     //提示信息
                     layer.msg(result.message);
-                    window.setTimeout("location.href='/login.jsp'",3000);
+                    window.setTimeout("location.href='/admin/login.html'",3000);
                     }
                 }, "json");
             }else {

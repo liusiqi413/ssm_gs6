@@ -101,7 +101,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">就业协议书</label>
                     <div class="layui-input-block">
-                        <input type="text" name="employno" lay-verify="required" autocomplete="off"
+                        <input type="text" name="employno" autocomplete="off"
                                placeholder="请输入学生姓名" class="layui-input">
                     </div>
                 </div>

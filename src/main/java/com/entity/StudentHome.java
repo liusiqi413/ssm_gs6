@@ -19,6 +19,15 @@ public class StudentHome {
     private Date birth;
     private String ethnic;
     private Integer status;
+    private String classes;
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
 
     public String getStutel() {
         return stutel;

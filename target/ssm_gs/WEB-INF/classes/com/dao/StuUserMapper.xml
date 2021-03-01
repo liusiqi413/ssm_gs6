@@ -13,10 +13,13 @@
             <if test="realName!=null and realName!=''">
                 and realName like concat('%',#{realName},'%')
             </if>
+            <if test="classes!=null and classes!=''">
+                and classes like concat('%',#{classes},'%')
+            </if>
         </where>
     </select>
     <insert id="addStuUser">
-        insert into t_user(loginName,passWord,realName,salt) values(#{loginName},#{passWord},#{realName},#{salt})
+        insert into t_user(loginName,passWord,classes,realName,salt) values(#{loginName},#{passWord},#{classes},#{realName},#{salt})
     </insert>
     <update id="updateStuUser">
         update t_user
@@ -27,6 +30,9 @@
             <if test="passWord!=null and passWord!=''">
                 passWord=#{passWord},
             </if>
+            <if test="classes!=null and classes!=''">
+                classes=#{classes},
+             </if>
             <if test="realName!=null and realName!=''">
                 realName=#{realName},
             </if>

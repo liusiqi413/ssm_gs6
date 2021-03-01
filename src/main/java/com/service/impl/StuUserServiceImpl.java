@@ -107,7 +107,7 @@ private StuUserMapper stuUserMapper;
 
             //     System.out.println("lo.size是："+lo.size());
 
-            if(lo.size() == 3){    //无ID这一列
+            if(lo.size() == 4){    //无ID这一列
                 //     System.out.println("无ID");
                 if(stuUserMapper.findStuUserByName(String.valueOf(lo.get(0)))!=null){
 
@@ -117,10 +117,11 @@ private StuUserMapper stuUserMapper;
                 vo.setSalt(UUIDUtils.randomUUID());
                 //密码加密
                 vo.setPassWord(PasswordUtil.md5(vo.getPassWord(),vo.getSalt(),SystemConstant.PASSWORD_COUNT));
-                vo.setRealName(String.valueOf(lo.get(2)));
+                vo.setClasses(String.valueOf(lo.get(2)));
+                vo.setRealName(String.valueOf(lo.get(3)));
                     stuUserMapper.addStuUser(vo);
             }
-            }else if(lo.size() == 4) {   //有ID这一列
+            }else if(lo.size() == 5) {   //有ID这一列
                 //      System.out.println("有ID");
                 if (stuUserMapper.findStuUserByName(String.valueOf(lo.get(1))) != null) {
 
@@ -130,7 +131,8 @@ private StuUserMapper stuUserMapper;
                     vo.setSalt(UUIDUtils.randomUUID());
                     //密码加密
                     vo.setPassWord(PasswordUtil.md5(vo.getPassWord(), vo.getSalt(), SystemConstant.PASSWORD_COUNT));
-                    vo.setRealName(String.valueOf(lo.get(3)));
+                    vo.setClasses(String.valueOf(lo.get(3)));
+                    vo.setRealName(String.valueOf(lo.get(4)));
                     stuUserMapper.addStuUser(vo);
                         }
             }
