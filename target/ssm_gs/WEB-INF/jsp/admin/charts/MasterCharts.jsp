@@ -18,7 +18,7 @@
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择考研年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="masterYear"  readonly="readonly" placeholder="yyyy">
             </div>
@@ -69,7 +69,7 @@
 
                 option = {
                     title: {
-                        text: '就业统计',
+                        text: '考研统计',
                         // subtext: '虚构数据',
                         left: 'center',
                         data:result

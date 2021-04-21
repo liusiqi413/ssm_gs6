@@ -44,7 +44,7 @@
     <select id="checkStuEmp" resultType="com.entity.StuEmp">
         SELECT stuno FROM stu_employ
 WHERE id NOT IN
-(SELECT id FROM stu_info
+(SELECT id FROM stu_employ
 WHERE id=#{id}) and stuno=#{stuno}
     </select>
 </mapper>

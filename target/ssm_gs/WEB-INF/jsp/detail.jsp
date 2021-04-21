@@ -25,12 +25,12 @@
         <div class="layui-form component" lay-filter="LAY-site-header-component"></div>
         <ul class="layui-nav" id="layui-nav-userinfo">
             <li data-id="index" class="layui-nav-item layui-hide-xs"><a class="fly-case-active" data-type="toTopNav"
-                                                                        href="JavaScript:void(0);">首页</a></li>
+                                                                        href="home.html">首页</a></li>
             <li data-id="room" class="layui-nav-item layui-hide-xs layui-this"><a class="fly-case-active"
                                                                                   data-type="toTopNav"
-                                                                                  href="JavaScript:void(0);">信息填写</a></li>
+                                                                                  href="info.html">信息填写</a></li>
             <li data-id="login" class="layui-nav-item layui-hide-xs "><a class="fly-case-active" data-type="toTopNav"
-                                                                         href="JavaScript:void(0);">密码修改</a></li>
+                                                                         href="edit.html">密码修改</a></li>
             <span class="layui-nav-bar" style="left: 560px; top: 55px; width: 0px; opacity: 0;"></span></ul>
     </div>
 </div>

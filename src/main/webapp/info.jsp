@@ -244,7 +244,7 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">单位性质：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="employunit" placeholder="如待业请填待业其余无需填写" lay-verify="required" autocomplete="off" class="layui-input">
+                                <input type="text" name="employunit" placeholder="如待业请填待业" lay-verify="required" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                     </div>

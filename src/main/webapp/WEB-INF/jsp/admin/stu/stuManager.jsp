@@ -243,7 +243,7 @@
             <div class="layui-col-md11">
                 <form class="layui-form layui-from-pane" action="" style="margin-top:20px" method="">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">批量导入学生信息：</label>
+                        <label class="layui-form-label"></label>
                         <div class="layui-upload-drag" id="test8" name="file">
                             <i class="layui-icon"></i>
                             <p>点击上传，或将文件拖拽到此处</p>

@@ -27,6 +27,9 @@
             <if test="stuname!=null and stuname!=''">
                 stuname=#{stuname},
             </if>
+            <if test="stutel!=null and stutel!=''">
+                stutel=#{stutel},
+            </if>
             <if test="examno!=null and examno!=''">
                 examno=#{examno},
             </if>

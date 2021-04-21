@@ -88,7 +88,7 @@
     <select id="findStuMasterByStuno" resultType="com.entity.StuMaster">
     select * from stu_master where stuno=#{stuno}
 </select>
-    <!-- 修改学生就业信息-->
+    <!-- 修改学生考研信息-->
     <update id="updateEditMaster">
         update stu_master
         <set>
@@ -105,7 +105,10 @@
                 area=#{area},
             </if>
             <if test="city!=null and city!=''">
-                city=#{city}
+                city=#{city},
+            </if>
+            <if test="status!=null and status!=''">
+                status=#{status},
             </if>
         </set>
         where stuno=#{stuno}

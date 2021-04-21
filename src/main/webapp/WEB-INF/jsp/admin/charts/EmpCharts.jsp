@@ -14,7 +14,7 @@
 <form class="layui-form" method="post" id="searchFrm">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择薪资年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="year" placeholder="yyyy">
             </div>
@@ -28,7 +28,7 @@
 <form class="layui-form" method="post" id="searchFrm1">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择行业年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="year1" placeholder="yyyy">
             </div>
@@ -42,7 +42,7 @@
 <form class="layui-form" method="post" id="searchFrm2">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择薪资年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="year2" placeholder="yyyy">
             </div>
@@ -56,7 +56,7 @@
 <form class="layui-form" method="post" id="searchFrm3">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择平均薪资年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="year3" placeholder="yyyy">
             </div>
@@ -70,7 +70,7 @@
 <form class="layui-form" method="post" id="searchFrm4">
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">选择平均薪资年份:</label>
+            <label class="layui-form-label">选择年份:</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="year4" placeholder="yyyy">
             </div>
@@ -355,7 +355,7 @@
                     },
                     yAxis: {},
                     series: [{
-                        name: '省份',
+                        name: '人数',
                         type: 'bar',
                         data: result.valueList
                     }]

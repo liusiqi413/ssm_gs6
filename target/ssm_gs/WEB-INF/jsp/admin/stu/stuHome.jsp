@@ -98,7 +98,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">手机号：</label>
                     <div class="layui-input-block">
-                        <input type="number" name="stutel" lay-verify="required" autocomplete="off" placeholder="请输入学生手机号"
+                        <input type="text" name="stutel" lay-verify="required" autocomplete="off" placeholder="请输入学生手机号"
                                class="layui-input">
                     </div>
                 </div>

@@ -259,13 +259,13 @@
                                 tableIns.reload();
                                 //关闭窗口
                                 layer.close(mainIndex);
+                            } else {
+                                layer.alert(result.message, {icon: 5});
                             }
-                            //提示信息
-                            layer.msg(result.message);
                         }, "json");
+                    }
                         //禁止页面刷新
                         return false;
-                    }
                 });
                 //删除该学生
                 function deleteById(data) {

@@ -69,6 +69,7 @@ public class StuInfoServiceImpl implements StuInfoService {
 
     @Override
     public int updateEditMaster(StuMaster stuMaster) {
+        stuMaster.setStatus(1);
         return stuInfoMapper.updateEditMaster(stuMaster);
     }
 

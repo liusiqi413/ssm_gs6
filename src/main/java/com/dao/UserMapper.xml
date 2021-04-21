@@ -4,5 +4,4 @@
 <select id="findUserByName" resultType="com.entity.StuUser">
     select * from t_user where loginName=#{loginName}
 </select>
-
 </mapper>

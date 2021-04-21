@@ -117,7 +117,7 @@
             var newPas=$("#newPwd").val().trim();
             var confirm=$("#conformPwd").val().trim();
             if(confirm!=newPas){
-                layer.alert("俩次密码不一致",{icon:5});
+                layer.alert("两次密码不一致",{icon:5});
                 flag=false;
             }else if(loginPas==newPas){
                 layer.alert("新密码不能为以前的旧密码",{icon:5});

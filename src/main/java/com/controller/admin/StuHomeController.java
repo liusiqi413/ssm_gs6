@@ -98,7 +98,7 @@ import java.util.Map;
         //调用修改的方法
         if(stuHomeService.updateStuHome(studentHome)>0){
             map.put(SystemConstant.SUCCESS,true);
-            map.put(SystemConstant.MESSAGE,"审核未通过");
+            map.put(SystemConstant.MESSAGE,"审核未通过成功");
         }else{
             map.put(SystemConstant.SUCCESS,false);
             map.put(SystemConstant.MESSAGE,"审核未通过失败");
@@ -151,13 +151,13 @@ import java.util.Map;
             //判断受影响行数是否大于0
             if(count>0){
                 map.put(SystemConstant.SUCCESS,true);
-                map.put(SystemConstant.MESSAGE,"未审核成功");
+                map.put(SystemConstant.MESSAGE,"批量审核未通过成功");
             }
         }
         //判断受影响行数是否小于0
         if(count<=0){
             map.put(SystemConstant.SUCCESS,false);
-            map.put(SystemConstant.MESSAGE,"未审核失败");
+            map.put(SystemConstant.MESSAGE,"批量审核未通过失败");
         }
         return JSON.toJSONString(map);
     }
